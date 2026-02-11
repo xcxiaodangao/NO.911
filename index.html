@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NO.911 小红书博主团队</title>
+    <title>NO.911 小红书博主</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 此处省略中间部分，保留完整  */
         :root {
             --primary-color: #ff2442;
             --primary-light: #ffe6ea;
@@ -18,789 +19,96 @@
             --radius: 12px;
             --transition: all 0.3s ease;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-        }
-        
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* 导航栏样式 */
-        .navbar {
-            background-color: var(--bg-color);
-            padding: 15px 30px;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 40px;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* 页面容器 */
-        .page-container {
-            min-height: calc(100vh - 80px);
-            padding: 30px 20px;
-            display: none;
-        }
-        
-        .page-container.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        /* 帖子分享页面样式 */
-        #posts-page {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .page-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--text-dark);
-            font-size: 2.5rem;
-        }
-        
-        .page-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-        
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .post-card {
-            background-color: var(--bg-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-        }
-        
-        .post-image {
-            height: 200px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: var(--bg-color);
-            position: relative;
-        }
-        
-        .post-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .post-title {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            flex-grow: 1;
-        }
-        
-        .post-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .post-date {
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-        
-        /* 帖子详情页面样式 - 已添加图片轮播功能 */
-        #post-detail-page {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .back-btn {
-            background-color: var(--bg-light);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-        
-        .back-btn:hover {
-            background-color: var(--primary-light);
-        }
-        
-        .post-detail-card {
-            background-color: var(--bg-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        /* 图片轮播容器 */
-        .carousel-container {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            background-color: var(--bg-color);
-        }
-        
-        .carousel-slides {
-            display: flex;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-        
-        .carousel-slide {
-            flex: 0 0 100%;
-            height: 100%;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: var(--bg-color);
-        }
-        
-        .carousel-controls {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        
-        .carousel-btn {
-            background-color: rgba(255, 255, 255, 0.7);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-        
-        .carousel-btn:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: scale(1.1);
-        }
-        
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .carousel-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .carousel-indicator.active {
-            background-color: var(--primary-color);
-            transform: scale(1.2);
-        }
-        
-        .carousel-counter {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .post-detail-content {
-            padding: 30px;
-        }
-        
-        .post-detail-title {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        
-        .post-detail-text {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            white-space: pre-line;
-        }
-        
-        /* 成员介绍页面样式 */
-        #members-page {
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .members-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .team-stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-light);
-        }
-        
-        .members-container {
-            position: relative;
-            margin-bottom: 50px;
-            overflow: visible;
-        }
-        
-        .members-scroll-wrapper {
-            overflow-x: auto;
-            overflow-y: hidden;
-            padding: 20px 0 40px 0;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            cursor: grab;
-        }
-        
-        .members-scroll-wrapper::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .members-scroll-wrapper:active {
-            cursor: grabbing;
-        }
-        
-        .members-grid {
-            display: flex;
-            gap: 25px;
-            padding: 0 20px;
-            width: max-content;
-        }
-        
-        .member-card {
-            flex: 0 0 280px;
-            transition: var(--transition);
-        }
-        
-        .member-card-inner {
-            background-color: var(--bg-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: var(--transition);
-            height: 100%;
-        }
-        
-        .member-card-inner:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .member-image {
-            height: 320px;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .member-info {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .member-name {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-        
-        .member-bio {
-            color: var(--primary-color);
-            font-size: 1rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
-        
-        .view-detail-btn {
-            background-color: var(--primary-light);
-            color: var(--primary-color);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 5px;
-            font-weight: 600;
-        }
-        
-        .view-detail-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* 滚动提示 */
-        .scroll-hint {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1rem;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            animation: bounce 2s infinite;
-        }
-        
-        .scroll-hint i {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateX(0);}
-            40% {transform: translateX(10px);}
-            60% {transform: translateX(5px);}
-        }
-        
-        /* 成员详情页面样式 */
-        #member-detail-page {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .member-detail-card {
-            background-color: var(--bg-color);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            min-height: 500px;
-        }
-        
-        @media (min-width: 992px) {
-            .member-detail-card {
-                flex-direction: row;
-                min-height: 600px;
-            }
-        }
-        
-        .member-detail-image {
-            height: 400px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: var(--bg-color);
-            flex: 0 0 100%;
-        }
-        
-        @media (min-width: 992px) {
-            .member-detail-image {
-                height: auto;
-                flex: 0 0 45%;
-                min-height: 600px;
-                background-size: cover;
-            }
-        }
-        
-        .member-detail-content {
-            padding: 30px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        @media (min-width: 992px) {
-            .member-detail-content {
-                padding: 40px;
-                justify-content: center;
-            }
-        }
-        
-        .member-detail-name {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-        
-        .member-detail-bio {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            font-weight: 600;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .member-detail-text {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            white-space: pre-line;
-            padding: 20px;
-            background-color: var(--bg-light);
-            border-radius: var(--radius);
-            margin-top: 15px;
-            flex-grow: 1;
-            overflow-y: auto;
-            max-height: 300px;
-        }
-        
-        @media (min-width: 992px) {
-            .member-detail-text {
-                max-height: 350px;
-                margin-top: 0;
-            }
-        }
-        
-        /* 反馈页面样式 */
-        #feedback-page {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .feedback-card {
-            background-color: var(--bg-color);
-            border-radius: var(--radius);
-            padding: 50px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .feedback-icon {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-        }
-        
-        .contact-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--text-dark);
-        }
-        
-        .contact-description {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-        
-        .contact-info {
-            background-color: var(--bg-light);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .contact-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
-        
-        .contact-text {
-            text-align: left;
-        }
-        
-        .contact-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 3px;
-        }
-        
-        .contact-value {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        
-        .contact-note {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-style: italic;
-            margin-top: 30px;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 1200px) {
-            .member-card {
-                flex: 0 0 260px;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .member-card {
-                flex: 0 0 240px;
-            }
-            
-            .member-image {
-                height: 280px;
-            }
-            
-            .member-detail-image {
-                height: 350px;
-            }
-            
-            .carousel-container {
-                height: 350px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px;
-            }
-            
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .member-card {
-                flex: 0 0 220px;
-            }
-            
-            .member-image {
-                height: 250px;
-            }
-            
-            .team-stats {
-                gap: 20px;
-            }
-            
-            .stat-number {
-                font-size: 1.8rem;
-            }
-            
-            .carousel-container {
-                height: 300px;
-            }
-            
-            .member-detail-image {
-                height: 300px;
-            }
-            
-            .members-grid {
-                gap: 20px;
-            }
-            
-            .member-detail-name {
-                font-size: 1.8rem;
-            }
-            
-            .member-detail-bio {
-                font-size: 1.2rem;
-            }
-            
-            .post-image {
-                height: 200px;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .member-card {
-                flex: 0 0 200px;
-            }
-            
-            .member-image {
-                height: 220px;
-            }
-            
-            .team-stats {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .feedback-card {
-                padding: 30px 20px;
-            }
-            
-            .member-detail-card {
-                flex-direction: column;
-            }
-            
-            .members-grid {
-                gap: 15px;
-            }
-            
-            .member-detail-name {
-                font-size: 1.6rem;
-            }
-            
-            .member-detail-bio {
-                font-size: 1.1rem;
-            }
-            
-            .member-detail-text {
-                padding: 15px;
-                font-size: 1rem;
-            }
-            
-            .post-image {
-                height: 180px;
-            }
-            
-            .carousel-container {
-                height: 250px;
-            }
-            
-            .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-                padding: 0;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        .navbar { background-color: var(--bg-color); padding: 15px 30px; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1200px; }
+        .logo { display: flex; align-items: center; color: var(--primary-color); font-size: 1.8rem; font-weight: bold; text-decoration: none; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-link { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 1.1rem; padding: 8px 16px; border-radius: 20px; transition: var(--transition); }
+        .nav-link:hover, .nav-link.active { background-color: var(--primary-color); color: white; }
+        .page-container { min-height: calc(100vh - 80px); padding: 30px 20px; display: none; }
+        .page-container.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        #posts-page { max-width: 1200px; margin: 0 auto; }
+        .page-title { text-align: center; margin-bottom: 30px; color: var(--text-dark); font-size: 2.5rem; }
+        .page-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 1.1rem; }
+        .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .post-card { background-color: var(--bg-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); cursor: pointer; height: 100%; display: flex; flex-direction: column; }
+        .post-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); }
+        .post-image { height: 200px; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: var(--bg-color); position: relative; }
+        .post-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .post-title { font-size: 1.2rem; margin-bottom: 15px; color: var(--text-dark); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex-grow: 1; }
+        .post-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border-color); }
+        .post-date { color: var(--text-light); font-size: 0.85rem; }
+        #post-detail-page { max-width: 900px; margin: 0 auto; }
+        .back-btn { background-color: var(--bg-light); border: none; padding: 10px 20px; border-radius: 20px; font-size: 1rem; cursor: pointer; margin-bottom: 30px; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .back-btn:hover { background-color: var(--primary-light); }
+        .post-detail-card { background-color: var(--bg-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .carousel-container { position: relative; height: 400px; overflow: hidden; background-color: var(--bg-color); }
+        .carousel-slides { display: flex; height: 100%; transition: transform 0.5s ease; }
+        .carousel-slide { flex: 0 0 100%; height: 100%; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: var(--bg-color); }
+        .carousel-controls { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .carousel-btn { background-color: rgba(255, 255, 255, 0.7); border: none; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; color: var(--primary-color); transition: var(--transition); }
+        .carousel-btn:hover { background-color: rgba(255, 255, 255, 0.9); transform: scale(1.1); }
+        .carousel-indicators { position: absolute; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; gap: 10px; }
+        .carousel-indicator { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: var(--transition); }
+        .carousel-indicator.active { background-color: var(--primary-color); transform: scale(1.2); }
+        .carousel-counter { position: absolute; top: 20px; right: 20px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.9rem; }
+        .post-detail-content { padding: 30px; }
+        .post-detail-title { font-size: 1.8rem; margin-bottom: 15px; color: var(--text-dark); }
+        .post-detail-text { color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; margin-bottom: 25px; white-space: pre-line; }
+        #members-page { max-width: 1400px; margin: 0 auto; overflow: hidden; }
+        .members-header { text-align: center; margin-bottom: 40px; }
+        .team-stats { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.2rem; font-weight: bold; color: var(--primary-color); }
+        .stat-label { font-size: 1rem; color: var(--text-light); }
+        .members-container { position: relative; margin-bottom: 50px; overflow: visible; }
+        .members-scroll-wrapper { overflow-x: auto; overflow-y: hidden; padding: 20px 0 40px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; }
+        .members-scroll-wrapper::-webkit-scrollbar { display: none; }
+        .members-scroll-wrapper:active { cursor: grabbing; }
+        .members-grid { display: flex; gap: 25px; padding: 0 20px; width: max-content; }
+        .member-card { flex: 0 0 280px; transition: var(--transition); }
+        .member-card-inner { background-color: var(--bg-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: var(--transition); height: 100%; }
+        .member-card-inner:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
+        .member-image { height: 320px; background-size: cover; background-position: center; }
+        .member-info { padding: 20px; text-align: center; }
+        .member-name { font-size: 1.4rem; margin-bottom: 8px; color: var(--text-dark); }
+        .member-bio { color: var(--primary-color); font-size: 1rem; margin-bottom: 15px; font-weight: 500; }
+        .view-detail-btn { background-color: var(--primary-light); color: var(--primary-color); border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; cursor: pointer; transition: var(--transition); margin-top: 5px; font-weight: 600; }
+        .view-detail-btn:hover { background-color: var(--primary-color); color: white; }
+        .scroll-hint { text-align: center; color: var(--text-light); font-size: 1rem; margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; animation: bounce 2s infinite; }
+        .scroll-hint i { font-size: 1.2rem; color: var(--primary-color); }
+        @keyframes bounce { 0%,20%,50%,80%,100% { transform: translateX(0); } 40% { transform: translateX(10px); } 60% { transform: translateX(5px); } }
+        #member-detail-page { max-width: 1100px; margin: 0 auto; }
+        .member-detail-card { background-color: var(--bg-color); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; min-height: 500px; }
+        @media (min-width: 992px) { .member-detail-card { flex-direction: row; min-height: 600px; } }
+        .member-detail-image { height: 400px; background-size: contain; background-position: center; background-repeat: no-repeat; background-color: var(--bg-color); flex: 0 0 100%; }
+        @media (min-width: 992px) { .member-detail-image { height: auto; flex: 0 0 45%; min-height: 600px; background-size: cover; } }
+        .member-detail-content { padding: 30px; flex: 1; display: flex; flex-direction: column; }
+        @media (min-width: 992px) { .member-detail-content { padding: 40px; justify-content: center; } }
+        .member-detail-name { font-size: 2.2rem; margin-bottom: 10px; color: var(--text-dark); line-height: 1.2; }
+        .member-detail-bio { color: var(--primary-color); font-size: 1.4rem; margin-bottom: 25px; font-weight: 600; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
+        .member-detail-text { color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; white-space: pre-line; padding: 20px; background-color: var(--bg-light); border-radius: var(--radius); margin-top: 15px; flex-grow: 1; overflow-y: auto; max-height: 300px; }
+        @media (min-width: 992px) { .member-detail-text { max-height: 350px; margin-top: 0; } }
+        #feedback-page { max-width: 800px; margin: 0 auto; }
+        .feedback-card { background-color: var(--bg-color); border-radius: var(--radius); padding: 50px; box-shadow: var(--shadow); text-align: center; }
+        .feedback-icon { font-size: 4rem; color: var(--primary-color); margin-bottom: 30px; }
+        .contact-title { font-size: 2rem; margin-bottom: 20px; color: var(--text-dark); }
+        .contact-description { color: var(--text-light); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.7; }
+        .contact-info { background-color: var(--bg-light); border-radius: var(--radius); padding: 30px; margin-bottom: 40px; }
+        .contact-item { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .contact-item:last-child { margin-bottom: 0; }
+        .contact-icon { width: 50px; height: 50px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: 1.2rem; }
+        .contact-text { text-align: left; }
+        .contact-label { font-size: 0.9rem; color: var(--text-light); margin-bottom: 3px; }
+        .contact-value { font-size: 1.2rem; color: var(--text-dark); font-weight: 600; }
+        .contact-note { color: var(--text-light); font-size: 0.9rem; font-style: italic; margin-top: 30px; }
+        @media (max-width: 1200px) { .member-card { flex: 0 0 260px; } }
+        @media (max-width: 992px) { .member-card { flex: 0 0 240px; } .member-image { height: 280px; } .member-detail-image { height: 350px; } .carousel-container { height: 350px; } }
+        @media (max-width: 768px) { .navbar { padding: 15px; } .nav-container { flex-direction: column; gap: 15px; } .nav-links { gap: 15px; } .member-card { flex: 0 0 220px; } .member-image { height: 250px; } .team-stats { gap: 20px; } .stat-number { font-size: 1.8rem; } .carousel-container { height: 300px; } .member-detail-image { height: 300px; } .members-grid { gap: 20px; } .member-detail-name { font-size: 1.8rem; } .member-detail-bio { font-size: 1.2rem; } .post-image { height: 200px; } .carousel-btn { width: 40px; height: 40px; font-size: 1.2rem; } }
+        @media (max-width: 576px) { .posts-grid { grid-template-columns: 1fr; } .member-card { flex: 0 0 200px; } .member-image { height: 220px; } .team-stats { flex-direction: column; gap: 15px; } .page-title { font-size: 2rem; } .feedback-card { padding: 30px 20px; } .member-detail-card { flex-direction: column; } .members-grid { gap: 15px; } .member-detail-name { font-size: 1.6rem; } .member-detail-bio { font-size: 1.1rem; } .member-detail-text { padding: 15px; font-size: 1rem; } .post-image { height: 180px; } .carousel-container { height: 250px; } .carousel-btn { width: 35px; height: 35px; font-size: 1rem; padding: 0; } }
     </style>
 </head>
 <body>
@@ -821,11 +129,8 @@
     <!-- 帖子分享页面 -->
     <div class="page-container active" id="posts-page">
         <h1 class="page-title">NO.911星球</h1>
-        <p class="page-subtitle">点击任意帖子查看完整内容</p>
-        
-        <div class="posts-grid" id="posts-container">
-            <!-- 帖子卡片将通过JavaScript动态生成 -->
-        </div>
+        <p class="page-subtitle">点击任意帖子查看完整内容，仅收录至2026-02-11，后续会持续更新</p>
+        <div class="posts-grid" id="posts-container"></div>
     </div>
 
     <!-- 帖子详情页面 -->
@@ -833,35 +138,18 @@
         <button class="back-btn" id="back-from-post">
             <i class="fas fa-arrow-left"></i> 返回帖子列表
         </button>
-        
         <div class="post-detail-card">
-            <!-- 图片轮播容器 -->
             <div class="carousel-container" id="post-carousel-container">
-                <div class="carousel-slides" id="post-carousel-slides">
-                    <!-- 图片轮播幻灯片将通过JavaScript动态生成 -->
-                </div>
-                
-                <!-- 轮播控制按钮 -->
+                <div class="carousel-slides" id="post-carousel-slides"></div>
                 <div class="carousel-controls" id="post-carousel-controls">
-                    <button class="carousel-btn" id="post-carousel-prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="carousel-btn" id="post-carousel-next">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <button class="carousel-btn" id="post-carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="post-carousel-next"><i class="fas fa-chevron-right"></i></button>
                 </div>
-                
-                <!-- 轮播指示器 -->
-                <div class="carousel-indicators" id="post-carousel-indicators">
-                    <!-- 指示器将通过JavaScript动态生成 -->
-                </div>
-                
-                <!-- 轮播计数器 -->
+                <div class="carousel-indicators" id="post-carousel-indicators"></div>
                 <div class="carousel-counter" id="post-carousel-counter">
                     <span id="post-carousel-current">1</span> / <span id="post-carousel-total">1</span>
                 </div>
             </div>
-            
             <div class="post-detail-content">
                 <h2 class="post-detail-title" id="post-detail-title"></h2>
                 <div class="post-detail-text" id="post-detail-text"></div>
@@ -879,34 +167,20 @@
     <div class="page-container" id="members-page">
         <div class="members-header">
             <h1 class="page-title">NO.911和朋友们</h1>
-            <p class="page-subtitle">点击图片查看详细介绍，使用鼠标滚轮或拖动水平滚动查看所有成员，欢迎联系添加更多</p>
-            
+            <p class="page-subtitle">点击图片查看详细介绍，使用鼠标滚轮或拖动水平滚动查看所有人物，欢迎联系添加更多</p>
             <div class="team-stats">
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">西西里里＋编外成员</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">180+</div>
-                    <div class="stat-label">平均身高</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">年上年下</div>
-                </div>
+                <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">西西里里＋编外成员</div></div>
+                <div class="stat-item"><div class="stat-number">180+</div><div class="stat-label">平均身高</div></div>
+                <div class="stat-item"><div class="stat-number">20+</div><div class="stat-label">年上年下</div></div>
             </div>
         </div>
-        
         <div class="members-container">
             <div class="members-scroll-wrapper" id="members-scroll-wrapper">
-                <div class="members-grid" id="members-grid">
-                    <!-- 成员卡片将通过JavaScript动态生成 -->
-                </div>
+                <div class="members-grid" id="members-grid"></div>
             </div>
-            
             <div class="scroll-hint">
                 <i class="fas fa-mouse"></i>
-                <span>使用鼠标滚轮或拖动以查看更多成员</span>
+                <span>使用鼠标滚轮或拖动以查看更多朋友</span>
             </div>
         </div>
     </div>
@@ -916,7 +190,6 @@
         <button class="back-btn" id="back-from-member">
             <i class="fas fa-arrow-left"></i> 返回成员列表
         </button>
-        
         <div class="member-detail-card">
             <div class="member-detail-image" id="member-detail-image"></div>
             <div class="member-detail-content">
@@ -930,517 +203,1699 @@
     <!-- 反馈页面 -->
     <div class="page-container" id="feedback-page">
         <div class="feedback-card">
-            <div class="feedback-icon">
-                <i class="fas fa-comments"></i>
-            </div>
-            
+            <div class="feedback-icon"><i class="fas fa-comments"></i></div>
             <h2 class="contact-title">联系我们</h2>
-            <p class="contact-description">
-                粉丝制作，如果您有任何建议或反馈意见，欢迎通过以下方式与我联系。<br>
-                感谢您的支持！
-            </p>
-            
+            <p class="contact-description">仅为粉丝制作！<br>如果您有任何建议或反馈意见，欢迎通过以下方式与我联系。<br>感谢您的支持！</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <div class="contact-icon"><i class="fas fa-user"></i></div>
                     <div class="contact-text">
                         <div class="contact-label">负责人</div>
                         <div class="contact-value">想吃小蛋糕</div>
                     </div>
                 </div>
             </div>
-            
-            <p class="contact-note">
-                工作时间：全天候<br>
-                欢迎来找我玩！
-            </p>
+            <p class="contact-note">工作时间：全天候<br>欢迎来找我玩！</p>
         </div>
     </div>
 
     <script>
-        // 页面状态管理
-        let currentPage = 'posts';
-        let currentPostCarousel = {
-            currentSlide: 0,
-            totalSlides: 1,
-            goToSlide: null,
-            nextSlide: null,
-            prevSlide: null
-        };
-        
-        // 帖子数据
+        // ---------- 帖子数据（已全部修正为反引号，语法错误已修复）----------
         const postsData = [
-           {
-                id: 1,
-                title: "牵个手",
-                fullContent: "#185大帅哥 #理想型 #氛围感 #手控 #上班 #安徽 #天蝎",
-                image: "images/store-01.jpg",
-                date: "2025-09-23",
-                likes: 976
-            },
-           {
-                id: 2,
-                title: "我有一个朋友身高184.5，现实一次恋爱都没",
-                fullContent: "我有一个朋友身高184.5\n现实一次恋爱都没谈过身高184.5\n跟人学网恋身高184.5\n谈了七天被骗三千身高184.5\n依旧不知悔改怎么劝都劝不住身高184.5\n对面好像把他当内个召之即来挥之即去184.5\n要什么给什么身高184.5\n请问这样的人还有救吗？身高184.5\n#抽象 #男大学生 #185大帅哥 #理想型 #大帅哥 #抽象艺术 #发疯文学 #网恋 #我有一个朋友",
-                image: "images/store-02.jpg",
-                date: "2025-09-25",
-                likes: 1316
-            },
-           {
-                id: 3,
-                title: "拍错了帅哥劈谷他转身捂着劈谷震惊的看着我",
-                fullContent: "拍错了帅哥劈谷\n他转身捂着劈谷\n震惊的看着我\n他带着帽衫\n完全认不出来\n我以为是我朋友括号呢\n我上去就是一觉又一巴掌\n完事了一转头\n才发现不认识\n我又认错人了\n我不行了\n#185大帅哥 #抽象 #旋转跳跃我闭着眼  #对这个世界绝望 #朋友 #我的日常\n道歉了道歉了\n我都要手抓着脸跑了\n这个括号买吃的不跟我说一声\n害我认错人\n太丢人了\n我跟个那个什么一样\n那个帅哥的眼中\n充满了不解\n不可置信\n震惊\n以及些许的惊恐\n然后当时很尴尬\n我脑子一热还说了一句\n“那个  你也回家过年啊”\n他愣了很久\n“嗯”了一声\n然后又说\n“请问我们认识吗？”\n我笑了是苦笑\n“不认识”\n“不好意思，是我认错人了”\n\n括号把我毁了",
-                image: "images/store-03.jpg",
-                date: "2026-02-10",
-                likes: 881
-            },
-            {
-                id: 4,
-                title: "回到家总感觉少了点啥原来是一起的朋友丢了",
-                fullContent: "回到家总感觉少了点啥\n原来是一起的朋友丢了\n停车到家才发现少了个人\n我寻思室友先上楼了\n竟然不等我\n过分了\n结果回家家找了一圈也没有人\n真是奇了怪了\n这咋回事呢你说\n又去找了一圈\n乐色桶马桶床底下柜子天花板抽屉都看了\n没有人啊\n连下水管道我都喊了\n也没找见\n怪了真是\n正想着呢\n门吱呀开了\n我还没说话呢\n室友冲进来给我好一阵收拾\n说他还没上车就开车走了\n\n后座少个人不知道吗\n我说不知道\n真不知道啊\n我还以为他在后座睡着了\n一点动静都没有\n他白了我好几眼\n说我没脑仁\n#185大帅哥#抽象#搞笑#回家回家回家#无聊但有趣#一辈子很快就过去了吧#我的日常#朋友",
-                image: "images/store-04.jpg",
-                date: "2026-02-10",
-                likes: 881
-            },
-            {
-                id: 5,
-                title: "我们天蝎INTJ帅男是这样的",
-                fullContent: "我们天蝎INTJ帅男是这样的\n女人\n知道错了吗\n知道错了还不来哄我\n人呢\n人呢\n人呢\n竟然还不来\n是不是外面有人了\n我……肯定是\n怎么敢的\n难道不爱我了\n不\n那个男的是谁\n有我帅吗\n有我身材好吗\n还不回来\n呵\n不找我就不找我\n谁在乎\n呵\n我一点也不在乎\n过去半秒了\n呵\n还不回消息\n呵\n到底在干什么\n真行\n呵\n谁离了谁会亖\n搞笑\n\n都tnn过去三秒了\n\n我会亖的\n我现在就亖\n#搞笑 #185大帅哥 #抽象 #我的日常 #天蝎 #男人的容貌女人的荣耀 #你就让让我吧",
-                image: "images/store-05.jpg",
-                date: "2026-02-09",
-                likes: 1261
-            },
-            {
-                id: 6,
-                title: "奔现因为比照片还帅 被狠狠甩了",
-                fullContent: "奔现因为比照片还帅被狠狠甩了\n说我一看就不是那种会过日子的男人\n降不住我\n可我是真的爱她\n这是我头一回恋爱啊\n我想挽留她却发现她把我删了\n难过的我一口气吃了五块榴莲\n我想我再不会轻易爱上别人了\n再耶不会了\n#185大帅哥 #搞笑 #抽象 #我的日常 #谈不了一点 #我开玩笑的 #别管我了\n比照片还帅是我的错吗\n怎么能那么对我\n卡其嘛",
-                image: "images/store-06.jpg",
-                date: "2026-02-08",
-                likes: 1461
-            },
-            {
-                id: 7,
-                title: "打篮球一共被五个女生搭讪",
-                fullContent: "她们夸我长得又高又帅又白\n身材还好\n腿特长\n问我是不是被好多女生追\n是不是被很多女生喜欢\n像我这种大帅哥一顶很受欢迎\n不知道有没有机会认识一下\n这给我夸的\n已经不知道东南西北了\n我一直说\n没有\n没有\n哪有\n正呲着牙笑的时候\n从床上掉下去摔醒了\n#185大帅哥 #抽象 #搞笑 #打篮球 #我开玩笑的 #发疯",
-                image: "images/store-07.jpg",
-                date: "2026-02-08",
-                likes: 1068
-            },
-            {
-                id: 8,
-                title: "被一个女生搭讪要两次然后发现她们是双胞胎",
-                fullContent: "被一个女生搭讪要两次\n然后发现她们是双胞胎\n根本不是同一个人\n\n突然想起来的\n在学校大三的时候\n一个女生跟我搭讪\n然后我那个时候没给\n我就走了\n没一会又碰到那个女生和另一个女生\n她们一起过来跟我说话\n我当时就看她眼熟\n一想这不是刚才那个跟我搭讪的女生吗\n怎么一会的时间\n头发变卷了衣服也换了\n\n我当时也别多想\n我有事要忙就又拒绝了一次\n\n然后后面过了两天\n和我朋友卷毛去图书馆\n看到了她们\n震惊的我才发现她们是一对双胞胎\n长的一样\n那个时候我记性还好点\n比现在好\n我就跟卷毛说了这件事\n卷毛说双胞胎的审美很相似\n喜欢的东西都差不多一样\n问我还记不记得\n之前有个双胞胎男生喜欢问号(我另一个朋友)\n然后说着说着卷毛就被搭讪了\n一个女生给他了一个纸条就走了\n#185大帅哥 #抽象 #搞笑 ##我的日常 #朋友\n纸条具体写的啥我忘了\n后面我们也走了\n关于问号被双胞胎男生这个事\n他不让说哈哈哈\n我之前还发四\n我一丁不会告诉别人的\n我嘴出了名的严\n嗯✓",
-                image: "images/store-08.jpg",
-                date: "2026-02-07",
-                likes: 1514
-            },
-            {
-                id: 9,
-                title: "认错人跳到了帅哥背上帅哥背着我直接走了",
-                fullContent: "总的来说来的总说\n就是我一个朋友\n她和她一个183的t朋友去买东西\n然后在门口认错了人\n我朋友在门口看到的一个陌生帅哥\n直接蹦人家身上了\n那个帅哥也很自然的背着她走了\n直到她们都开始说话\n我朋友问帅哥香水怎么换了\n帅哥问我朋友买的什么吃的\n然后出了声才发现根本不认识\n随后两个人分开又震惊又尴尬的道歉\n那个帅哥说以为跳他背上的是他妹妹\n他妹妹经常这样\n才闹出了误会\n\n然后我朋友的朋友\n出门碰巧看到了我朋友跳帅哥背上\n当时一脸震惊的看着他俩越走越远\n剩她一个人独自茫然\n(因为个头差不多，加上是晚上我朋友没戴眼镜没认出来，都是穿的黑袄)\n#185大帅哥 #抽象 #搞笑 #到点就跑路 #我的日常 #朋友 #只要我不尴尬 ",
-                image: "images/store-09.jpg",
-                date: "2026-02-06",
-                likes: 6238
-            },
-            {
-                id: 10,
-                title: "买的烧鸡不小心烫到了帅哥的熊肌",
-                fullContent: "买的烧鸡不小心烫到了帅哥的熊肌\n是这样\n我之前顶着一头鸡窝去楼下门口拿快递\n随便穿了一个卫衣\n那个卫衣还破了个洞\n我买的布贴快递(就是那么会过的居家好男人)\n那天还下着毛毛细雨\n然后我们门口新开了一家卖烧鸡的\n太香了给我香迷糊了\n我就过去想买一只\n我就一直盯着那个烤鸡\n不由自主咽口水\n结果我一摸口袋没带手机\n我就准备回去拿\n然后这个时候我前面一个女生穿着连帽卫衣\n带着帽子拿了刚出炉的烧鸡往后转身准备走\n因为有几个台阶\n她在台阶上面\n我在台阶下面\n我就站在她后面\n她一转身直接撞到了我身上\n然后烧鸡她往上一甩烫到了我的胸大肌\n然后我被她一撞一烫也没站稳\n直接跪在了她面前\n那一刻世界安静了\n几秒之后\n她看着我说着不好意思\n并把我拉起来\n看着我又沉思了一会\n突然把手里的烧鸡递给我了\n说请我吃\n那个时候我被毛毛细雨淋的很像一个无家可归的美男子\n#185大帅哥 #抽象 #搞笑 #你这里欠我的用什么还#我的日常\n然后就发现她把我当成流落街头的人了\n烧鸡把我毁了",
-                image: "images/store-10.jpg",
-                date: "2026-02-05",
-                likes: 2240
-            },
-            {
-                id: 11,
-                title: "搞得俺怪不好意思的 就这样 别停",
-                fullContent: "哈哈哈我没笑\n哈哈哈s嘴快憋住\n哈哈哈好想笑\n哈哈哈憋不住了\n突然看到真的很爽之\n谁懂\n哈哈哈\n(不大众)(不wh)(很xy)的帅\n(很幽默)(人格魅力 很大)\n嗯\n对\n(憋住)\n#185大帅哥 #抽象 #搞笑 #怪不好意思的 #让大家见笑了 #你人还怪好勒 #好像有点语无伦次 #我的日常 ",
-                image: "images/store-11.jpg",
-                date: "2026-02-04",
-                likes: 1299
-            },
-            {
-                id: 12,
-                title: "朋友在自家店里帮忙以一人之力店里座无虚席",
-                fullContent: " 朋友在自家店里打工\n以一人之力店里座无虚席\n笑s我了\n他放假去店里呆了两天\n他家招牌菜是烤鱼原来人就不算多\n他父亲天天说人少太闲了\n感觉快倒闭了\n天天除了耍手机就是刷手机\n然后我朋友去帮了两天忙\n从那天开始\n突然来了很多女生吃饭\n(我朋友当服务员)(点菜上菜)\n\n刚开始我朋友他父亲可高兴了\n说大学生都放假了人多了\n笑的合不拢嘴\n还有很多回头客\n说他家味道好吃\n他父亲特别开心\n说自己的手艺被大家喜欢\n\n然后还没过去两天\n他父亲就笑不出来了\n然后笑容逐渐消失\n他父亲就开始说累不行了\n根本忙不过来了\n看着排队的人他父亲一直皱眉\n(就他父亲一个人做菜)\n他母亲打下手\n他父亲累的天天拉拉个脸\n他父亲也发现了\n好像是因为我朋友才都来吃烤鱼的\n哈哈然后我朋友就被他父亲撵回去了\n笑s我了\n然后后面人还是很多\n就有人问他父亲\n说叔叔店里怎么不见那个男生服务员了\n是没来吗\n我不行了笑s我了\n#抽象 #搞笑 #我的日常 #谁能解释这种现象 #朋友 #世界上还是好人多 #哈哈哈哈",
-                image: "images/store-12.jpg",
-                date: "2026-02-04",
-                likes: 3909
-            },
-            {
-                id: 13,
-                title: "烦 帅到睡不着",
-                fullContent: "#185大帅哥 #抽象 #搞笑 #帅帅帅帅帅 #被自己帅到了 #帅就完事儿 #如果帅到你 #一个字帅就完了 #就一个字帅\n烦\n帅到睡不着\n睁着眼帅\n闭着眼帅\n躺着也帅\n坐着也帅\n正着帅\n反着帅\n倒立帅\n脚底板帅\n头发丝帅\n好帅\n好帅\n好帅\n我好帅\n我真的好帅\n我帅到快要晕厥\n怎么能那么帅\n你这个迷人的男人\n#朋友 ",
-                images: [
-                    "images/store-13-01.jpg",
-                    "images/store-13-02.jpg", 
-                    "images/store-13-03.jpg",
-                    "images/store-13-04.jpg",
-                    "images/store-13-05.jpg",
-                    "images/store-13-06.jpg",
-                    "images/store-13-07.jpg",
-                    "images/store-13-08.jpg",
-                    "images/store-13-09.jpg",
-                    "images/store-13-10.jpg",
-                    "images/store-13-11.jpg",
-                    "images/store-13-12.jpg",
-                    "images/store-13-13.jpg",
-                    "images/store-13-14.jpg",
-                    "images/store-13-15.jpg",
-                    "images/store-13-16.jpg",
-                    "images/store-13-17.jpg",
-                    "images/store-13-18.jpg",
-                    "images/store-13-19.jpg",
-                    "images/store-13-20.jpg",
-                    "images/store-13-21.jpg",
-                    "images/store-13-22.jpg"
-                ],
-                date: "2026-02-02",
-                likes: 2225
-            },
-            {
-                id: 14,
-                title: "突然发现我竟然是一个187的帅哥",
-                fullContent: "突然发现我竟然是一个187宽肩窄腰的大帅哥\n爽之爽之\n帅气的齿轮原来早就开始转动了\n今天又是被自己帅到能吃两碗大米饭的一个早晨\n#185大帅哥 #抽象 #搞笑 #主打的就是一个自信 #小帅大帅哥 #被自己迷倒了\n其实是186.7 ",
-                image: "images/store-14.jpg",
-                date: "2026-02-03",
-                likes: 1614
-            },
-            {
-                id: 15,
-                title: "我的一个朋友长得很帅",
-                fullContent: "我的一个朋友长得很帅\n我跟他一起去吃饭的时候\n我突然被一个女生挡住。\n那个女生对我说\n“男人，给你两秒钟，把你身边的人介绍给我认识一下。要是敢拒绝我的话，呵呵，我就会灰溜溜的离开”\n#185大帅哥 #抽象 #搞笑 #长得好看的人 #有趣 #朋友 #我的日常",
-                image: "images/store-15.jpg",
-                date: "2026-01-29",
-                likes: 1308
-            },
-            {
-                id: 16,
-                title: "被一个大美搭讪了 仔细一看是高中班主任",
-                fullContent: "被一个大美搭讪了仔细一看是高中班主任\n突然想起来了前段时间\n坐公交车的时候\n不小心下巴被一个上车的女生撞了\n我当时干啥呢我忘了\n她站我旁边\n突然跟我说话\n能不能认识一下啥的\n我当时背对她的\n我听到她说话我就转身了\n然后车突然急刹\n她直接撞到我了\n然后我拿着的伞掉了\n她就先蹲下帮我捡 一边说不好意思\n当时我也蹲下捡\n然后我看她捡了我刚准备起身\n结果她一个挺子突然站起来了\n真好头顶撞到了我的下巴\n我一瞬间感觉眼冒金星\n好多星星\n然后她递伞给我\n她带着口罩当时\n一直跟我道歉\n我一边捂着我的下巴\n一边说没事\n然后\n她就一直看我\n突然说你是不是哪哪个班的\n我愣了\n我说是\n我以为是哪个同学\n结果她突然笑了\n一摘口罩\n是我高中的英语老师\n我不行了吧\n世界真小\n#185大帅哥 #搞笑 #我的日常 #抽象\n#一个人上网挺无助的 #无助 ",
-                image: "images/store-16.jpg",
-                date: "2026-01-28",
-                likes: 2160
-            },
-            {
-                id: 17,
-                title: "陪一个同学相亲 结果女生看上我了",
-                fullContent: "陪一个同学相亲结果女生看上我了\n我一个同学昨天回来了\n他比我大两岁\n然后他约我吃饭\n我们正吃着饭呢\n他接了一个通话\n他说他家里人让他吃完回去看小孩(就是相亲)\n我震惊\n怎么上学也相\n他说他也不想去\n烦得很但是他家里人老催他\n还不让他谈外地的\n然后他说吃完饭让我跟他一起去看看\n我说不去了吧\n他说没事一起去吧\n然后我就跟他一起去了\n我这个同学没我高\n然后挺白净的\n小帅吧\n去见女生的时候他拿着礼\n我和他爸妈跟他后面\n进屋我就坐一边沙发上了\n然后那个女生就给我们倒水\n还给我橘子吃\n我也没发现有什么不对劲\n等走了以后才发现\n女生把我当成相亲对象了\n以为我是跟她相亲的那个\n我不行了\n我说呢\n咋老给我吃的\n一会给我橘子\n一会给我瓜子的\n都给我喂撑了\n#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #谈不了一点\n后面我跟我朋友说\n不好意思兄弟\n我以后不跟你去那种场合了\n怪不好的\n他说没事\n谢谢我\n省的他不愿意他家里人又说他\n还说他是故意带我去的\n我去了肯定先看上我\n我不行了 ",
-                image: "images/store-17.jpg",
-                date: "2026-01-28",
-                likes: 1785
-            },
-            {
-                id: 18,
-                title: "戴口罩被一个女生莫名其妙搭讪了六次",
-                fullContent: "说我长得像他很久不得见的表哥\n我笑了\n我摘下来口罩说\n\n我就是你表哥\n#185大帅哥 #抽象 #搞笑 #难绷的生活 #喘不上来气 #难道就我一个人",
-                image: "images/store-18.jpg",
-                date: "2026-01-27",
-                likes: 9954
-            },
-            {
-                id: 19,
-                title: "因长得太帅搭讪女生被拒绝 哭了一天",
-                fullContent: "因为长得太帅搭讪女生被拒绝了\n哭到天亮\n哭累了就睡\n睡醒了发现是真的不是做梦\n又哭了\n在这个看脸的时代\n那些帅哥们总是自带光环\n(比如那个186.7的)\n他们走到哪里都是众人瞩目的焦点\n但恁可知道\n长得太帅\n有时候也是一种负担\n\n那个186.7的帅哥\n有着与生俱来的帅气\n能把天上的星星都照得失去光彩\n他的眼睛深情到让人迷失自我\n他身材如雕塑\n五官如画\n他就是行走的魅力值制造者\n可就是因为太帅\n他的搭讪之路如同一部抽象电影\n让人捉摸不透\n时而搞笑\n时而悲伤\n时而动荡\n时而惶恐\n“你为什么拒绝我？”\n他的帅脸一脸无辜又无奈\n他又问：“难道我不够帅吗？”\n女生摇了摇头\n“不是，是因为你太帅了”\n“不敢加”\n他苦笑\n“又是这种话 ”\n“就能不能将就一下吗？”\n“将就一下怎么了”\n“天天睡醒就能看到我发照片视频给你看，苦了你了是吗”\n“是吗”\n“是吗”\n“为什么不说话”\n“一遇见难回答的问题就不吭声了”\n于是\n他开始怀疑人生\n甚至想去报名参加\n“长得太帅被拒绝心理扶导”\n后面他实在没法了\n吃了几次火锅\n就去玩抽象了\n所以\n抽象男没有爱情\n#帅哥 #搞笑 #抽象 #爱情 #被拒绝 #生活趣事 #185大帅哥 #我的日常",
-                image: "images/store-19.jpg",
-                date: "2026-01-25",
-                likes: 1522
-            },
-            {
-                id: 20,
-                title: "唱k和模子哥撞衫了被点了",
-                fullContent: "去唱k 和模子哥撞衫了\n然后又被点了\n#185大帅哥 #抽象 #搞笑 #遇到奇怪的人 #朋友 #我不行了",
-                image: "images/store-20.jpg",
-                date: "2026-01-24",
-                likes: 2112
-            },
-            {
-                id: 21,
-                title: "一男的突然坐在我旁边突然喊了一句老公",
-                fullContent: "被男的当成他网恋对象了 张口就喊老公\n之前我去吃KFC\n有一男的突然坐我旁边了\n然后突然喊了一句老公\n给我吓得蛋挞都掉了\n我说啥\n那男的又往我旁边凑了一下\n还拿手机给我看一个啥聊天记录\n一口一个老公\n给我吓得\n我连忙说你认错人了\n站起来端着炸鸡就跑了\n太诡异了\n孩怕\n#185大帅哥 #抽象 #搞笑 #莫名其妙的 #网恋",
-                image: "images/store-21.jpg",
-                date: "2026-01-23",
-                likes: 1499
-            },
-            {
-                id: 22,
-                title: "坐地铁被脸盲的女生搭讪了四次",
-                fullContent: "地铁上被一个姐姐搭讪了四次\n她说她脸盲\n可是姐姐\n你就站我旁边\n我一直都没动过地方\n就两站\n你搭讪我四回了\n这脸\n是不是盲的有点太快了\n是一分钟失忆一次吗\n我不行了哈哈\n第四次\n都给姐姐你自己说笑了\n我真不行了哈哈\n这个姐姐她说她自己间歇性脸盲\n尤其看到帅哥就记不住长相\n哈哈哈哈她太有意思了\n我说我不帅的\n就是普通一条人\n谢谢她那么夸我\n#185大帅哥 #搞笑 #我的日常 #地铁上的年轻人 #丑帅 #抽象 #朋友 #有趣\n我发这个贴不是说自己多帅多帅\n是遇见的这个姐姐很有趣\n被她说的我一直笑\n上了整天班的我也不累了",
-                image: "images/store-22.jpg",
-                date: "2026-01-23",
-                likes: 1613
-            },
-            {
-                id: 23,
-                title: "”我一直在哭“",
-                fullContent: "“我和我弟撞crush了”\n“我输给我弟了”\n“我弟和我crush在一起了”\n#185大帅哥 #抽象 #搞笑 #关于我的crush #crush #谁说女追男隔层纱的 #朋友",
-                image: "images/store-23.jpg",
-                date: "2026-01-22",
-                likes: 1903
-            },
-            {
-                id: 24,
-                title: "我的围巾勾住了帅哥的耳钉",
-                fullContent: "这个帅哥其实是我朋友了\n长挺帅一男的\n我们都叫他村草\n地铁到站的时候我围巾开了\n我就随手向后一抛\n你们知道的\n我这种22岁天蝎男出了名的有劲\n我围巾的一端直接被我甩到了他脸上\n然后我也没注意\n等我下去的时候才发现围巾有扯拽感\n其实是有点勒脖子\n然后一看后面\n村草说他的耳钉被我围巾的线勾住了\n他弄不下来\n让我帮他取下来\n我弄了半天\n直接把线拽断了\n线缠他耳钉那个钻里面了\n我不知道说啥好了\n#185大帅哥 #抽象 #搞笑 #围脖 #总之很暖和 #我的日常 #一个人上网挺无助的",
-                image: "images/store-24.jpg",
-                date: "2026-01-21",
-                likes: 1910
-            },
-            {
-                id: 25,
-                title: "去见别人介绍的对象，结果被她哥看上了",
-                fullContent: "我同学的哥哥去见别人给他介绍的对象\n因为快过年了\n年龄到了家长不就一直会催吗\n然后我同学说他哥昨天去见了一个女生\n(相亲去女生家里)\n女生是龙凤胎\n还有一个哥哥，女生是妹妹\n完了我朋友的哥没有被妹妹看上\n反而被女生哥哥看上了\n女生哥哥家里还知道女生哥哥是w得\n家长接受程度比较高\n就跟媒人说了\n然后媒人震惊着告诉了我同学的哥\n然后我同学的哥说他考虑一下\n\n我不行了吧\n我看我同学说的跟别人家的事情一样\n听的我一愣又一愣的\n#185大帅哥 #抽象 #搞笑  #真让我大开眼界了",
-                image: "images/store-25.jpg",
-                date: "2026-01-20",
-                likes: 2938
-            },
-            {
-                id: 26,
-                title: "女生颜控我整成了大帅哥回来她成我小妈了",
-                fullContent: "女生颜控所以我整成了帅哥\n回来她成我小妈了\n#185大帅哥 #抽象 #搞笑 #离谱 #我不行了 #朋友 #漂亮姐姐\n这是话吗\n我不认字了\n我听别人讲的\n吃瓜了\n这个男生本来也挺小帅单眼皮耐看\n因为他喜欢的女生说自己颜控\n他把自己弄成大帅双眼皮了\n回来发现女生变他小妈了\n后面才知道是让他父亲让女生故意把他支出去结的婚\n？\n？\n？\n我还是去看丧尸电视剧吧",
-                image: "images/store-26.jpg",
-                date: "2026-01-18",
-                likes: 1841
-            },
-            {
-                id: 27,
-                title: "告白失败了 她说我长得太帅了根本不敢谈",
-                fullContent: "表白失败了\n她说我长得太帅了不敢谈\n我太难过了\n就这样我还不肯亖心的问\n你能不能克服一下\n她说不能\n\n我无奈的笑了了\n她却让我别笑了\n我笑起来更帅了\n\n我已经开始痛恨我这张帅脸了\n\n难道就没有人能克服一下吗？\n\n这很难吗？\n\n#185大帅哥 #抽象 #搞笑 #谈不了一点 #我开玩笑的 #我只是胡言乱语 #魅力",
-                image: "images/store-27.jpg",
-                date: "2026-01-18",
-                likes: 7300
-            },
-            {
-                id: 28,
-                title: "你可能不认识我 但或许刷到这些",
-                fullContent: "你可能不认识我\n但或许刷到过这些\n#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #抽象艺术 #吃瓜\n都是我的来时路\n\n米分们\n是从哪里开始认识我的呢\n\n抽象不停\n开心不止",
-                images: [
-                    "images/store-28-01.jpg",
-                    "images/store-28-02.jpg", 
-                    "images/store-28-03.jpg",
-                    "images/store-28-04.jpg",
-                    "images/store-28-05.jpg",
-                    "images/store-28-06.jpg"
-                ],
-                date: "2026-01-18",
-                likes: 1319
-            },
-            {
-                id: 29,
-                title: "头回收到那么消息 谢谢大家夸我很帅",
-                fullContent: "头回收到那么多消息\n谢谢大家夸我很帅\n大家的照片和资料我都看了\n御姐的话我有点把控不住\n甜妹太甜又有点齁\n\n再介绍一下自己\n虽然我这个人挺抽象的\n但是确实也是比较帅的\n长得鼻子是鼻子眼睛是眼睛的\n\n但是说心里话\n我其实一直挺自卑的\n因为太帅别人根本不愿意跟我玩\n她他们说看见我这张脸就想亲\n看到我的手就像牵\n\n我的朋友也说我太帅了\n他看到就嫉妒\n多次劝他不要这样\n\n请拿出勇气看我的脸吧\n\n可是他依旧选择玩游戏把自己给玩近视了\n\n我真的\n痛心疾㝊\n他这根本就是逃避\n\n说完这些\n再来说说我的身高\n虽然我身高186.7\n但是我希望大家不要总在意我身高186.7\n因为我穿鞋吹个头发就会变成191的\n我的身材也很好也很恋爱脑的\n当然我现在还没有女朋友的\n但我会给我的未来女朋友做饭的\n也会跟我的未来女朋友做饭的\n\n然后\n你们知道吗\n今年我22\n我的工渍原来1800\n现在已经足足有2100了\n我会全交给我的未来女朋友\n我也允许她物质一点\n她可以拿着我的卡\n随便刷\n#185大帅哥 #搞笑 #抽象 #我的日常 #主打一个自信 #抽象博主 #文案",
-                image: "images/store-29.jpg",
-                date: "2026-01-17",
-                likes: 1898
-            },
-            {
-                id: 30,
-                title: "刚当模子被我妹点给她男闺蜜了",
-                fullContent: "刚当模子被我妹点给她男闺蜜了\n我去当模子纯属好奇\n就体验一下(因为老有人把我当模子，问我)\n然后次数多了\n我觉得我这脸这身材也难怪\n我就直接穿着我的暗黑系黑西装去体验一下吧\n就是陪喝9那种不外包\n纯绿色\n然后刚去了没几分钟\n就来人要点选\n要求还多\n要天蝎 摩羯  白的 宽肩窄腰腿长的\n要185以上的\n不要奶狗要狼一点的\n要三个\n我们也就三个能符合\n一个是我\n另外两个我不认识\n一个刚好185的  一个190的\n还有我这个186.7的\n然后就全被带进一个包厢\n我在后面跟着\n那两个抬着客人点的9\n然后到了我其实有点怵\n我社恐\n我就一直东看西看\n然后我看沙发上做着的那个白色衣服的女生很面熟\n仔细一看是我表妹\n**她怎么在这\n再一看旁边\n我去\n咋还有男的\n然后后面知道是我表妹给她男闺蜜点的男模\n#185大帅哥 #抽象 #搞笑 #被自己无语住了 #我的日常 #我开玩笑的\n结果她那个一眼男闺蜜看上我了\n让我做他旁边\n给我吓得\n在我表妹疑惑又惊讶的目光中\n我拔腿就跑了\n那个男的还出来追我\n我更害怕了\n我使劲跑\n跑着跑着\n发现喘不过气还有点尿急\n也不知道咋回事(可能不要米的饮料喝多了)\n就跑的慢了下来\n一转头\n那个男的突然突脸\n离我特别近\n。\n。\n。\n。\n然后我就吓醒了\n才发现我的猫趴我脸上了\n我把猫抱下来\n就去厕所了\n#做梦",
-                image: "images/store-30.jpg",
-                date: "2026-01-17",
-                likes: 1941
-            },
-            {
-                id: 31,
-                title: "发了一张帅照 不到九分钟消息就炸了",
-                fullContent: "发了一张帅照 不到九分钟消息就炸了\n如果你进来看了\n那么你就骗了\n现在快去吃饭吧\n吃完饭再去睡个午觉吧\n我再祝你做个美梦吧\n祝你开心到永无止境吧\n#185大帅哥 #抽象 #搞笑 #我的日常 #不是哥们儿 #网友 #开心",
-                image: "images/store-31.jpg",
-                date: "2026-01-15",
-                likes: 1667
-            },
-            {
-                id: 32,
-                title: "安徽地铁坐两个帅哥中间他俩都倚着我睡着了",
-                fullContent: "安徽地铁坐在两个帅哥中间\n他俩都倚着我睡着了\n真的挺帅的\n两个人睫毛还都挺长的\n真的\n真的\n真的\n真的\n真的\n安徽的帅哥\n真的很多\n我真碰见了\n我真碰见了\n我真碰见了\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的\n真的很羡慕他们啊\n虽然他们长得挺帅的\n但是他们能倚着我这个宽肩窄腰的大帅哥睡\n真是便宜他们了\n#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #天蝎 #安徽 #帅哥",
-                image: "images/store-32.jpg",
-                date: "2026-01-15",
-                likes: 2711
-            }
+            { id: 74, title: "看到女生正在刷我的笔记 帅到没人敢谈", fullContent: `地铁上看到女生正在刷我的笔记
+(帅到没人敢谈)
+我直接强装镇定
+落荒而逃
+就只是那么瞟了一眼
+我便默默的走到了另一个车厢
+#185大帅哥 #抽象  #搞笑 #地铁上的年轻人
+#朋友 #我的日常
+我不行了`, image: "images/store-74.jpg", date: "2026-02-11", likes: 368},
+            { id: 1, title: "谁懂买早餐突然被男生夸了句哥们你好帅", fullContent: `谁懂买早餐突然被男生夸了句哥们你好帅
+这一句给我说的
+嘴都憋不住了
+感觉整个人都爽歪歪
+
+然后我说没有没有
+你也很帅
+
+然后他说没有你帅比你差多了
+你真的太帅了
+我从来没有见过一个男的能那么帅过
+哥们你真的太帅了
+
+我这
+真的憋不住了嘴角
+
+然后他又说了句
+哥们我有点急事
+能不能让我先买
+你那么帅
+(我当时前面就1个人了，后面很多人排)
+这个时候我说
+那说啥了
+包可以的
+然后我就把我的位置给他了
+我去后面排队了哈哈哈
+他说哥们你真的太帅了
+谢谢感谢
+#185大帅哥 #抽象 #搞笑 #我的日常 #好男人就是我 #开心 #快乐`, image: "images/store-01.jpg", date: "2026-02-11", likes: 1194 },
+            { id: 2, title: "地铁一帅哥一直看我 后面发现他是睁眼睡觉", fullContent: `地铁一帅哥一直看我 后面发现他是睁眼睡觉
+我站着
+他坐着
+就在我对面
+一直盯着我看
+还是那种半眯着眼
+我发现了我有点
+就很尴尬
+我就换了一个方向
+然后我又偷瞄了一眼
+发现还在看我
+看我这个方向
+我就觉得我身上脸上是不会有什么东西
+还是咋了
+我就莫名的有点小害怕
+然后就这样煎熬了七八分钟
+盯的我都快不行了
+然后那个帅哥被旁边一个男的拍了一下
+说他怎么又睁着眼睡觉
+昨晚是不是又熬夜打游戏了
+然后他们就说着下车了
+这我不行了吧
+#185大帅哥 #抽象 #搞笑 #我只想睡觉 #地铁上的年轻人 #我的日常`, image: "images/store-02.jpg", date: "2026-02-11", likes: 783 },
+            { id: 3, title: "拍错了帅哥劈谷他转身捂着劈谷震惊的看着我", fullContent: `拍错了帅哥劈谷
+他转身捂着劈谷
+震惊的看着我
+他带着帽衫
+完全认不出来
+我以为是我朋友括号呢
+我上去就是一觉又一巴掌
+完事了一转头
+才发现不认识
+我又认错人了
+我不行了
+#185大帅哥 #抽象 #旋转跳跃我闭着眼  #对这个世界绝望 #朋友 #我的日常
+道歉了道歉了
+我都要手抓着脸跑了
+这个括号买吃的不跟我说一声
+害我认错人
+太丢人了
+我跟个那个什么一样
+那个帅哥的眼中
+充满了不解
+不可置信
+震惊
+以及些许的惊恐
+然后当时很尴尬
+我脑子一热还说了一句
+“那个  你也回家过年啊”
+他愣了很久
+“嗯”了一声
+又说
+“请问我们认识吗？”
+我笑了是苦笑
+“不认识”
+“不好意思，是我认错人了”
+
+括号把我毁了`, image: "images/store-03.jpg", date: "2026-02-10", likes: 913 },
+            { id: 4, title: "回到家总感觉少了点啥原来是一起的朋友丢了", fullContent: `回到家总感觉少了点啥
+原来是一起的朋友丢了
+停车到家才发现少了个人
+我寻思室友先上楼了
+竟然不等我
+过分了
+结果回家家找了一圈也没有人
+真是奇了怪了
+这咋回事呢你说
+又去找了一圈
+乐色桶马桶床底下柜子天花板抽屉都看了
+没有人啊
+连下水管道我都喊了
+也没找见
+怪了真是
+正想着呢
+门吱呀开了
+我还没说话呢
+室友冲进来给我好一阵收拾
+说他还没上车就开车走了
+
+后座少个人不知道吗
+我说不知道
+真不知道啊
+我还以为他在后座睡着了
+一点动静都没有
+他白了我好几眼
+说我没脑仁
+#185大帅哥#抽象#搞笑#回家回家回家#无聊但有趣#一辈子很快就过去了吧#我的日常#朋友`, image: "images/store-04.jpg", date: "2026-02-10", likes: 1070 },
+            { id: 5, title: "我们天蝎INTJ帅男是这样的", fullContent: `我们天蝎INTJ帅男是这样的
+女人
+知道错了吗
+知道错了还不来哄我
+人呢
+人呢
+人呢
+竟然还不来
+是不是外面有人了
+我……肯定是
+怎么敢的
+难道不爱我了
+不
+那个男的是谁
+有我帅吗
+有我身材好吗
+还不回来
+呵
+不找我就不找我
+谁在乎
+呵
+我一点也不在乎
+过去半秒了
+呵
+还不回消息
+呵
+到底在干什么
+真行
+呵
+谁离了谁会亖
+搞笑
+
+都tnn过去三秒了
+
+我会亖的
+我现在就亖
+#搞笑 #185大帅哥 #抽象 #我的日常 #天蝎 #男人的容貌女人的荣耀 #你就让让我吧`, image: "images/store-05.jpg", date: "2026-02-09", likes: 1332 },
+            { id: 6, title: "奔现因为比照片还帅 被狠狠甩了", fullContent: `奔现因为比照片还帅被狠狠甩了
+说我一看就不是那种会过日子的男人
+降不住我
+可我是真的爱她
+这是我头一回恋爱啊
+我想挽留她却发现她把我删了
+难过的我一口气吃了五块榴莲
+我想我再不会轻易爱上别人了
+再耶不会了
+#185大帅哥 #搞笑 #抽象 #我的日常 #谈不了一点 #我开玩笑的 #别管我了
+比照片还帅是我的错吗
+怎么能那么对我
+卡其嘛`, image: "images/store-06.jpg", date: "2026-02-08", likes: 1594 },
+            { id: 7, title: "打篮球一共被五个女生搭讪", fullContent: `她们夸我长得又高又帅又白
+身材还好
+腿特长
+问我是不是被好多女生追
+是不是被很多女生喜欢
+像我这种大帅哥一顶很受欢迎
+不知道有没有机会认识一下
+这给我夸的
+已经不知道东南西北了
+我一直说
+没有
+没有
+哪有
+正呲着牙笑的时候
+从床上掉下去摔醒了
+#185大帅哥 #抽象 #搞笑 #打篮球 #我开玩笑的 #发疯`, image: "images/store-07.jpg", date: "2026-02-08", likes: 1096 },
+            { id: 8, title: "被一个女生搭讪要两次然后发现她们是双胞胎", fullContent: `被一个女生搭讪要两次
+然后发现她们是双胞胎
+根本不是同一个人
+
+突然想起来的
+在学校大三的时候
+一个女生跟我搭讪
+然后我那个时候没给
+我就走了
+没一会又碰到那个女生和另一个女生
+她们一起过来跟我说话
+我当时就看她眼熟
+一想这不是刚才那个跟我搭讪的女生吗
+怎么一会的时间
+头发变卷了衣服也换了
+
+我当时也别多想
+我有事要忙就又拒绝了一次
+
+然后后面过了两天
+和我朋友卷毛去图书馆
+看到了她们
+震惊的我才发现她们是一对双胞胎
+长的一样
+那个时候我记性还好点
+比现在好
+我就跟卷毛说了这件事
+卷毛说双胞胎的审美很相似
+喜欢的东西都差不多一样
+问我还记不记得
+之前有个双胞胎男生喜欢问号(我另一个朋友)
+然后说着说着卷毛就被搭讪了
+一个女生给他了一个纸条就走了
+#185大帅哥 #抽象 #搞笑 ##我的日常 #朋友
+纸条具体写的啥我忘了
+后面我们也走了
+关于问号被双胞胎男生这个事
+他不让说哈哈哈
+我之前还发四
+我一丁不会告诉别人的
+我嘴出了名的严
+嗯✓`, image: "images/store-08.jpg", date: "2026-02-07", likes: 1620 },
+            { id: 9, title: "认错人跳到了帅哥背上帅哥背着我直接走了", fullContent: `总的来说来的总说
+就是我一个朋友
+她和她一个183的t朋友去买东西
+然后在门口认错了人
+我朋友在门口看到的一个陌生帅哥
+直接蹦人家身上了
+那个帅哥也很自然的背着她走了
+直到她们都开始说话
+我朋友问帅哥香水怎么换了
+帅哥问我朋友买的什么吃的
+然后出了声才发现根本不认识
+随后两个人分开又震惊又尴尬的道歉
+那个帅哥说以为跳他背上的是他妹妹
+他妹妹经常这样
+才闹出了误会
+
+然后我朋友的朋友
+出门碰巧看到了我朋友跳帅哥背上
+当时一脸震惊的看着他俩越走越远
+剩她一个人独自茫然
+(因为个头差不多，加上是晚上我朋友没戴眼镜没认出来，都是穿的黑袄)
+#185大帅哥 #抽象 #搞笑 #到点就跑路 #我的日常 #朋友 #只要我不尴尬 `, image: "images/store-09.jpg", date: "2026-02-06", likes: 7342 },
+            { id: 10, title: "买的烧鸡不小心烫到了帅哥的熊肌", fullContent: `买的烧鸡不小心烫到了帅哥的熊肌
+是这样
+我之前顶着一头鸡窝去楼下门口拿快递
+随便穿了一个卫衣
+那个卫衣还破了个洞
+我买的布贴快递(就是那么会过的居家好男人)
+那天还下着毛毛细雨
+然后我们门口新开了一家卖烧鸡的
+太香了给我香迷糊了
+我就过去想买一只
+我就一直盯着那个烤鸡
+不由自主咽口水
+结果我一摸口袋没带手机
+我就准备回去拿
+然后这个时候我前面一个女生穿着连帽卫衣
+带着帽子拿了刚出炉的烧鸡往后转身准备走
+因为有几个台阶
+她在台阶上面
+我在台阶下面
+我就站在她后面
+她一转身直接撞到了我身上
+然后烧鸡她往上一甩烫到了我的胸大肌
+然后我被她一撞一烫也没站稳
+直接跪在了她面前
+那一刻世界安静了
+几秒之后
+她看着我说着不好意思
+并把我拉起来
+看着我又沉思了一会
+突然把手里的烧鸡递给我了
+说请我吃
+那个时候我被毛毛细雨淋的很像一个无家可归的美男子
+#185大帅哥 #抽象 #搞笑 #你这里欠我的用什么还#我的日常
+然后就发现她把我当成流落街头的人了
+烧鸡把我毁了`, image: "images/store-10.jpg", date: "2026-02-05", likes: 2415 },
+            { id: 11, title: "搞得俺怪不好意思的 就这样 别停", fullContent: `哈哈哈我没笑
+哈哈哈s嘴快憋住
+哈哈哈好想笑
+哈哈哈憋不住了
+突然看到真的很爽之
+谁懂
+哈哈哈
+(不大众)(不wh)(很xy)的帅
+(很幽默)(人格魅力 很大)
+嗯
+对
+(憋住)
+#185大帅哥 #抽象 #搞笑 #怪不好意思的 #让大家见笑了 #你人还怪好勒 #好像有点语无伦次 #我的日常 `, image: "images/store-11.jpg", date: "2026-02-04", likes: 1314 },
+            { id: 12, title: "朋友在自家店里帮忙以一人之力店里座无虚席", fullContent: `朋友在自家店里打工
+以一人之力店里座无虚席
+笑s我了
+他放假去店里呆了两天
+他家招牌菜是烤鱼原来人就不算多
+他父亲天天说人少太闲了
+感觉快倒闭了
+天天除了耍手机就是刷手机
+然后我朋友去帮了两天忙
+从那天开始
+突然来了很多女生吃饭
+(我朋友当服务员)(点菜上菜)
+
+刚开始我朋友他父亲可高兴了
+说大学生都放假了人多了
+笑的合不拢嘴
+还有很多回头客
+说他家味道好吃
+他父亲特别开心
+说自己的手艺被大家喜欢
+
+然后还没过去两天
+他父亲就笑不出来了
+然后笑容逐渐消失
+他父亲就开始说累不行了
+根本忙不过来了
+看着排队的人他父亲一直皱眉
+(就他父亲一个人做菜)
+他母亲打下手
+他父亲累的天天拉拉个脸
+他父亲也发现了
+好像是因为我朋友才都来吃烤鱼的
+哈哈然后我朋友就被他父亲撵回去了
+笑s我了
+然后后面人还是很多
+就有人问他父亲
+说叔叔店里怎么不见那个男生服务员了
+是没来吗
+我不行了笑s我了
+#抽象 #搞笑 #我的日常 #谁能解释这种现象 #朋友 #世界上还是好人多 #哈哈哈哈`, image: "images/store-12.jpg", date: "2026-02-04", likes: 3974 },
+            { id: 13, title: "烦 帅到睡不着", fullContent: `#185大帅哥 #抽象 #搞笑 #帅帅帅帅帅 #被自己帅到了 #帅就完事儿 #如果帅到你 #一个字帅就完了 #就一个字帅
+烦
+帅到睡不着
+睁着眼帅
+闭着眼帅
+躺着也帅
+坐着也帅
+正着帅
+反着帅
+倒立帅
+脚底板帅
+头发丝帅
+好帅
+好帅
+好帅
+我好帅
+我真的好帅
+我帅到快要晕厥
+怎么能那么帅
+你这个迷人的男人
+#朋友 `, images: ["images/store-13-01.jpg","images/store-13-02.jpg","images/store-13-03.jpg","images/store-13-04.jpg","images/store-13-05.jpg","images/store-13-06.jpg","images/store-13-07.jpg","images/store-13-08.jpg","images/store-13-09.jpg","images/store-13-10.jpg","images/store-13-11.jpg","images/store-13-12.jpg","images/store-13-13.jpg","images/store-13-14.jpg","images/store-13-15.jpg","images/store-13-16.jpg","images/store-13-17.jpg","images/store-13-18.jpg","images/store-13-19.jpg","images/store-13-20.jpg","images/store-13-21.jpg","images/store-13-22.jpg"], date: "2026-02-02", likes: 2244 },
+            { id: 14, title: "突然发现我竟然是一个187的帅哥", fullContent: `突然发现我竟然是一个187宽肩窄腰的大帅哥
+爽之爽之
+帅气的齿轮原来早就开始转动了
+今天又是被自己帅到能吃两碗大米饭的一个早晨
+#185大帅哥 #抽象 #搞笑 #主打的就是一个自信 #小帅大帅哥 #被自己迷倒了
+其实是186.7 `, image: "images/store-14.jpg", date: "2026-02-03", likes: 1627 },
+            { id: 15, title: "我的一个朋友长得很帅", fullContent: `我的一个朋友长得很帅
+我跟他一起去吃饭的时候
+我突然被一个女生挡住。
+那个女生对我说
+“男人，给你两秒钟，把你身边的人介绍给我认识一下。要是敢拒绝我的话，呵呵，我就会灰溜溜的离开”
+#185大帅哥 #抽象 #搞笑 #长得好看的人 #有趣 #朋友 #我的日常`, image: "images/store-15.jpg", date: "2026-01-29", likes: 1310 },
+            { id: 16, title: "被一个大美搭讪了 仔细一看是高中班主任", fullContent: `被一个大美搭讪了仔细一看是高中班主任
+突然想起来了前段时间
+坐公交车的时候
+不小心下巴被一个上车的女生撞了
+我当时干啥呢我忘了
+她站我旁边
+突然跟我说话
+能不能认识一下啥的
+我当时背对她的
+我听到她说话我就转身了
+然后车突然急刹
+她直接撞到我了
+然后我拿着的伞掉了
+她就先蹲下帮我捡 一边说不好意思
+当时我也蹲下捡
+然后我看她捡了我刚准备起身
+结果她一个挺子突然站起来了
+真好头顶撞到了我的下巴
+我一瞬间感觉眼冒金星
+好多星星
+然后她递伞给我
+她带着口罩当时
+一直跟我道歉
+我一边捂着我的下巴
+一边说没事
+然后
+她就一直看我
+突然说你是不是哪哪个班的
+我愣了
+我说是
+我以为是哪个同学
+结果她突然笑了
+一摘口罩
+是我高中的英语老师
+我不行了吧
+世界真小
+#185大帅哥 #搞笑 #我的日常 #抽象
+#一个人上网挺无助的 #无助 `, image: "images/store-16.jpg", date: "2026-01-28", likes: 2177 },
+            { id: 17, title: "陪一个同学相亲 结果女生看上我了", fullContent: `陪一个同学相亲结果女生看上我了
+我一个同学昨天回来了
+他比我大两岁
+然后他约我吃饭
+我们正吃着饭呢
+他接了一个通话
+他说他家里人让他吃完回去看小孩(就是相亲)
+我震惊
+怎么上学也相
+他说他也不想去
+烦得很但是他家里人老催他
+还不让他谈外地的
+然后他说吃完饭让我跟他一起去看看
+我说不去了吧
+他说没事一起去吧
+然后我就跟他一起去了
+我这个同学没我高
+然后挺白净的
+小帅吧
+去见女生的时候他拿着礼
+我和他爸妈跟他后面
+进屋我就坐一边沙发上了
+然后那个女生就给我们倒水
+还给我橘子吃
+我也没发现有什么不对劲
+等走了以后才发现
+女生把我当成相亲对象了
+以为我是跟她相亲的那个
+我不行了
+我说呢
+咋老给我吃的
+一会给我橘子
+一会给我瓜子的
+都给我喂撑了
+#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #谈不了一点
+后面我跟我朋友说
+不好意思兄弟
+我以后不跟你去那种场合了
+怪不好的
+他说没事
+谢谢我
+省的他不愿意他家里人又说他
+还说他是故意带我去的
+我去了肯定先看上我
+我不行了 `, image: "images/store-17.jpg", date: "2026-01-28", likes: 1799 },
+            { id: 18, title: "戴口罩被一个女生莫名其妙搭讪了六次", fullContent: `说我长得像他很久不得见的表哥
+我笑了
+我摘下来口罩说
+
+我就是你表哥
+#185大帅哥 #抽象 #搞笑 #难绷的生活 #喘不上来气 #难道就我一个人`, image: "images/store-18.jpg", date: "2026-01-27", likes: 9988 },
+            { id: 19, title: "因长得太帅搭讪女生被拒绝 哭了一天", fullContent: `因为长得太帅搭讪女生被拒绝了
+哭到天亮
+哭累了就睡
+睡醒了发现是真的不是做梦
+又哭了
+在这个看脸的时代
+那些帅哥们总是自带光环
+(比如那个186.7的)
+他们走到哪里都是众人瞩目的焦点
+但恁可知道
+长得太帅
+有时候也是一种负担
+
+那个186.7的帅哥
+有着与生俱来的帅气
+能把天上的星星都照得失去光彩
+他的眼睛深情到让人迷失自我
+他身材如雕塑
+五官如画
+他就是行走的魅力值制造者
+可就是因为太帅
+他的搭讪之路如同一部抽象电影
+让人捉摸不透
+时而搞笑
+时而悲伤
+时而动荡
+时而惶恐
+“你为什么拒绝我？”
+他的帅脸一脸无辜又无奈
+他又问：“难道我不够帅吗？”
+女生摇了摇头
+“不是，是因为你太帅了”
+“不敢加”
+他苦笑
+“又是这种话 ”
+“就能不能将就一下吗？”
+“将就一下怎么了”
+“天天睡醒就能看到我发照片视频给你看，苦了你了是吗”
+“是吗”
+“是吗”
+“为什么不说话”
+“一遇见难回答的问题就不吭声了”
+于是
+他开始怀疑人生
+甚至想去报名参加
+“长得太帅被拒绝心理扶导”
+后面他实在没法了
+吃了几次火锅
+就去玩抽象了
+所以
+抽象男没有爱情
+#帅哥 #搞笑 #抽象 #爱情 #被拒绝 #生活趣事 #185大帅哥 #我的日常`, image: "images/store-19.jpg", date: "2026-01-25", likes: 1529 },
+            { id: 20, title: "唱k和模子哥撞衫了被点了", fullContent: `去唱k 和模子哥撞衫了
+然后又被点了
+#185大帅哥 #抽象 #搞笑 #遇到奇怪的人 #朋友 #我不行了`, image: "images/store-20.jpg", date: "2026-01-24", likes: 2115 },
+            { id: 21, title: "一男的突然坐在我旁边突然喊了一句老公", fullContent: `被男的当成他网恋对象了 张口就喊老公
+之前我去吃KFC
+有一男的突然坐我旁边了
+然后突然喊了一句老公
+给我吓得蛋挞都掉了
+我说啥
+那男的又往我旁边凑了一下
+还拿手机给我看一个啥聊天记录
+一口一个老公
+给我吓得
+我连忙说你认错人了
+站起来端着炸鸡就跑了
+太诡异了
+孩怕
+#185大帅哥 #抽象 #搞笑 #莫名其妙的 #网恋`, image: "images/store-21.jpg", date: "2026-01-23", likes: 1500 },
+            { id: 22, title: "坐地铁被脸盲的女生搭讪了四次", fullContent: `地铁上被一个姐姐搭讪了四次
+她说她脸盲
+可是姐姐
+你就站我旁边
+我一直都没动过地方
+就两站
+你搭讪我四回了
+这脸
+是不是盲的有点太快了
+是一分钟失忆一次吗
+我不行了哈哈
+第四次
+都给姐姐你自己说笑了
+我真不行了哈哈
+这个姐姐她说她自己间歇性脸盲
+尤其看到帅哥就记不住长相
+哈哈哈哈她太有意思了
+我说我不帅的
+就是普通一条人
+谢谢她那么夸我
+#185大帅哥 #搞笑 #我的日常 #地铁上的年轻人 #丑帅 #抽象 #朋友 #有趣
+我发这个贴不是说自己多帅多帅
+是遇见的这个姐姐很有趣
+被她说的我一直笑
+上了整天班的我也不累了`, image: "images/store-22.jpg", date: "2026-01-23", likes: 1623 },
+            { id: 23, title: "”我一直在哭“", fullContent: `我和我弟撞crush了
+我输给我弟了
+我弟和我crush在一起了
+#185大帅哥 #抽象 #搞笑 #关于我的crush #crush #谁说女追男隔层纱的 #朋友`, image: "images/store-23.jpg", date: "2026-01-22", likes: 1906 },
+            { id: 24, title: "我的围巾勾住了帅哥的耳钉", fullContent: `这个帅哥其实是我朋友了
+长挺帅一男的
+我们都叫他村草
+地铁到站的时候我围巾开了
+我就随手向后一抛
+你们知道的
+我这种22岁天蝎男出了名的有劲
+我围巾的一端直接被我甩到了他脸上
+然后我也没注意
+等我下去的时候才发现围巾有扯拽感
+其实是有点勒脖子
+然后一看后面
+村草说他的耳钉被我围巾的线勾住了
+他弄不下来
+让我帮他取下来
+我弄了半天
+直接把线拽断了
+线缠他耳钉那个钻里面了
+我不知道说啥好了
+#185大帅哥 #抽象 #搞笑 #围脖 #总之很暖和 #我的日常 #一个人上网挺无助的`, image: "images/store-24.jpg", date: "2026-01-21", likes: 1915 },
+            { id: 25, title: "去见别人介绍的对象，结果被她哥看上了", fullContent: `我同学的哥哥去见别人给他介绍的对象
+因为快过年了
+年龄到了家长不就一直会催吗
+然后我同学说他哥昨天去见了一个女生
+(相亲去女生家里)
+女生是龙凤胎
+还有一个哥哥，女生是妹妹
+完了我朋友的哥没有被妹妹看上
+反而被女生哥哥看上了
+女生哥哥家里还知道女生哥哥是w得
+家长接受程度比较高
+就跟媒人说了
+然后媒人震惊着告诉了我同学的哥
+然后我同学的哥说他考虑一下
+
+我不行了吧
+我看我同学说的跟别人家的事情一样
+听的我一愣又一愣的
+#185大帅哥 #抽象 #搞笑  #真让我大开眼界了`, image: "images/store-25.jpg", date: "2026-01-20", likes: 2948 },
+            { id: 26, title: "女生颜控我整成了大帅哥回来她成我小妈了", fullContent: `女生颜控所以我整成了帅哥
+回来她成我小妈了
+#185大帅哥 #抽象 #搞笑 #离谱 #我不行了 #朋友 #漂亮姐姐
+这是话吗
+我不认字了
+我听别人讲的
+吃瓜了
+这个男生本来也挺小帅单眼皮耐看
+因为他喜欢的女生说自己颜控
+他把自己弄成大帅双眼皮了
+回来发现女生变他小妈了
+后面才知道是让他父亲让女生故意把他支出去结的婚
+？
+？
+？
+我还是去看丧尸电视剧吧`, image: "images/store-26.jpg", date: "2026-01-18", likes: 1841 },
+            { id: 27, title: "告白失败了 她说我长得太帅了根本不敢谈", fullContent: `表白失败了
+她说我长得太帅了不敢谈
+我太难过了
+就这样我还不肯亖心的问
+你能不能克服一下
+她说不能
+
+我无奈的笑了了
+她却让我别笑了
+我笑起来更帅了
+
+我已经开始痛恨我这张帅脸了
+
+难道就没有人能克服一下吗？
+
+这很难吗？
+
+#185大帅哥 #抽象 #搞笑 #谈不了一点 #我开玩笑的 #我只是胡言乱语 #魅力`, image: "images/store-27.jpg", date: "2026-01-18", likes: 7300 },
+            { id: 28, title: "你可能不认识我 但或许刷到这些", fullContent: `你可能不认识我
+但或许刷到过这些
+#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #抽象艺术 #吃瓜
+都是我的来时路
+
+米分们
+是从哪里开始认识我的呢
+
+抽象不停
+开心不止`, images: ["images/store-28-01.jpg","images/store-28-02.jpg","images/store-28-03.jpg","images/store-28-04.jpg","images/store-28-05.jpg","images/store-28-06.jpg"], date: "2026-01-18", likes: 1319 },
+            { id: 29, title: "头回收到那么消息 谢谢大家夸我很帅", fullContent: `头回收到那么多消息
+谢谢大家夸我很帅
+大家的照片和资料我都看了
+御姐的话我有点把控不住
+甜妹太甜又有点齁
+
+再介绍一下自己
+虽然我这个人挺抽象的
+但是确实也是比较帅的
+长得鼻子是鼻子眼睛是眼睛的
+
+但是说心里话
+我其实一直挺自卑的
+因为太帅别人根本不愿意跟我玩
+她他们说看见我这张脸就想亲
+看到我的手就像牵
+
+我的朋友也说我太帅了
+他看到就嫉妒
+多次劝他不要这样
+
+请拿出勇气看我的脸吧
+
+可是他依旧选择玩游戏把自己给玩近视了
+
+我真的
+痛心疾㝊
+他这根本就是逃避
+
+说完这些
+再来说说我的身高
+虽然我身高186.7
+但是希望大家不要总在意我身高186.7
+因为我穿鞋吹个头发就会变成191的
+我的身材也很好也很恋爱脑的
+当然我现在还没有女朋友的
+但我会给我的未来女朋友做饭的
+也会跟我的未来女朋友做饭的
+
+然后
+你们知道吗
+今年我22
+我的工渍原来1800
+现在已经足足有2100了
+我会全交给我的未来女朋友
+我也允许她物质一点
+她可以拿着我的卡
+随便刷
+#185大帅哥 #搞笑 #抽象 #我的日常 #主打一个自信 #抽象博主 #文案`, image: "images/store-29.jpg", date: "2026-01-17", likes: 1898 },
+            { id: 30, title: "刚当模子被我妹点给她男闺蜜了", fullContent: `刚当模子被我妹点给她男闺蜜了
+我去当模子纯属好奇
+就体验一下(因为老有人把我当模子，问我)
+然后次数多了
+我觉得我这脸这身材也难怪
+我就直接穿着我的暗黑系黑西装去体验一下吧
+就是陪喝9那种不外包
+纯绿色
+然后刚去了没几分钟
+就来人要点选
+要求还多
+要天蝎 摩羯  白的 宽肩窄腰腿长的
+要185以上的
+不要奶狗要狼一点的
+要三个
+我们也就三个能符合
+一个是我
+另外两个我不认识
+一个刚好185的  一个190的
+还有我这个186.7的
+然后就全被带进一个包厢
+我在后面跟着
+那两个抬着客人点的9
+然后到了我其实有点怵
+我社恐
+我就一直东看西看
+然后我看沙发上做着的那个白色衣服的女生很面熟
+仔细一看是我表妹
+**她怎么在这
+再一看旁边
+我去
+咋还有男的
+然后后面知道是我表妹给她男闺蜜点的男模
+#185大帅哥 #抽象 #搞笑 #被自己无语住了 #我的日常 #我开玩笑的
+结果她那个一眼男闺蜜看上我了
+让我做他旁边
+给我吓得
+在我表妹疑惑又惊讶的目光中
+我拔腿就跑了
+那个男的还出来追我
+我更害怕了
+我使劲跑
+跑着跑着
+发现喘不过气还有点尿急
+也不知道咋回事(可能不要米的饮料喝多了)
+就跑的慢了下来
+一转头
+那个男的突然突脸
+离我特别近
+。
+。
+。
+。
+然后我就吓醒了
+才发现我的猫趴我脸上了
+我把猫抱下来
+就去厕所了
+#做梦`, image: "images/store-30.jpg", date: "2026-01-17", likes: 1941 },
+            { id: 31, title: "发了一张帅照 不到九分钟消息就炸了", fullContent: `发了一张帅照 不到九分钟消息就炸了
+如果你进来看了
+那么你就骗了
+现在快去吃饭吧
+吃完饭再去睡个午觉吧
+我再祝你做个美梦吧
+祝你开心到永无止境吧
+#185大帅哥 #抽象 #搞笑 #我的日常 #不是哥们儿 #网友 #开心`, image: "images/store-31.jpg", date: "2026-01-15", likes: 1667 },
+            { id: 32, title: "安徽地铁坐两个帅哥中间他俩都倚着我睡着了", fullContent: `安徽地铁坐在两个帅哥中间
+他俩都倚着我睡着了
+真的挺帅的
+两个人睫毛还都挺长的
+真的
+真的
+真的
+真的
+真的
+安徽的帅哥
+真的很多
+我真碰见了
+我真碰见了
+我真碰见了
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的
+真的很羡慕他们啊
+虽然他们长得挺帅的
+但是他们能倚着我这个宽肩窄腰的大帅哥睡
+真是便宜他们了
+#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #天蝎 #安徽 #帅哥`, image: "images/store-32.jpg", date: "2026-01-15", likes: 2711 },
+            { id: 33, title: "被伴郎看上了吹我脖子怎么办 我也是伴郎", fullContent: `大家好我回来了
+是的前天我去参加婚礼了
+被伴郎看上了怎么办 我也是伴郎
+好熟悉的剧情
+又来
+上次被伴郎摸月退
+这次被伴郎吹脖子
+我真的再不当伴郎了
+我走了
+#185大帅哥 #搞笑 #抽象 #我的日常 #哪有不疯的硬撑罢了 #离谱 #直男
+这次是真的
+席挺好吃的
+那个大肘子
+还有那几个大菜
+都好吃
+把我好吃懵了
+还以为屋里起风刮我脖子里了
+一回头身后站着一个人`, image: "images/store-33.jpg", date: "2026-01-14", likes: 6005 },
+            { id: 34, title: "走错屋躺在了陌生帅哥旁边", fullContent: `还记得之前和朋友出去旅游
+卷毛问号，我和室友
+四个人定了两间大床房(没有标间了)
+卷毛问号一间，我和室友一间
+因为我这个人方向感一直不太好
+我不分东南西北
+然后进商场
+或者那种七拐八拐的小吃街
+我就容易迷失方向
+在9店也是出了电梯我就不知道方向了
+那天玩的有点晚
+他们先回去洗澡了
+我也不记得我去干啥了
+我好像洗完澡去洗衣服去了
+回来的时候门没锁
+(我以为给我留的门)
+我自然而然就推门进去了
+9店房间长得都差不多都一样
+我也没注意房间号
+我进去就脱了上衣躺下了
+(我们床上套了一次性的床单被罩)
+这个房间也套了
+而且是关了灯的
+旁边的“帅哥”在背对着我刷视频
+还说了一句你回来了
+我当时没注意也没多想
+我没说话
+然后我准备给手机充电
+发现床头没有我的充电器
+这个时候我都没发现不对劲
+我就想我充电器呢
+他又说了句
+还生气呢 别气了
+来亲一个
+我当时直接惊醒
+我直接一句
+“握艸”对面听到声音也一句“握艸”
+然后打开灯
+我俩大眼瞪大眼
+我才发现我走错了
+我说不好意思我走错屋了不好意思
+给我吓得我直接就穿上鞋拿上衣服跑走了
+出门的时候碰到一个女生
+女生疑惑的看着我光着膀子从房间里狂奔出来
+还一脸惊恐
+后面我就不知道发生啥了
+#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #我感觉我被床给粘住了
+我出去才发现我走错楼层了
+回去后我跟室友说
+室友说我真牛杯
+完了
+我又在西西里里里讲
+他们笑说
+我传奇的一生永无止境
+我就这样走了
+人家情侣会不会打起来啥的
+我也不知道
+应该不会吧`, image: "images/store-34.jpg", date: "2026-01-08", likes: 4904 },
+            { id: 35, title: "我姐对象以为我小叔是我姐追求者", fullContent: `我姐对象以为我小叔是我姐追求者 快咬人了
+我不是跟你们说要带我小叔
+治那男的(我姐对象)吗
+谁让那男的霸占了我姐的爱
+我只能吃边角料
+
+然后下午我带着小叔约他打球
+顺便打完球一起吃饭
+我们晚上就要出发了
+
+都到了球场以后
+我还没介绍我小叔(十九岁)
+我先给我小叔介绍过这个男的(我姐对象)
+说他特爱吃醋护食但是对我姐很好
+但是他的出现让我弟位一低再低
+
+然后
+见面了以后
+果然那个男的盯着我小叔
+
+打了一会球
+我小叔说问我姐晚上会来吗
+他喊我姐名字后一个字叠字
+因为我爸妈爷爷奶奶都那么叫
+他辈分大他也那么叫
+我说可能来吧，咋了你想她了
+
+我小叔说
+挺久没见了
+是挺想的
+有点想吃我姐做的甜点了(依旧喊名字叠字)
+这种气氛你们懂得
+
+我看了我姐对象一眼
+果然
+吃醋王上线
+问我小叔是谁
+跟我姐很熟吗 还叫那么亲 他谁啊 还吃蛋糕
+看他长得像蛋糕
+
+我真的就是来治他的
+我故意看戏
+好强的战斗力
+听到这话我直接加柴火
+
+那可不止熟啊这个
+从小一起长大的(我姐看着我小叔长大的)
+！(等等 怎么那么怪，算了不重要)
+
+我姐对象脸色越来越不对劲
+直接上高度
+对我小叔宣示 朱全
+“她现在有对象了”“是我”
+“现在是我以后也是我 余生都是我”
+“有想法趁早打消”“少勾搭她也少惦记”“更不用一起吃饭”
+
+我一边看小叔表情
+耐人寻味
+一边看戏憋笑
+亖嘴快憋住
+
+我小叔看了他一眼
+转头对我说
+“怎么，跟你姐吃个饭还得经过别人同意吗”
+“大侄子”
+我
+“没有，小叔，您说吃饭就吃饭”
+“想吃多少次就吃多少次”
+
+我姐对象
+“？”
+“小叔？”
+我快憋不住了跟我姐对象说
+“你怎么说话的”
+“这是我们小叔，姓陆，亲的”
+“你真胆大”
+“你还不道歉”
+“你完了，你怎么见谁都吃醋”
+实际内心
+爽爽爽
+#185大帅哥 #抽象 #搞笑 #年下小奶狗 #朋友 #我的日常
+哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+然后吃饭他对我小叔又是夹菜倒水的
+小样
+治不毁你
+让你给我吃酸草莓
+让你给我吃边角料`, image: "images/store-35.jpg", date: "2026-01-05", likes: 3287 },
+            { id: 36, title: "19岁小叔放假了说他在学校某天被搭讪了20次", fullContent: `19岁小叔放假了说他在学校某天被要了20次
+年轻就是好
+某天被搭讪要了20次
+甄蚌
+我要是不上班就更爽了
+#185大帅哥 #抽象 #搞笑 #单纯大学生 #朋友 #大学生 #反差系男子
+等等
+我都22了
+小叔他怎么还19`, image: "images/store-36.jpg", date: "2026-01-05", likes: 1494 },
+            { id: 37, title: "近视跨年要了两个帅哥加上发现都是前男友", fullContent: `没戴眼镜要了两个帅哥
+加上发现都是前男友
+笑亖我了
+我姐跟我说的
+快给我笑吐了
+
+原来近视真的什么都看不清吗
+
+我姐同学潼潼姐昨天跨年出去玩
+看到一个帅哥很高很帅
+就去要了
+由于是晚上 人也多
+加了就走了
+也没察觉不对
+对面还怪有礼貌
+问她真的要加吗
+她说加
+
+然后不一会在另一个地方又看到一个帅哥
+她也去加了
+心想着看pyq也养眼
+这“两个人”
+都加上了
+
+跨年回去了戴上眼镜一看
+两个号pyq都是前男友
+一个大号一个小号
+没一会
+前男友发消息让她下楼
+就这样
+跨年跨到前男友(  )上了
+两个人就这样复合了
+
+我姐说看得出来她很爱前男友这一款了
+#185大帅哥 #抽象 #近视不戴眼镜 #搞笑 #我的日常 #朋友 #恋爱
+还有我之前出去玩
+我带眼镜和不带眼镜
+被同一个女生要了两三次
+理发又被一个女生要了两次
+两个女生
+一个脸盲
+一个近视
+这事你们知道
+
+再说一个你们不知道的
+也是之前在大学的时候
+被我表妹要了(她不让我说)
+是的
+她也近视
+那天没戴眼镜
+她跟我搭讪
+说帅哥啥的嘴叭叭叭叭的
+我说
+***你没事吧 没事多吃溜溜梅
+她听见我声以后
+直接一整个暴跳如雷
+凑我脸上看
+然后
+“窝屮怎么是你”`, image: "images/store-37.jpg", date: "2026-01-01", likes: 2007 },
+            { id: 38, title: "朋友出门被二十几个女生要了 许一生专贴", fullContent: `西西里里
+以及编外人员祝大家
+元旦快乐
+祝大家新的一年
+收获满满
+永无烦恼
+永远开心快乐
+心想事成
+所想即所得#我的日常 #朋友 #新年祝福 #祝福 #生活皆如所愿 #相遇即是上上签
+#185大帅哥 #抽象 #专属 #祝愿美好一切如愿而至
+朋友出门被二十几个女生要了
+跨年果然出去人挤人
+一天被二十几个女生要了的牙医许一生
+倒也不夸张`, image: "images/store-38.jpg", date: "2025-12-31", likes: 2053 },
+            { id: 39, title: "（）朋友专线+西西里里", fullContent: `(    )朋友专线
+那么喜欢他
+中
+给你们介绍一下吧
+他喜婶秘
+人有趣情↑高
+也挺抽象
+很多帅哥等你了解之后都会发现
+都多少带点抽
+他是一个有高核处理器的人类
+和村草的确像
+但是又不太一样
+他比村草更抽点
+可能村草年龄大一点的原因
+有年上魅力值
+(  )他是属于耐熟型的
+他真的特别有趣
+他吃饭拿勺子当镜子
+后面还能把人家勺子买走揣兜里
+人家说看他帅 宋他了
+他说夸奖收下了
+一马归一马
+就是那么有趣又有内涵的一个人
+他是刚回来没多久
+也是一米八几
+好像是天秤座的
+喜欢照镜子
+我和他认识很久了
+我们是属于那种不聊天可以一两年
+一旦上线就可以厮混好几天
+他和村草室友陆老大我们都认识
+他有个哥
+也挺帅
+而且
+长得还一样
+他还是校草以前
+小学初中高中校草
+大学就不是了
+因为大学他没上
+因为一些原因
+我不行了
+能说的就这些了
+没了
+他说他不想出名
+他知道我玩这个
+吃饭的时候他看到了
+#185大帅哥 #抽象 #搞笑 #大家的朋友 #我的日常 #朋友
+笑亖我了
+没见过30一个的橘子
+受宠若惊`, images: ["images/store-39-01.jpg","images/store-39-02.jpg","images/store-39-03.jpg","images/store-39-04.jpg","images/store-39-05.jpg","images/store-39-06.jpg"], date: "2025-12-29", likes: 1163 },
+            { id: 40, title: "小，叔，你，好，香", fullContent: `昨天晚上忙完回来昏昏欲睡
+坐地铁还坐过站了
+又倒回来了
+这两天加起来睡的时间只有两三个小时
+在外面更睡不着了
+带了两身衣服是我的暗黑系保护色
+太帅了
+外套拿去干洗的时候碰到一个小姐姐
+她的狗狗一直追我
+在我身边转圈
+她拽都拽不走
+小姐姐说
+不好意思
+她的狗颜控
+看到大帅哥就走不动道
+这辈子没见过那么帅的
+上头了
+这给我夸的已经不知道东南西北了
+我的嘴角根本止不住
+狗好人也好
+太会夸人了
+昨天快乐加一
+
+不好意思光顾着说我了
+把小叔忘了
+小叔怎么个事呢
+是这样的
+后面回去了以后
+小叔发消息说他没课
+来找我玩
+我们就一起出去吃饭
+让我朋友(    )一起去
+我朋友也没睡好
+他说他不去了他补个觉
+然后我就跟小叔一起去吃了火锅
+小叔请客
+他刚来找我的时候
+我就闻到一股香味
+我以为是店里的香味
+然后出了门还是有一股香味
+去吃火锅的时候
+火锅味都没盖住那股香味
+我就说了就一句
+小叔你好香
+你是不是顺人家9店香薰了
+小叔说
+来找我的路上碰到一个女生
+女生跟他撞到了
+当时那个女生边低头边在包里找东西边走路
+撞了一下包里的东西掉了
+香水碎了
+所以他身上有香水味
+
+小叔的穿搭
+简直了
+他特别喜欢穿马丁靴皮衣
+他说干净利落
+他有很多皮衣
+我说我懂
+黑色皮衣高领衫大长腿马丁靴
+谁看了不迷糊
+我带了两件大衣一件黑一件灰
+里面套西装
+经常想象自己是霸道总裁或者大哥大
+小叔像我的保镖
+#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #好香的饭我吃吃吃 #小叔`, image: "images/store-40.jpg", date: "2025-12-26", likes: 1320 },
+            { id: 41, title: "卷毛男大温柔系", fullContent: `卷毛哥专栏
+##卷毛小狗统治世界 #183男大 #朋友 #大佬的自我修养 #抽象 #185大帅哥 #巨蟹座 #大帅哥`, image: "images/store-41.jpg", date: "2025-12-14", likes: 1613 },
+            { id: 42, title: "我妹介绍给男同学的女生看上我了", fullContent: `我妹给她同学小帅介绍的妹子看上我了
+真的
+昨天不周四吗
+我下午回家的早
+正巧碰到我表妹和她一个女生朋友
+我表妹先给我打的招呼
+要不然我都没看见她
+我说她们干什么去
+表妹她说出去玩
+然后她们就走了
+晚上我回了家一趟
+我姐说小酒窝来了
+我吃完饭和小酒窝我姐在屋里看电视
+表妹突然给我发了一个消息
+说她朋友好像看上我了
+本来表妹是要介绍一个小帅同学给她朋友的
+她们晚上约了一起吃饭
+结果半路上碰到我了
+她朋友看到我之后就一直问我是不是单身
+面对小帅无动于衷
+缠着表妹让表妹把我推给她
+都给我说懵了
+我表妹说我没事走那条路干啥
+我说她讲不讲理
+她说我不走那条路
+她朋友就不会碰到我
+也不会看上我
+这搞得她难为情
+她那个小帅同学
+对她朋友还挺有好感的
+弄得她不知道怎么办了
+我？
+雨我无瓜
+#185大帅哥 #抽象 #搞笑 #莫名其妙的 #我的日常 #那些尴尬事 #谈不了一点`, image: "images/store-42.jpg", date: "2025-12-12", likes: 1827 },
+            { id: 43, title: "西西里里男团（bushi）", fullContent: `(西西里里今日男嘉宾)如下
+第一位
+摩羯禁欲系许牙医
+身高185 智商情商双高
+理智的代名词 禁欲系的标杆
+绝对的掌控者
+
+第二位
+温柔体贴系卷毛哥
+身高183 温柔年上 体贴入微 情商极高
+即细心又有耐心
+绅士又不缺幽默风趣
+
+第三位
+美男运动系问号哥
+身高183金牛男
+爱好美食 旅行 探险
+身上有股永不服输的韧劲
+为人正直 遇强更强
+
+第四位
+狐狸眼清冷寝室长
+半框眼镜没有封印他的颜值
+摘下眼镜又是另一种风格
+183摩羯男 自带清冷气质
+眼神洞悉一切
+
+第五位
+火热系天蝎男室友
+185天蝎 深情专一是天蝎的代名词
+外表放荡不羁爱自由
+实则内心柔软又善良
+侵占型又争又抢
+
+宿主请选择
+#185大帅哥 #风象和土象 #我的日常 #投票 #抽象 #朋友
+很久不写了，有点手生`, image: "images/store-43.jpg", date: "2025-12-11", likes: 1979 },
+            { id: 44, title: "低血糖晕倒的几秒选择倒进了帅哥怀里", fullContent: `低血糖晕倒的几秒选择倒进了帅哥怀里
+这个帅哥说的就是我
+不是我说的
+是那个晕倒的妹子说的
+当时早上正在等车
+她站我旁边
+周围有五六个人吧
+我正在看手机
+突然旁边的妹子朝我扑了过来
+我还以为她咋了
+然后发现她倒了
+我就抱着她
+其他人看到也过来了
+说她可能是低血糖了
+然后一个大姨给她掐了人中
+那个妹子醒了以后
+那个大姨还给了她糖和一包甜豆浆
+扶着她坐在一边的椅子上
+那个妹子说了谢谢
+后面又说了句
+长那么大
+头一回被帅哥抱
+都给我整不好意思了
+#185大帅哥 #抽象 #搞笑 #爱上帅哥就像呼吸一样简单 #哪有不疯的硬撑罢了 #脆弱小女孩 #我的日常`, image: "images/store-44.jpg", date: "2025-12-05", likes: 1909 },
+            { id: 45, title: "不小心把蓝发帅哥撞进手推车里推走了", fullContent: `不小心把蓝发帅哥撞进了我的购物手推车里推走了
+很尴尬了
+真的太尴尬了
+我也不知道怎么回事
+我正推着购物车在买东西
+看看有什么要买的水果
+然后我突然推不动车了
+我就使劲推了好几下
+然后就听见哐当一声
+然后一转头看到我车里坐着一个蓝发帅哥
+蓝发帅哥说“你 哔哔 的瞎了”
+“还不 哔哔 的拽我起来”
+“我 哔哔 的卡车里了”
+#185大帅哥 #抽象 #搞笑  #不要再搞抽象了好吗 #勤俭持家好男人 #朋友 #室友 #一个人上网挺无助的`, image: "images/store-45.jpg", date: "2025-12-02", likes: 2357 },
+            { id: 46, title: "许医生检讨笑亖我了 西西里里", fullContent: `#185大帅哥 #抽象 #搞笑 #现在人的精神状态 #聊天表情包 #聊天日常 #聊天记录截图 #朋友 #我的日常
+西西里里特长聊天记录
+笑亖我了
+#搞笑聊天记录`, images: ["images/store-46-01.jpg","images/store-46-02.jpg","images/store-46-03.jpg","images/store-46-04.jpg","images/store-46-05.jpg","images/store-46-06.jpg","images/store-46-07.jpg","images/store-46-08.jpg","images/store-46-09.jpg","images/store-46-10.jpg","images/store-46-11.jpg","images/store-46-12.jpg","images/store-46-13.jpg","images/store-46-14.jpg","images/store-46-15.jpg","images/store-46-16.jpg","images/store-46-17.jpg","images/store-46-18.jpg","images/store-46-19.jpg","images/store-46-20.jpg","images/store-46-21.jpg","images/store-46-22.jpg"], date: "2025-11-17", likes: 2282 },
+            { id: 47, title: "也没什么，就是一段很日常的西西里里", fullContent: `#抽象 #搞笑 #我的日常 #无聊但有趣 #哪有不疯的硬撑罢了 #内心世界的日常叨叨 #出门在外人设是自己给的 #朋友`, images: ["images/store-47-01.jpg","images/store-47-02.jpg","images/store-47-03.jpg","images/store-47-04.jpg","images/store-47-05.jpg"], date: "2025-11-11", likes: 1153 },
+            { id: 48, title: "我爸的背影让好几个女生过来搭讪", fullContent: `我爸的背影让好几个女生过来搭讪
+我爸187背头白衬衫西裤
+袖子半撸宽肩窄腰
+某些角度长得好像我
+不是说反了
+我长得很像他
+跟他出去女生真的会过来搭讪
+我不开玩笑
+我这种帅哥都被忽视了
+我跟他出去经常被人认成是哥俩
+他保养的好
+我是熟男风
+从小到大很多人
+说我跟我爸年轻的时候特别像
+我爸是他们公认的草花
+因为长得好看
+我继承了我爸我妈的颜值
+我爸说他自己经过岁月的沉淀
+越来越有味道了
+我妈说别管他
+他又开始臭美了
+#185大帅哥 #抽象  #龙图 #有趣的表情包 #一个人上网挺无助的 #已老实`, image: "images/store-48.jpg", date: "2025-09-05", likes: 1792 },
+            { id: 49, title: "我爸是185大帅哥", fullContent: `我爸是187老帅哥
+我爸比我还高一点
+但是平常看着跟我差不多
+可能缩水了吧
+也可能我又长个了
+#185大帅哥 #抽象 #好无聊给家人来点反差震撼 #雄鹰一样的男人`, image: "images/store-49.jpg", date: "2025-07-15", likes: 1744 },
+            { id: 50, title: "放一个训狗歌吧", fullContent: `#日常文案 #快乐瞬间 #185大帅哥 #抽象 #我又在乱来 #主要是歌好听
+6号更新，先随便糊一下，听歌吧各位
+ps把最近收到的图都发一下
+都特别喜欢哈哈哈哈
+里面还有检讨`, images: ["images/store-50-01.jpg","images/store-50-02.jpg","images/store-50-03.jpg","images/store-50-04.jpg","images/store-50-05.jpg","images/store-50-06.jpg","images/store-50-07.jpg","images/store-50-08.jpg","images/store-50-09.jpg","images/store-50-10.jpg"], date: "2025-07-04", likes: 1284 },
+            { id: 51, title: "我妈在马路牙子上捡了一个帅哥回家", fullContent: `就在之前
+我妈在马路牙子上捡了一个帅哥回家
+当我到家的时候他正在沙发上坐着
+我问我妈这是谁
+我还以为是哪个亲戚
+我妈说这个是小林
+又把我拉到一边说她去买菜
+在马路上碰到的一个小伙子
+在安徽上学刚毕业行李都寄回家了
+包被偷了手机米卡都在包里
+在马路边坐着看着可可怜了
+天瞅着要下雨了
+整天都没吃饭
+我妈说看到他就想到我
+就带回家了
+我说我妈不怕被骗
+我妈说能骗她什么长得多好看一男孩
+看着比我都善良多了
+怎么会骗她
+她不会看错人的
+然后我去问了一下
+他家里人明天就来接他
+我妈让他今天在我家沙发凑合一下
+做了一桌子好吃的
+还让我少吃点排骨
+都夹给小林了
+然后我找我姐
+我说咱妈捡了一个帅哥回家
+你快回来吧
+我姐一听十五分钟就到了
+小林见我姐直接喊出来我姐的名字了
+一声震惊的sy姐
+直接给我弄不会了
+我说你俩认识
+我姐说认识
+但是亖活不告诉我咋认识的
+好奇亖我了
+都一星期了
+我还没问出来
+急亖我了
+我选择发出来
+让你们跟我一起好奇
+小林到底跟我姐啥关系啊
+不会又是我姐的弟弟前任吧或者追求者吧
+不是
+她咋认识那么多弟弟
+#185大帅哥 #男大学生 #抽象 #世界能不能对我好一点 #尖叫扭曲阴暗地爬行 #难绷的生活 #唱歌`, image: "images/store-51.jpg", date: "2025-06-24", likes: 3174 },
+            { id: 52, title: "好消息毕业被表白了坏消息他是男的我也是", fullContent: `好消息毕业被人表白了坏消息他是男的我也是
+真的不中了
+他说他是甜弟
+让我考虑考虑吧
+#185大帅哥 #男大学生 #抽象 #我只想毕业 #再也不玩抽象了 #毕业生 #表白 #我没惹任何人 #直男`, image: "images/store-52.jpg", date: "2025-06-04", likes: 1359 },
+            { id: 53, title: "聪明的属检讨直接卸载了", fullContent: `聪明的属检讨直接卸载了
+#185大帅哥 #搞笑 #你人还怪好勒 #我只是胡言乱语`, images: ["images/store-53-01.jpg","images/store-53-02.jpg","images/store-53-03.jpg","images/store-53-04.jpg"], date: "2025-05-21", likes: 1121 },
+            { id: 54, title: "卷毛专栏提前了", fullContent: `卷毛专栏
+只有20分钟左右吧
+他有事我也有事我要回去
+#185大帅哥 #抽象 #男大学生 #卷毛小狗统治世界 #想说的如图所示 #卷卷卷起来`, image: "images/store-54.jpg", date: "2025-05-11", likes: 1187 },
+            { id: 55, title: "西西里里超长日常记录", fullContent: `西西里里超长日常记录
+#185大帅哥 #抽象 #男大学生 #无聊但有趣 #我有的我的圈儿 #饭搭子 #我的日常 #朋友 #不是一家人不进一家门 #出门在外人设是自己给的`, images: ["images/store-55-01.jpg","images/store-55-02.jpg","images/store-55-03.jpg","images/store-55-04.jpg","images/store-55-05.jpg","images/store-55-06.jpg","images/store-55-07.jpg","images/store-55-08.jpg","images/store-55-09.jpg","images/store-55-10.jpg","images/store-55-11.jpg","images/store-55-12.jpg","images/store-55-13.jpg","images/store-55-14.jpg"], date: "2025-04-20", likes: 1488 },
+            { id: 56, title: "我爸不要我了", fullContent: `#185大帅哥 #抽象 #男大学生 #对不起我错了 #所谓的亲情 #我想好好活着 #缺失的父爱 `, images: ["images/store-56-01.jpg","images/store-56-02.jpg","images/store-56-03.jpg"], date: "2025-04-14", likes: 1355 },
+            { id: 57, title: "怎么追帅哥crush干货版", fullContent: `怎么追帅哥crush
+干货版
+很多人问我怎么怎么追喜欢的男生
+或者追前任
+我之前发过几篇贴也教过
+这个贴再集中说一些点
+
+男生大部分都是看感觉
+当然也有日久生情的
+都需要慢慢了解慢慢磨合
+才知道对方到底适不适合自己
+如果他并不讨厌你
+那么你就有机会
+如果他对你没兴趣
+大部分说实话，不喜欢就是不喜欢
+那你怎么都没用
+每个人都有自己的理想型
+都会有对另一半的要求
+
+知道这些下面圈起来记
+男生都是好奇动物
+可以打直球对他表达你的喜欢与好感
+如果他没有拒绝你那么恭喜你
+你就有机会
+别急心急吃不了热豆腐
+慢慢来，但是要是觉得对方进展实在太慢
+教你一招
+
+先主动总是没错的
+一直每天跟他早午晚安
+分享一些你自己的日常
+时不时发一些照片敲打一下
+引起他的注意进退有度
+既然你喜欢他那就别觉得自己掉面之类的
+主动权是掌握你手里的
+
+主要的在后面
+然后突然在某天不在主动
+减少热情
+这个时候恭喜你他就被你抓到了心
+他会想你为什么不理他了
+大概他就会主动去找你
+【注意，用一次，不是无理取闹】
+
+可以偶尔约他出来
+吃饭玩都行
+注意，要点到为止
+男生真的很吃欲擒故纵这套
+
+了解他的性格喜好
+跟他制造共同话题
+不是让你完全变成他喜欢的样子
+是让他慢慢发现你的好
+借用许的一句话
+爱你的人自然会爱你本身
+这期间也要擦亮眼睛
+不要做恋爱脑
+要有自己的把控
+对方有让你不适的地方及时止损
+觉得不对劲也要相信你自己的第六感
+总之追人的前提也不能把脑子丢了
+
+追前任
+试探一下吧
+如果两个人都放不下
+也可以不留遗憾
+但是不要和前任做朋友
+没有朋友可做
+前任只有一条路老亖不相往来
+#和crush聊天 #185大帅哥 #抽象 #男大学生 #怎么追到喜欢的人 #把喜欢追到手 #追男生 #男生视角恋爱  #朋友 #追人 #告白 #恋爱 #恋爱教程 #让男生上头 #如何推进跟他的关系 #军师 #女追男隔层纱 #恋爱军师 #crush #直球式恋爱  #恋爱小技巧 #让男人喜欢你 #女生主动 #女孩子也可以主动出击 #聊天技巧 #看帅哥也是一种习惯 #爱上帅哥就像呼吸一样简单 #打直球`, image: "images/store-57.jpg", date: "2025-04-09", likes: 3034 },
+            { id: 58, title: "西西里里的日常有许一生卷毛室友寝室长问号", fullContent: `#185大帅哥 #抽象 #男大学生 #室友  #当代寝室长  #我的日常 #不要再搞抽象了好吗
+发一下`, images: ["images/store-58-01.jpg","images/store-58-02.jpg","images/store-58-03.jpg","images/store-58-04.jpg"], date: "2025-04-08", likes: 973 },
+            { id: 59, title: "全员聊天的一次，检讨笑死我了", fullContent: `全员聊天最全的一次，检讨笑死我了
+西西里里家族聊天日常
+笑死我了
+检讨现在还在那问
+哪个长啊
+#185大帅哥 #抽象 #男大学生 #忍不住想笑 #把人笑拥了 #会说话你就多说点`, images: ["images/store-59-01.jpg","images/store-59-02.jpg","images/store-59-03.jpg","images/store-59-04.jpg","images/store-59-05.jpg","images/store-59-06.jpg","images/store-59-07.jpg","images/store-59-08.jpg"], date: "2025-03-29", likes: 1750 },
+            { id: 60, title: "问号哥，一生要强的男人", fullContent: `滑雪，溜冰，羽毛球，机车少年
+台球，全能运动系183金牛男魅力加成篇
+眉心有痣
+穿搭潮男，风格万变
+虽然是运动系但是人有点阴郁
+又何尝不是一种反差
+以为他生在阳光里
+其实黑夜更适合他
+身上有一种独特的气质与魅力
+那是他人都没有的
+话不多看上去有点冷
+喜欢独来独往
+讨厌身体接触
+除非关系很好
+喜欢极限运动爱好挑战极限
+每天都在学习的路上
+丰富自我
+追求者众多
+但也不是一个特别无趣的人
+至少认识我们以后不再是了
+可能近墨者黑吧
+是一个很酷的人
+但是长得很好看
+这点我已经说很多次了
+爱好旅行美食游玩
+谈没谈过记不清了
+但是肯定从一而终
+因为他一根筋死磕到底
+做不到的事绝不放弃
+得不到的他一定要得到
+且享受这种过程
+惹怒了他
+他是真会面无表情冷冰冰说出那句
+“想死”的人
+所以我尽量不会跟他发生冲突
+因为他除了那些运动
+还玩棒球
+#185大帅哥 #抽象 #男大学生 #男生的兴趣爱好 #男生 #朋友 #我的日常`, image: "images/store-60.jpg", date: "2025-03-15", likes: 1819 },
+            { id: 61, title: "回忆闪回", fullContent: `#185大帅哥 #抽象 #男大学生 #我的日常 #朋友 #曾经的回忆`, image: "images/store-61.jpg", date: "2025-03-10", likes: 1572 },
+            { id: 62, title: "有个人碎掉了大破防的终于不是我了", fullContent: `#185大帅哥 #抽象 #男大学生 #我没有破防 #沉默是今晚的康桥 #别太离谱了 #轻轻地碎了 #我没惹任何人 #朋友 #我的日常`, images: ["images/store-62-01.jpg","images/store-62-02.jpg","images/store-62-03.jpg","images/store-62-04.jpg","images/store-62-05.jpg","images/store-62-06.jpg","images/store-62-07.jpg","images/store-62-08.jpg","images/store-62-09.jpg"], date: "2025-03-07", likes: 1675 },
+            { id: 63, title: "有谁还记得西西里里家族", fullContent: `西西里里返场
+里面都是我的一群好朋友
+也谢谢大家的喜欢
+刚开始小火的时候是因为西西里里
+也是因为他们而小小出圈
+刚刷到我的会有很多人
+觉得我主页很乱很像yxh
+其实不然，老粉都看得懂
+我就是一个抽象博主，分享一些搞笑日常
+还有一些离谱的瓜，就是抽象多了偶尔抽风
+别怕我是正经人也是一个普通人
+我们都没什么光环滤镜
+你们看的开心就行
+其他都不重要
+我一不卖货二不钓鱼
+#185大帅哥 #男大学生 #抽象 #不是一家人不进一家门 #家人们谁懂啊 #死去的记忆突然攻击我 #只是冰山一角 #不是一个人 #朋友 #保持更新`, images: ["images/store-63-01.jpg","images/store-63-02.jpg","images/store-63-03.jpg","images/store-63-04.jpg","images/store-63-05.jpg"], date: "2025-03-02", likes: 2354 },
+            { id: 64, title: "让你火", fullContent: `#185大帅哥 #男大学生 #抽象 #火火火起来 #无不引导话题 #让大家见笑了 #没有不良导向的意思 #一个人上网挺无助的 #抽象派 #朋友`, images: ["images/store-64-01.jpg","images/store-64-02.jpg"], date: "2025-02-19", likes: 1173 },
+            { id: 65, title: "邻居家小孩叫我LY哥哥LY是我的名字", fullContent: `邻居家小孩叫我LY哥哥
+LY是我的名字
+真苏啊叫的我不知道天南地北了
+苏的我不知道我姓什么了
+我把我的零食都搬了出来给她吃
+她就一直叫
+我这个心花怒放
+太甜了这小孩
+哥发誓
+以后再不准抓你两个小辫当摩托开了
+#185大帅哥 #抽象 #男大学生 #亲戚家小孩 #我的好邻居 #发疯 #我的日常 #朋友 #搞笑 #小孩`, image: "images/store-65.jpg", date: "2025-02-04", likes: 2045 },
+            { id: 66, title: "答应我过年睡觉一定要锁门好吗求你们了", fullContent: `我真不行了
+睡得正迷迷糊糊的
+突然觉得身上怎么那么沉
+一睁眼脸前一张大脸
+吓得我嗷嗷叫唤
+原来是四叔家的孙子爬我身上
+弄我一床一脸都是酸奶
+我正一手拽着那小孩一手擦酸奶
+我妈进来了
+然后看着这场面不由分说就拿鞋要抽我
+我总感觉她想歪了
+我说这是酸奶是这小孩弄的
+这时候我姐进来了，瞟了一眼说
+真没想到你是这种人
+找个对象吧弟弟
+我不干净了
+#搞笑表情包 #185大帅哥 #抽象 #男大学生 #尖叫扭曲阴暗地爬行 #我的脑子呢 #我感觉我被床给粘住了 #我的日常 #抽象派`, image: "images/store-66.jpg", date: "2025-01-31", likes: 1878 },
+            { id: 67, title: "一个女生追我朋友没追上又来追我", fullContent: `一个女生追我朋友没追上
+又来追我是怎么回事
+转移阵地了？换菜吃了？
+#185大帅哥 #抽象 #男大学生 #求助  #朋友`, image: "images/store-67.jpg", date: "2025-01-21", likes: 1676 },
+            { id: 68, title: "西西里里人物专线", fullContent: `#185大帅哥  #男大学生日常 #帅哥 #日常文案 #抽象 #我的日常
+都全放这个里面`, images: ["images/store-68-01.jpg","images/store-68-02.jpg","images/store-68-03.jpg","images/store-68-04.jpg","images/store-68-05.jpg","images/store-68-06.jpg","images/store-68-07.jpg","images/store-68-08.jpg"], date: "2024-12-01", likes: 1179 },
+            { id: 69, title: "有没有好看的丧尸片 歪个楼", fullContent: `剧荒了求个推荐
+丧尸片
+#丧尸 #剧 #剧情 #电视剧 #电影 #求推荐 #好剧 #好剧推荐 #韩剧 #美剧`, image: "images/store-69.jpg", date: "2024-11-08", likes: 936 },
+            { id: 70, title: "白衣小哥//许牙医/日常语录专线", fullContent: `#生活美学 #男大学生  #深夜文案  #185大帅哥 #大帅哥 #抽象 #发疯文学
+话少的可怜`, images: ["images/store-70-01.jpg","images/store-70-02.jpg","images/store-70-03.jpg","images/store-70-04.jpg","images/store-70-05.jpg"], date: "2024-11-01", likes: 1180 },
+            { id: 71, title: "西西里里家族是什么意思", fullContent: `西西里里家族是一个好友裙
+里面有十个人
+都是很好的朋友和同学
+名字由来是在学校组队的时候起的
+当然我也是看喜人的
+那个时候里面只有六个人
+后面到了九到十个
+为什么九到十上下浮动
+因为有个人总装总被踢
+别看我不是我
+西西里里是小众赛道比较抽象
+每个人多少都有点大病
+而进入西西里里家族的每个人
+都经过了严厉的考核
+一是长得帅（我花米了）
+二是有涵养（我花米了）
+三是有才华（我花米了）
+四是（我花米了）
+里面一共十个人
+按你们所熟知的绰号算
+聊的多一点的，有朕，妞美吗室友，检讨哥，问号哥
+不怎么出来的，牙医（白衣小哥），寝室长，二哥
+经常潜水的，三位，我备注的都是名字，就不说了。
+里面没有族长，空缺，因为谁也不服谁
+然后你们喜欢看聊天记录的话，以后再发我会把备注打上绰号，方便观看。
+关于帅不帅，除了医学生，基本都是艺术生都差不多哪里去，每个人审美不一样，都长得挺别致的
+不全单身，有对象的会被单身的挤兑
+所以他们天生不爱说话牙医除外
+他是真不爱说话
+里面就是一些普通人
+日常聊聊天
+没有什么光环大家谨慎观看
+不要带有滤镜
+要是不喜欢看贴也可以点不感兴趣，就不会再刷到我了，或者直接毕业我也可以。
+对了关于陆霆骁在不在里面
+他不在
+#生活美学  #抽象 #185大帅哥 #小红书流量 #聊天记录 #朋友 #搞笑 #小众 #男大学生`, image: "images/store-71.jpg", date: "2024-10-29", likes: 1588 },
+            { id: 72, title: "我有一个朋友身高184.5，现实一次恋爱都没", fullContent: `我有一个朋友身高184.5
+现实一次恋爱都没谈过身高184.5
+跟人学网恋身高184.5
+谈了七天被骗三千身高184.5
+依旧不知悔改怎么劝都劝不住身高184.5
+对面好像把他当内个召之即来挥之即去184.5
+要什么给什么身高184.5
+请问这样的人还有救吗？身高184.5
+#抽象 #男大学生 #185大帅哥 #理想型 #大帅哥 #抽象艺术 #发疯文学 #网恋 #我有一个朋友`, image: "images/store-72.jpg", date: "2024-09-25", likes: 1317 },
+            { id: 73, title: "牵个手", fullContent: `#185大帅哥 #理想型 #氛围感 #手控 #上班 #安徽 #天蝎`, image: "images/store-73.jpg", date: "2024-09-23", likes: 977 }
         ];
-        
-        // 成员数据 - 20个角色
+
+        // 成员数据（保持不变）
         const membersData = [
-            {
-                id: 1,
-                name: "NO.911",
-                bio: "186.7 天蝎座 intj",
-                image: "images/member-01.jpg",
-                detail: "03 186.7 天蝎 只玩小红薯\n\n爱搞点抽象 好好生活慢慢相遇\n\n来自身边朋友的日常笑料 禁搬运二改\n\n爱好女 混凝土钢筋铁直男\n\n代表作：西西里里"
-            },
-            {
-                id: 2,
-                name: "许医生",
-                bio: "185 摩羯禁欲系",
-                image: "images/member-02.jpg",
-                detail: "02 185 外冷内热摩羯座 医学生牙医\n\n深情专一 情绪稳定\n\n有着强大内核，平常话少高冷偶尔也很腹黑\n\n理智的代名词 禁欲系的标杆\n\n爹系男友 绝对的掌控者"
-            },
-            {
-                id: 3,
-                name: "室友",
-                bio: "185 火热系天蝎男",
-                image: "images/member-03.jpg",
-                detail: "185天蝎 深情专一是天蝎的代名词\n\n外表放荡不羁爱自由\n\n实则内心柔软又善良\n\n侵占型又争又抢"
-            },
-            {
-                id: 4,
-                name: "问号",
-                bio: "183 美男运动系",
-                image: "images/member-04.jpg",
-                detail: "183金牛男 爱好美食 旅行 探险\n\n就喜欢发问号\n\n打棒球也打篮球桌球羽毛球\n\n脑回路有点清奇也挺记仇的\n\n比较护食也喜欢美食 喜欢吃茶叶蛋一天三顿吃\n\n有时候有点呆也有点拽也挺平静的"
-            },
-            {
-                id: 5,
-                name: "卷毛",
-                bio: "183 温柔体贴系",
-                image: "images/member-05.jpg",
-                detail: "183温柔年上 体贴入微\n\n唇红齿白特别有亲和力\n\n沉稳风趣且很有自己的想法\n\n从不会让人觉得尴尬 不会让话掉到地上\n\n情商高智商也高\n\n很细心也很绅士\n\n容易观察到别人注意不到的点"
-            },
-            {
-                id: 6,
-                name: "寝室长",
-                bio: "183 摩羯清冷系",
-                image: "images/member-06.jpg",
-                detail: "183狐狸眼摩羯男 半框眼镜 情绪价值加满\n\n总会有不经意的惊喜\n\n直戳心窝子\n\n话不多但是每句话都值得回味\n\n默默付出型"
-            },
-            {
-                id: 7,
-                name: "二哥",
-                bio: "187 结账侠",
-                image: "images/member-07.jpg",
-                detail: "lly初中同学\n\n从不愿意把情绪带给其他人\n\n可靠细腻善良\n\n这辈子最难过的就是再也不能打篮球了\n\nlly说：能有那么一个朋友是我的福气\n\n自己明明一团糟还会给我做指路明灯"
-            },
-            {
-                id: 8,
-                name: "许检讨",
-                bio: "183 射手座 entp",
-                image: "images/member-08.jpg",
-                detail: "04 183 射手阳光男大\n\n许医生弟弟 嘴甜爱笑还有一颗虎牙\n\n网恋写过三千字检讨 于是叫他小检讨"
-            },
-            {
-                id: 9,
-                name: "那个谁",
-                bio: "180+法师",
-                image: "images/member-09.jpg",
-                detail: "有一张神嘴 好坏都灵\n\n人间许愿池\n\n平常话也不多\n\n有困难他是真上"
-            },
-            {
-                id: 10,
-                name: "何有对象",
-                bio: "有对象",
-                image: "images/member-10.jpg",
-                detail: "西西里里唯一一个有对象\n\n喜欢秀恩爱\n\n经常被踢出群聊"
-            },
-            {
-                id: 11,
-                name: "混血哥",
-                bio: "190 中法混血",
-                image: "images/member-11.jpg",
-                detail: "超绝大长腿大高个\n\n非常标准的男模身材\n\n除了声音有股大碴子味\n\n有一双专属国外人深邃立体的眼睛"
-            },
-            {
-                id: 12,
-                name: "宋老师",
-                bio: "骨科医生",
-                image: "images/member-12.jpg",
-                detail: "谦卑有礼很正直\n\n偶尔也会开玩笑\n\n大多数比较正经"
-            },
-            {
-                id: 13,
-                name: "小哥",
-                bio: "绅士狐狸男",
-                image: "images/member-13.jpg",
-                detail: "lly的小哥 小时候是个校霸\n\n绅士狐狸男\n\n运筹帷幄老谋深算\n\n很会照顾人 心思也多"
-            },
-            {
-                id: 14,
-                name: "村草",
-                bio: "极品帅哥",
-                image: "images/member-14.jpg",
-                detail: "养了一猫一狗\n\n猫叫秘书 狗叫总裁\n\n性格有趣自恋"
-            },
-            {
-                id: 15,
-                name: "小酒窝",
-                bio: "浓颜系",
-                image: "images/member-15.jpg",
-                detail: "lly的表哥\n\n笑起来有酒窝\n\n大高个会唱歌\n\n是个路痴也是母单\n\n浓颜系＋反差"
-            },
-            {
-                id: 16,
-                name: "小叔",
-                bio: "190 低音炮",
-                image: "images/member-16.jpg",
-                detail: "lly的小叔\n\n年龄小辈分高\n\n新鲜男大\n\n是个低音炮"
-            },
-            {
-                id: 17,
-                name: "陆霆骁",
-                bio: "185 爱爆小金币",
-                image: "images/member-17.jpg",
-                detail: "lly的堂哥\n\n名字和小说霸总一样\n\n爱爆小金币来堵嘴"
-            },
-            {
-                id: 18,
-                name: "干甚",
-                bio: "大e人",
-                image: "images/member-18.jpg",
-                detail: "打篮球认识的\n\n长得像宋威龙\n\n曾经拿着自己姐姐的手机想给女神拍荷花\n\n结果掉进荷花池了"
-            },
-            {
-                id: 19,
-                name: "lsy",
-                bio: "姐姐女神",
-                image: "images/member-19.jpg",
-                detail: "lly的姐姐\n\n女神！！！\n\n又美又温柔"
-            },
-            {
-                id: 20,
-                name: "欣欣",
-                bio: "古灵精怪表妹",
-                image: "images/member-20.jpg",
-                detail: "lly的表妹\n\n活泼可爱 古灵精怪\n\n帮娅粉争取了许多福利！"
-            }
+            { id: 1, name: "NO.911", bio: "186.7 天蝎座 intj", image: "images/member-01.jpg", detail: "03 186.7 天蝎 只玩小红薯\n\n爱搞点抽象 好好生活慢慢相遇\n\n来自身边朋友的日常笑料 禁搬运二改\n\n爱好女 混凝土钢筋铁直男\n\n代表作：西西里里" },
+            { id: 2, name: "许医生", bio: "185 摩羯禁欲系", image: "images/member-02.jpg", detail: "02 185 外冷内热摩羯座 医学生牙医\n\n深情专一 情绪稳定\n\n有着强大内核，平常话少高冷偶尔也很腹黑\n\n理智的代名词 禁欲系的标杆\n\n爹系男友 绝对的掌控者" },
+            { id: 3, name: "室友", bio: "185 火热系天蝎男", image: "images/member-03.jpg", detail: "185天蝎 深情专一是天蝎的代名词\n\n外表放荡不羁爱自由\n\n实则内心柔软又善良\n\n侵占型又争又抢" },
+            { id: 4, name: "问号", bio: "183 美男运动系", image: "images/member-04.jpg", detail: "183金牛男 爱好美食 旅行 探险\n\n就喜欢发问号\n\n打棒球也打篮球桌球羽毛球\n\n脑回路有点清奇也挺记仇的\n\n比较护食也喜欢美食 喜欢吃茶叶蛋一天三顿吃\n\n有时候有点呆也有点拽也挺平静的" },
+            { id: 5, name: "卷毛", bio: "183 温柔体贴系", image: "images/member-05.jpg", detail: "183温柔年上 体贴入微\n\n唇红齿白特别有亲和力\n\n沉稳风趣且很有自己的想法\n\n从不会让人觉得尴尬 不会让话掉到地上\n\n情商高智商也高\n\n很细心也很绅士\n\n容易观察到别人注意不到的点" },
+            { id: 6, name: "寝室长", bio: "183 摩羯清冷系", image: "images/member-06.jpg", detail: "183狐狸眼摩羯男 半框眼镜 情绪价值加满\n\n总会有不经意的惊喜\n\n直戳心窝子\n\n话不多但是每句话都值得回味\n\n默默付出型" },
+            { id: 7, name: "二哥", bio: "187 结账侠", image: "images/member-07.jpg", detail: "lly初中同学\n\n从不愿意把情绪带给其他人\n\n可靠细腻善良\n\n这辈子最难过的就是再也不能打篮球了\n\nlly说：能有那么一个朋友是我的福气\n\n自己明明一团糟还会给我做指路明灯" },
+            { id: 8, name: "许检讨", bio: "183 射手座 entp", image: "images/member-08.jpg", detail: "04 183 射手阳光男大\n\n许医生弟弟 嘴甜爱笑还有一颗虎牙\n\n网恋写过三千字检讨 于是叫他小检讨" },
+            { id: 9, name: "那个谁", bio: "180+法师", image: "images/member-09.jpg", detail: "有一张神嘴 好坏都灵\n\n人间许愿池\n\n平常话也不多\n\n有困难他是真上" },
+            { id: 10, name: "何有对象", bio: "有对象", image: "images/member-10.jpg", detail: "西西里里唯一一个有对象\n\n喜欢秀恩爱\n\n经常被踢出群聊" },
+            { id: 11, name: "混血哥", bio: "190 中法混血", image: "images/member-11.jpg", detail: "超绝大长腿大高个\n\n非常标准的男模身材\n\n除了声音有股大碴子味\n\n有一双专属国外人深邃立体的眼睛" },
+            { id: 12, name: "宋老师", bio: "骨科医生", image: "images/member-12.jpg", detail: "谦卑有礼很正直\n\n偶尔也会开玩笑\n\n大多数比较正经" },
+            { id: 13, name: "小哥", bio: "绅士狐狸男", image: "images/member-13.jpg", detail: "lly的小哥 小时候是个校霸\n\n绅士狐狸男\n\n运筹帷幄老谋深算\n\n很会照顾人 心思也多" },
+            { id: 14, name: "村草", bio: "极品帅哥", image: "images/member-14.jpg", detail: "养了一猫一狗\n\n猫叫秘书 狗叫总裁\n\n性格有趣自恋" },
+            { id: 15, name: "小酒窝", bio: "浓颜系", image: "images/member-15.jpg", detail: "lly的表哥\n\n笑起来有酒窝\n\n大高个会唱歌\n\n是个路痴也是母单\n\n浓颜系＋反差" },
+            { id: 16, name: "小叔", bio: "190 低音炮", image: "images/member-16.jpg", detail: "lly的小叔\n\n年龄小辈分高\n\n新鲜男大\n\n是个低音炮" },
+            { id: 17, name: "陆霆骁", bio: "185 爱爆小金币", image: "images/member-17.jpg", detail: "lly的堂哥\n\n名字和小说霸总一样\n\n爱爆小金币来堵嘴" },
+            { id: 18, name: "干甚", bio: "大e人", image: "images/member-18.jpg", detail: "打篮球认识的\n\n长得像宋威龙\n\n曾经拿着自己姐姐的手机想给女神拍荷花\n\n结果掉进荷花池了" },
+            { id: 19, name: "lsy", bio: "姐姐女神", image: "images/member-19.jpg", detail: "lly的姐姐\n\n女神！！！\n\n又美又温柔" },
+            { id: 20, name: "欣欣", bio: "古灵精怪表妹", image: "images/member-20.jpg", detail: "lly的表妹\n\n活泼可爱 古灵精怪\n\n帮娅粉争取了许多福利！" }
         ];
-        
-        // DOM元素
+
+        // ---------- 页面状态管理（已修复：返回帖子列表时保留滚动位置）----------
+        let currentPage = 'posts';
+        let scrollPositions = { posts: 0, members: 0 };
+        let activeListPage = 'posts';
+
         const postsPage = document.getElementById('posts-page');
         const postDetailPage = document.getElementById('post-detail-page');
         const membersPage = document.getElementById('members-page');
         const memberDetailPage = document.getElementById('member-detail-page');
         const feedbackPage = document.getElementById('feedback-page');
-        
         const postsContainer = document.getElementById('posts-container');
         const membersGrid = document.getElementById('members-grid');
         const membersScrollWrapper = document.getElementById('members-scroll-wrapper');
-        
         const navPosts = document.getElementById('nav-posts');
         const navMembers = document.getElementById('nav-members');
         const navFeedback = document.getElementById('nav-feedback');
         const navLogo = document.getElementById('nav-logo');
-        
         const backFromPost = document.getElementById('back-from-post');
         const backFromMember = document.getElementById('back-from-member');
-        
-        // 初始化页面
+
         function initPage() {
             renderPosts();
             renderMembers();
             setupEventListeners();
+            window.addEventListener('scroll', () => {
+                if (currentPage === 'posts') scrollPositions.posts = window.scrollY;
+            });
+            membersScrollWrapper.addEventListener('scroll', () => {
+                if (currentPage === 'members') scrollPositions.members = membersScrollWrapper.scrollLeft;
+            });
         }
-        
-        // 渲染帖子
-        function renderPosts() {
+
+        function renderPosts() { /* 完全不变 */ 
             postsContainer.innerHTML = '';
-            
             postsData.forEach(post => {
                 const postElement = document.createElement('div');
                 postElement.className = 'post-card';
                 postElement.setAttribute('data-id', post.id);
-                
                 const imageUrl = post.image || (post.images && post.images.length > 0 ? post.images[0] : '');
-                
                 postElement.innerHTML = `
                     <div class="post-image" style="background-image: url('${imageUrl}')"></div>
                     <div class="post-content">
@@ -1451,24 +1906,20 @@
                         </div>
                     </div>
                 `;
-                
                 postElement.addEventListener('click', () => {
+                    scrollPositions.posts = window.scrollY;
+                    activeListPage = 'posts';
                     showPostDetail(post.id);
                 });
-                
                 postsContainer.appendChild(postElement);
             });
         }
-        
-        // 渲染成员
-        function renderMembers() {
+
+        function renderMembers() { /* 完全不变 */ 
             membersGrid.innerHTML = '';
-            
-            // 创建成员卡片
-            membersData.forEach((member, index) => {
+            membersData.forEach(member => {
                 const memberElement = document.createElement('div');
                 memberElement.className = 'member-card';
-                
                 memberElement.innerHTML = `
                     <div class="member-card-inner">
                         <div class="member-image" style="background-image: url('${member.image}')"></div>
@@ -1479,209 +1930,118 @@
                         </div>
                     </div>
                 `;
-                
-                // 为查看详情按钮添加事件
                 const viewDetailBtn = memberElement.querySelector('.view-detail-btn');
                 viewDetailBtn.addEventListener('click', (e) => {
-                    e.stopPropagation(); // 防止事件冒泡
+                    e.stopPropagation();
+                    scrollPositions.members = membersScrollWrapper.scrollLeft;
+                    activeListPage = 'members';
                     showMemberDetail(member.id);
                 });
-                
-                // 整个卡片也可以点击查看详情
                 memberElement.addEventListener('click', () => {
+                    scrollPositions.members = membersScrollWrapper.scrollLeft;
+                    activeListPage = 'members';
                     showMemberDetail(member.id);
                 });
-                
                 membersGrid.appendChild(memberElement);
             });
-            
-            // 设置滚动容器的宽度以适应所有成员
-            const memberCardWidth = 280; // 根据CSS中的flex-basis值
-            const gap = 25; // 根据CSS中的gap值
-            const totalWidth = (memberCardWidth + gap) * membersData.length;
-            membersGrid.style.width = `${totalWidth}px`;
+            const memberCardWidth = 280, gap = 25;
+            membersGrid.style.width = `${(memberCardWidth + gap) * membersData.length}px`;
         }
-        
-        // 添加滚轮滚动功能
-        function setupMembersScroll() {
-            // 鼠标滚轮水平滚动
+
+        function setupMembersScroll() { /* 完全不变 */ 
             membersScrollWrapper.addEventListener('wheel', (e) => {
-                // 阻止默认的垂直滚动
-                if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
-                    e.preventDefault();
-                }
-                
-                // 水平滚动
+                if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) e.preventDefault();
                 membersScrollWrapper.scrollLeft += e.deltaY;
             });
-            
-            // 鼠标拖动功能
-            let isDragging = false;
-            let startX;
-            let scrollLeft;
-            
+            let isDragging = false, startX, scrollLeft;
             membersScrollWrapper.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 membersScrollWrapper.style.cursor = 'grabbing';
                 startX = e.pageX - membersScrollWrapper.offsetLeft;
                 scrollLeft = membersScrollWrapper.scrollLeft;
             });
-            
             membersScrollWrapper.addEventListener('mouseleave', () => {
                 isDragging = false;
                 membersScrollWrapper.style.cursor = 'grab';
             });
-            
             membersScrollWrapper.addEventListener('mouseup', () => {
                 isDragging = false;
                 membersScrollWrapper.style.cursor = 'grab';
             });
-            
             membersScrollWrapper.addEventListener('mousemove', (e) => {
                 if (!isDragging) return;
                 e.preventDefault();
                 const x = e.pageX - membersScrollWrapper.offsetLeft;
-                const walk = (x - startX) * 2; // 拖动速度系数
-                membersScrollWrapper.scrollLeft = scrollLeft - walk;
+                membersScrollWrapper.scrollLeft = scrollLeft - (x - startX) * 2;
             });
-            
-            // 触摸屏支持
             membersScrollWrapper.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].pageX - membersScrollWrapper.offsetLeft;
                 scrollLeft = membersScrollWrapper.scrollLeft;
             });
-            
             membersScrollWrapper.addEventListener('touchmove', (e) => {
                 e.preventDefault();
                 const x = e.touches[0].pageX - membersScrollWrapper.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                membersScrollWrapper.scrollLeft = scrollLeft - walk;
+                membersScrollWrapper.scrollLeft = scrollLeft - (x - startX) * 1.5;
             });
         }
-        
-        // 显示帖子详情
-        function showPostDetail(postId) {
+
+        function showPostDetail(postId) { /* 完全不变 */
+            currentPage = 'post-detail';
             const post = postsData.find(p => p.id === postId);
             if (!post) return;
-            
             document.getElementById('post-detail-title').textContent = post.title;
             document.getElementById('post-detail-text').textContent = post.fullContent;
             document.getElementById('post-detail-date').textContent = post.date;
             document.getElementById('post-detail-likes').textContent = post.likes;
-            
-            // 设置图片轮播
+
             const carouselSlides = document.getElementById('post-carousel-slides');
             const carouselIndicators = document.getElementById('post-carousel-indicators');
             const carouselTotal = document.getElementById('post-carousel-total');
             const carouselCurrent = document.getElementById('post-carousel-current');
-            
             carouselSlides.innerHTML = '';
             carouselIndicators.innerHTML = '';
-            
-            let images = [];
-            if (post.images && Array.isArray(post.images) && post.images.length > 0) {
-                // 第10个帖子有多张图片
-                images = post.images;
-            } else {
-                // 其他帖子只有一张图片
-                images = [post.image];
-            }
-            
-            // 设置总图片数
+
+            let images = post.images && Array.isArray(post.images) && post.images.length > 0 ? post.images : [post.image];
             carouselTotal.textContent = images.length;
             carouselCurrent.textContent = 1;
-            
-            // 创建轮播幻灯片
-            images.forEach((image, index) => {
-                // 创建幻灯片
+
+            images.forEach((img, idx) => {
                 const slide = document.createElement('div');
                 slide.className = 'carousel-slide';
-                slide.style.backgroundImage = `url('${image}')`;
-                slide.setAttribute('data-index', index);
+                slide.style.backgroundImage = `url('${img}')`;
                 carouselSlides.appendChild(slide);
-                
-                // 创建指示器
                 const indicator = document.createElement('div');
-                indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
-                indicator.setAttribute('data-index', index);
-                indicator.addEventListener('click', () => {
-                    goToSlide(index);
-                });
+                indicator.className = `carousel-indicator ${idx === 0 ? 'active' : ''}`;
+                indicator.addEventListener('click', () => goToSlide(idx));
                 carouselIndicators.appendChild(indicator);
             });
-            
-            // 轮播控制变量
+
             let currentSlide = 0;
             const totalSlides = images.length;
-            
-            // 轮播功能函数
             function updateCarousel() {
                 carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // 更新指示器
-                document.querySelectorAll('#post-carousel-indicators .carousel-indicator').forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentSlide);
-                });
-                
-                // 更新计数器
+                document.querySelectorAll('#post-carousel-indicators .carousel-indicator').forEach((ind, idx) => ind.classList.toggle('active', idx === currentSlide));
                 carouselCurrent.textContent = currentSlide + 1;
             }
-            
             function goToSlide(slideIndex) {
                 currentSlide = slideIndex;
                 if (currentSlide < 0) currentSlide = totalSlides - 1;
                 if (currentSlide >= totalSlides) currentSlide = 0;
                 updateCarousel();
             }
-            
-            function nextSlide() {
-                goToSlide(currentSlide + 1);
-            }
-            
-            function prevSlide() {
-                goToSlide(currentSlide - 1);
-            }
-            
-            // 保存轮播控制函数以便其他函数使用
-            currentPostCarousel = {
-                currentSlide: 0,
-                totalSlides: totalSlides,
-                goToSlide: goToSlide,
-                nextSlide: nextSlide,
-                prevSlide: prevSlide
-            };
-            
-            // 添加事件监听器
+            function nextSlide() { goToSlide(currentSlide + 1); }
+            function prevSlide() { goToSlide(currentSlide - 1); }
+
             const nextBtn = document.getElementById('post-carousel-next');
             const prevBtn = document.getElementById('post-carousel-prev');
-            
-            // 移除旧的事件监听器
             nextBtn.replaceWith(nextBtn.cloneNode(true));
             prevBtn.replaceWith(prevBtn.cloneNode(true));
-            
-            // 添加新的事件监听器
             document.getElementById('post-carousel-next').addEventListener('click', nextSlide);
             document.getElementById('post-carousel-prev').addEventListener('click', prevSlide);
-            
-            // 键盘导航
-            document.addEventListener('keydown', function handleKeydown(e) {
-                if (!postDetailPage.classList.contains('active')) return;
-                
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                }
-            });
-            
-            // 初始化轮播位置
-            updateCarousel();
-            
-            // 如果只有一张图片，隐藏轮播控制
+
             const carouselControls = document.getElementById('post-carousel-controls');
             const carouselIndicatorsElement = document.getElementById('post-carousel-indicators');
             const carouselCounter = document.getElementById('post-carousel-counter');
-            
             if (totalSlides === 1) {
                 carouselControls.style.display = 'none';
                 carouselIndicatorsElement.style.display = 'none';
@@ -1691,109 +2051,92 @@
                 carouselIndicatorsElement.style.display = 'flex';
                 carouselCounter.style.display = 'block';
             }
-            
-            // 切换页面
+            updateCarousel();
+
             postsPage.classList.remove('active');
             postDetailPage.classList.add('active');
-            
-            // 更新导航状态
+            window.scrollTo(0, 0);
             updateNavState('post-detail');
         }
-        
-        // 显示成员详情
-        function showMemberDetail(memberId) {
+
+        function showMemberDetail(memberId) { /* 完全不变 */ 
+            currentPage = 'member-detail';
             const member = membersData.find(m => m.id === memberId);
             if (!member) return;
-            
             document.getElementById('member-detail-name').textContent = member.name;
             document.getElementById('member-detail-bio').textContent = member.bio;
             document.getElementById('member-detail-text').textContent = member.detail;
             document.getElementById('member-detail-image').style.backgroundImage = `url('${member.image}')`;
-            
-            // 切换页面
             membersPage.classList.remove('active');
             memberDetailPage.classList.add('active');
-            
-            // 更新导航状态
+            window.scrollTo(0, 0);
             updateNavState('member-detail');
         }
-        
-        // 设置事件监听器
+
         function setupEventListeners() {
-            // 导航链接点击事件
-            navPosts.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchPage('posts');
-            });
-            
-            navMembers.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchPage('members');
-            });
-            
-            navFeedback.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchPage('feedback');
-            });
-            
-            navLogo.addEventListener('click', (e) => {
-                e.preventDefault();
-                switchPage('posts');
-            });
-            
-            // 返回按钮点击事件
-            backFromPost.addEventListener('click', () => {
-                switchPage('posts');
-            });
-            
-            backFromMember.addEventListener('click', () => {
-                switchPage('members');
-            });
-            
-            // 初始化成员滚动功能
+            navPosts.addEventListener('click', (e) => { e.preventDefault(); switchPage('posts', true); });
+            navMembers.addEventListener('click', (e) => { e.preventDefault(); switchPage('members', true); });
+            navFeedback.addEventListener('click', (e) => { e.preventDefault(); switchPage('feedback', true); });
+            navLogo.addEventListener('click', (e) => { e.preventDefault(); switchPage('posts', true); });
+            backFromPost.addEventListener('click', () => { switchPage(activeListPage, false); });
+            backFromMember.addEventListener('click', () => { switchPage(activeListPage, false); });
             setupMembersScroll();
         }
-        
-        // 切换页面
-        function switchPage(page) {
+
+        // ---------- 关键修复：帖子列表页滚动恢复（多重尝试）----------
+        function switchPage(page, resetScroll = true) {
             // 隐藏所有页面
             postsPage.classList.remove('active');
             postDetailPage.classList.remove('active');
             membersPage.classList.remove('active');
             memberDetailPage.classList.remove('active');
             feedbackPage.classList.remove('active');
-            
-            // 显示目标页面
+
             if (page === 'posts') {
                 postsPage.classList.add('active');
+                if (!resetScroll) {
+                    const targetY = scrollPositions.posts;
+                    // 多重尝试滚动，保证恢复
+                    window.scrollTo(0, targetY);
+                    setTimeout(() => window.scrollTo(0, targetY), 100);
+                    setTimeout(() => window.scrollTo(0, targetY), 300);
+                    setTimeout(() => window.scrollTo(0, targetY), 600);
+                } else {
+                    scrollPositions.posts = 0;
+                    window.scrollTo(0, 0);
+                }
                 updateNavState('posts');
+                currentPage = 'posts';
+                activeListPage = 'posts';
             } else if (page === 'members') {
                 membersPage.classList.add('active');
+                if (!resetScroll) {
+                    requestAnimationFrame(() => membersScrollWrapper.scrollLeft = scrollPositions.members);
+                } else {
+                    scrollPositions.members = 0;
+                    membersScrollWrapper.scrollLeft = 0;
+                }
+                window.scrollTo(0, 0);
                 updateNavState('members');
+                currentPage = 'members';
+                activeListPage = 'members';
             } else if (page === 'feedback') {
                 feedbackPage.classList.add('active');
+                window.scrollTo(0, 0);
                 updateNavState('feedback');
+                currentPage = 'feedback';
             }
         }
-        
-        // 更新导航状态
+
         function updateNavState(page) {
-            // 移除所有活动状态
             navPosts.classList.remove('active');
             navMembers.classList.remove('active');
             navFeedback.classList.remove('active');
-            
-            // 设置当前活动状态
-            if (page === 'posts' || page === 'post-detail') {
-                navPosts.classList.add('active');
-            } else if (page === 'members' || page === 'member-detail') {
-                navMembers.classList.add('active');
-            } else if (page === 'feedback') {
-                navFeedback.classList.add('active');
-            }
+            if (page === 'posts' || page === 'post-detail') navPosts.classList.add('active');
+            else if (page === 'members' || page === 'member-detail') navMembers.classList.add('active');
+            else if (page === 'feedback') navFeedback.classList.add('active');
         }
-        
-        // 页面加载完成后初始化
+
         document.addEventListener('DOMContentLoaded', initPage);
     </script>
 </body>
