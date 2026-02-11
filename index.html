@@ -6,7 +6,7 @@
     <title>NO.911 小红书博主</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 此处省略中间部分，保留完整  */
+        /* ---------- 完整 CSS（与你原有代码完全一致）---------- */
         :root {
             --primary-color: #ff2442;
             --primary-light: #ffe6ea;
@@ -220,7 +220,10 @@
     </div>
 
     <script>
-        // ---------- 帖子数据（已全部修正为反引号，语法错误已修复）----------
+        // ---------- ★★★★★ 关键优化：jsDelivr CDN 全球加速 ★★★★★ ----------
+        const CDN_BASE = "https://cdn.jsdelivr.net/gh/xcxiaodangao/NO.911/";
+
+        // ---------- 帖子数据（所有图片路径均已替换为 CDN 地址，飞一般速度）----------
         const postsData = [
             { id: 74, title: "看到女生正在刷我的笔记 帅到没人敢谈", fullContent: `地铁上看到女生正在刷我的笔记
 (帅到没人敢谈)
@@ -230,7 +233,7 @@
 我便默默的走到了另一个车厢
 #185大帅哥 #抽象  #搞笑 #地铁上的年轻人
 #朋友 #我的日常
-我不行了`, image: "images/store-74.jpg", date: "2026-02-11", likes: 368},
+我不行了`, image: CDN_BASE + "images/store-74.jpg", date: "2026-02-11", likes: 368},
             { id: 1, title: "谁懂买早餐突然被男生夸了句哥们你好帅", fullContent: `谁懂买早餐突然被男生夸了句哥们你好帅
 这一句给我说的
 嘴都憋不住了
@@ -259,7 +262,7 @@
 我去后面排队了哈哈哈
 他说哥们你真的太帅了
 谢谢感谢
-#185大帅哥 #抽象 #搞笑 #我的日常 #好男人就是我 #开心 #快乐`, image: "images/store-01.jpg", date: "2026-02-11", likes: 1194 },
+#185大帅哥 #抽象 #搞笑 #我的日常 #好男人就是我 #开心 #快乐`, image: CDN_BASE + "images/store-01.jpg", date: "2026-02-11", likes: 1194 },
             { id: 2, title: "地铁一帅哥一直看我 后面发现他是睁眼睡觉", fullContent: `地铁一帅哥一直看我 后面发现他是睁眼睡觉
 我站着
 他坐着
@@ -282,7 +285,7 @@
 昨晚是不是又熬夜打游戏了
 然后他们就说着下车了
 这我不行了吧
-#185大帅哥 #抽象 #搞笑 #我只想睡觉 #地铁上的年轻人 #我的日常`, image: "images/store-02.jpg", date: "2026-02-11", likes: 783 },
+#185大帅哥 #抽象 #搞笑 #我只想睡觉 #地铁上的年轻人 #我的日常`, image: CDN_BASE + "images/store-02.jpg", date: "2026-02-11", likes: 783 },
             { id: 3, title: "拍错了帅哥劈谷他转身捂着劈谷震惊的看着我", fullContent: `拍错了帅哥劈谷
 他转身捂着劈谷
 震惊的看着我
@@ -317,7 +320,7 @@
 “不认识”
 “不好意思，是我认错人了”
 
-括号把我毁了`, image: "images/store-03.jpg", date: "2026-02-10", likes: 913 },
+括号把我毁了`, image: CDN_BASE + "images/store-03.jpg", date: "2026-02-10", likes: 913 },
             { id: 4, title: "回到家总感觉少了点啥原来是一起的朋友丢了", fullContent: `回到家总感觉少了点啥
 原来是一起的朋友丢了
 停车到家才发现少了个人
@@ -346,7 +349,7 @@
 一点动静都没有
 他白了我好几眼
 说我没脑仁
-#185大帅哥#抽象#搞笑#回家回家回家#无聊但有趣#一辈子很快就过去了吧#我的日常#朋友`, image: "images/store-04.jpg", date: "2026-02-10", likes: 1070 },
+#185大帅哥#抽象#搞笑#回家回家回家#无聊但有趣#一辈子很快就过去了吧#我的日常#朋友`, image: CDN_BASE + "images/store-04.jpg", date: "2026-02-10", likes: 1070 },
             { id: 5, title: "我们天蝎INTJ帅男是这样的", fullContent: `我们天蝎INTJ帅男是这样的
 女人
 知道错了吗
@@ -383,7 +386,7 @@
 
 我会亖的
 我现在就亖
-#搞笑 #185大帅哥 #抽象 #我的日常 #天蝎 #男人的容貌女人的荣耀 #你就让让我吧`, image: "images/store-05.jpg", date: "2026-02-09", likes: 1332 },
+#搞笑 #185大帅哥 #抽象 #我的日常 #天蝎 #男人的容貌女人的荣耀 #你就让让我吧`, image: CDN_BASE + "images/store-05.jpg", date: "2026-02-09", likes: 1332 },
             { id: 6, title: "奔现因为比照片还帅 被狠狠甩了", fullContent: `奔现因为比照片还帅被狠狠甩了
 说我一看就不是那种会过日子的男人
 降不住我
@@ -396,7 +399,7 @@
 #185大帅哥 #搞笑 #抽象 #我的日常 #谈不了一点 #我开玩笑的 #别管我了
 比照片还帅是我的错吗
 怎么能那么对我
-卡其嘛`, image: "images/store-06.jpg", date: "2026-02-08", likes: 1594 },
+卡其嘛`, image: CDN_BASE + "images/store-06.jpg", date: "2026-02-08", likes: 1594 },
             { id: 7, title: "打篮球一共被五个女生搭讪", fullContent: `她们夸我长得又高又帅又白
 身材还好
 腿特长
@@ -412,7 +415,7 @@
 哪有
 正呲着牙笑的时候
 从床上掉下去摔醒了
-#185大帅哥 #抽象 #搞笑 #打篮球 #我开玩笑的 #发疯`, image: "images/store-07.jpg", date: "2026-02-08", likes: 1096 },
+#185大帅哥 #抽象 #搞笑 #打篮球 #我开玩笑的 #发疯`, image: CDN_BASE + "images/store-07.jpg", date: "2026-02-08", likes: 1096 },
             { id: 8, title: "被一个女生搭讪要两次然后发现她们是双胞胎", fullContent: `被一个女生搭讪要两次
 然后发现她们是双胞胎
 根本不是同一个人
@@ -454,7 +457,7 @@
 我之前还发四
 我一丁不会告诉别人的
 我嘴出了名的严
-嗯✓`, image: "images/store-08.jpg", date: "2026-02-07", likes: 1620 },
+嗯✓`, image: CDN_BASE + "images/store-08.jpg", date: "2026-02-07", likes: 1620 },
             { id: 9, title: "认错人跳到了帅哥背上帅哥背着我直接走了", fullContent: `总的来说来的总说
 就是我一个朋友
 她和她一个183的t朋友去买东西
@@ -476,7 +479,7 @@
 当时一脸震惊的看着他俩越走越远
 剩她一个人独自茫然
 (因为个头差不多，加上是晚上我朋友没戴眼镜没认出来，都是穿的黑袄)
-#185大帅哥 #抽象 #搞笑 #到点就跑路 #我的日常 #朋友 #只要我不尴尬 `, image: "images/store-09.jpg", date: "2026-02-06", likes: 7342 },
+#185大帅哥 #抽象 #搞笑 #到点就跑路 #我的日常 #朋友 #只要我不尴尬 `, image: CDN_BASE + "images/store-09.jpg", date: "2026-02-06", likes: 7342 },
             { id: 10, title: "买的烧鸡不小心烫到了帅哥的熊肌", fullContent: `买的烧鸡不小心烫到了帅哥的熊肌
 是这样
 我之前顶着一头鸡窝去楼下门口拿快递
@@ -511,7 +514,7 @@
 那个时候我被毛毛细雨淋的很像一个无家可归的美男子
 #185大帅哥 #抽象 #搞笑 #你这里欠我的用什么还#我的日常
 然后就发现她把我当成流落街头的人了
-烧鸡把我毁了`, image: "images/store-10.jpg", date: "2026-02-05", likes: 2415 },
+烧鸡把我毁了`, image: CDN_BASE + "images/store-10.jpg", date: "2026-02-05", likes: 2415 },
             { id: 11, title: "搞得俺怪不好意思的 就这样 别停", fullContent: `哈哈哈我没笑
 哈哈哈s嘴快憋住
 哈哈哈好想笑
@@ -524,7 +527,7 @@
 嗯
 对
 (憋住)
-#185大帅哥 #抽象 #搞笑 #怪不好意思的 #让大家见笑了 #你人还怪好勒 #好像有点语无伦次 #我的日常 `, image: "images/store-11.jpg", date: "2026-02-04", likes: 1314 },
+#185大帅哥 #抽象 #搞笑 #怪不好意思的 #让大家见笑了 #你人还怪好勒 #好像有点语无伦次 #我的日常 `, image: CDN_BASE + "images/store-11.jpg", date: "2026-02-04", likes: 1314 },
             { id: 12, title: "朋友在自家店里帮忙以一人之力店里座无虚席", fullContent: `朋友在自家店里打工
 以一人之力店里座无虚席
 笑s我了
@@ -564,7 +567,7 @@
 说叔叔店里怎么不见那个男生服务员了
 是没来吗
 我不行了笑s我了
-#抽象 #搞笑 #我的日常 #谁能解释这种现象 #朋友 #世界上还是好人多 #哈哈哈哈`, image: "images/store-12.jpg", date: "2026-02-04", likes: 3974 },
+#抽象 #搞笑 #我的日常 #谁能解释这种现象 #朋友 #世界上还是好人多 #哈哈哈哈`, image: CDN_BASE + "images/store-12.jpg", date: "2026-02-04", likes: 3974 },
             { id: 13, title: "烦 帅到睡不着", fullContent: `#185大帅哥 #抽象 #搞笑 #帅帅帅帅帅 #被自己帅到了 #帅就完事儿 #如果帅到你 #一个字帅就完了 #就一个字帅
 烦
 帅到睡不着
@@ -585,19 +588,42 @@
 我帅到快要晕厥
 怎么能那么帅
 你这个迷人的男人
-#朋友 `, images: ["images-part1/store-13-01.jpg","images-part1/store-13-02.jpg","images-part1/store-13-03.jpg","images-part1/store-13-04.jpg","images-part1/store-13-05.jpg","images-part1/store-13-06.jpg","images-part1/store-13-07.jpg","images-part1/store-13-08.jpg","images-part1/store-13-09.jpg","images-part1/store-13-10.jpg","images-part1/store-13-11.jpg","images-part1/store-13-12.jpg","images-part1/store-13-13.jpg","images-part1/store-13-14.jpg","images-part1/store-13-15.jpg","images-part1/store-13-16.jpg","images-part1/store-13-17.jpg","images-part1/store-13-18.jpg","images-part1/store-13-19.jpg","images-part1/store-13-20.jpg","images-part1/store-13-21.jpg","images-part1/store-13-22.jpg"], date: "2026-02-02", likes: 2244 },
+#朋友 `, images: [
+                CDN_BASE + "images-part1/store-13-01.jpg",
+                CDN_BASE + "images-part1/store-13-02.jpg",
+                CDN_BASE + "images-part1/store-13-03.jpg",
+                CDN_BASE + "images-part1/store-13-04.jpg",
+                CDN_BASE + "images-part1/store-13-05.jpg",
+                CDN_BASE + "images-part1/store-13-06.jpg",
+                CDN_BASE + "images-part1/store-13-07.jpg",
+                CDN_BASE + "images-part1/store-13-08.jpg",
+                CDN_BASE + "images-part1/store-13-09.jpg",
+                CDN_BASE + "images-part1/store-13-10.jpg",
+                CDN_BASE + "images-part1/store-13-11.jpg",
+                CDN_BASE + "images-part1/store-13-12.jpg",
+                CDN_BASE + "images-part1/store-13-13.jpg",
+                CDN_BASE + "images-part1/store-13-14.jpg",
+                CDN_BASE + "images-part1/store-13-15.jpg",
+                CDN_BASE + "images-part1/store-13-16.jpg",
+                CDN_BASE + "images-part1/store-13-17.jpg",
+                CDN_BASE + "images-part1/store-13-18.jpg",
+                CDN_BASE + "images-part1/store-13-19.jpg",
+                CDN_BASE + "images-part1/store-13-20.jpg",
+                CDN_BASE + "images-part1/store-13-21.jpg",
+                CDN_BASE + "images-part1/store-13-22.jpg"
+            ], date: "2026-02-02", likes: 2244 },
             { id: 14, title: "突然发现我竟然是一个187的帅哥", fullContent: `突然发现我竟然是一个187宽肩窄腰的大帅哥
 爽之爽之
 帅气的齿轮原来早就开始转动了
 今天又是被自己帅到能吃两碗大米饭的一个早晨
 #185大帅哥 #抽象 #搞笑 #主打的就是一个自信 #小帅大帅哥 #被自己迷倒了
-其实是186.7 `, image: "images/store-14.jpg", date: "2026-02-03", likes: 1627 },
+其实是186.7 `, image: CDN_BASE + "images/store-14.jpg", date: "2026-02-03", likes: 1627 },
             { id: 15, title: "我的一个朋友长得很帅", fullContent: `我的一个朋友长得很帅
 我跟他一起去吃饭的时候
 我突然被一个女生挡住。
 那个女生对我说
 “男人，给你两秒钟，把你身边的人介绍给我认识一下。要是敢拒绝我的话，呵呵，我就会灰溜溜的离开”
-#185大帅哥 #抽象 #搞笑 #长得好看的人 #有趣 #朋友 #我的日常`, image: "images/store-15.jpg", date: "2026-01-29", likes: 1310 },
+#185大帅哥 #抽象 #搞笑 #长得好看的人 #有趣 #朋友 #我的日常`, image: CDN_BASE + "images/store-15.jpg", date: "2026-01-29", likes: 1310 },
             { id: 16, title: "被一个大美搭讪了 仔细一看是高中班主任", fullContent: `被一个大美搭讪了仔细一看是高中班主任
 突然想起来了前段时间
 坐公交车的时候
@@ -635,7 +661,7 @@
 我不行了吧
 世界真小
 #185大帅哥 #搞笑 #我的日常 #抽象
-#一个人上网挺无助的 #无助 `, image: "images/store-16.jpg", date: "2026-01-28", likes: 2177 },
+#一个人上网挺无助的 #无助 `, image: CDN_BASE + "images/store-16.jpg", date: "2026-01-28", likes: 2177 },
             { id: 17, title: "陪一个同学相亲 结果女生看上我了", fullContent: `陪一个同学相亲结果女生看上我了
 我一个同学昨天回来了
 他比我大两岁
@@ -680,13 +706,13 @@
 省的他不愿意他家里人又说他
 还说他是故意带我去的
 我去了肯定先看上我
-我不行了 `, image: "images/store-17.jpg", date: "2026-01-28", likes: 1799 },
+我不行了 `, image: CDN_BASE + "images/store-17.jpg", date: "2026-01-28", likes: 1799 },
             { id: 18, title: "戴口罩被一个女生莫名其妙搭讪了六次", fullContent: `说我长得像他很久不得见的表哥
 我笑了
 我摘下来口罩说
 
 我就是你表哥
-#185大帅哥 #抽象 #搞笑 #难绷的生活 #喘不上来气 #难道就我一个人`, image: "images/store-18.jpg", date: "2026-01-27", likes: 9988 },
+#185大帅哥 #抽象 #搞笑 #难绷的生活 #喘不上来气 #难道就我一个人`, image: CDN_BASE + "images/store-18.jpg", date: "2026-01-27", likes: 9988 },
             { id: 19, title: "因长得太帅搭讪女生被拒绝 哭了一天", fullContent: `因为长得太帅搭讪女生被拒绝了
 哭到天亮
 哭累了就睡
@@ -738,10 +764,10 @@
 就去玩抽象了
 所以
 抽象男没有爱情
-#帅哥 #搞笑 #抽象 #爱情 #被拒绝 #生活趣事 #185大帅哥 #我的日常`, image: "images/store-19.jpg", date: "2026-01-25", likes: 1529 },
+#帅哥 #搞笑 #抽象 #爱情 #被拒绝 #生活趣事 #185大帅哥 #我的日常`, image: CDN_BASE + "images/store-19.jpg", date: "2026-01-25", likes: 1529 },
             { id: 20, title: "唱k和模子哥撞衫了被点了", fullContent: `去唱k 和模子哥撞衫了
 然后又被点了
-#185大帅哥 #抽象 #搞笑 #遇到奇怪的人 #朋友 #我不行了`, image: "images/store-20.jpg", date: "2026-01-24", likes: 2115 },
+#185大帅哥 #抽象 #搞笑 #遇到奇怪的人 #朋友 #我不行了`, image: CDN_BASE + "images/store-20.jpg", date: "2026-01-24", likes: 2115 },
             { id: 21, title: "一男的突然坐在我旁边突然喊了一句老公", fullContent: `被男的当成他网恋对象了 张口就喊老公
 之前我去吃KFC
 有一男的突然坐我旁边了
@@ -756,7 +782,7 @@
 站起来端着炸鸡就跑了
 太诡异了
 孩怕
-#185大帅哥 #抽象 #搞笑 #莫名其妙的 #网恋`, image: "images/store-21.jpg", date: "2026-01-23", likes: 1500 },
+#185大帅哥 #抽象 #搞笑 #莫名其妙的 #网恋`, image: CDN_BASE + "images/store-21.jpg", date: "2026-01-23", likes: 1500 },
             { id: 22, title: "坐地铁被脸盲的女生搭讪了四次", fullContent: `地铁上被一个姐姐搭讪了四次
 她说她脸盲
 可是姐姐
@@ -781,11 +807,11 @@
 我发这个贴不是说自己多帅多帅
 是遇见的这个姐姐很有趣
 被她说的我一直笑
-上了整天班的我也不累了`, image: "images/store-22.jpg", date: "2026-01-23", likes: 1623 },
+上了整天班的我也不累了`, image: CDN_BASE + "images/store-22.jpg", date: "2026-01-23", likes: 1623 },
             { id: 23, title: "”我一直在哭“", fullContent: `我和我弟撞crush了
 我输给我弟了
 我弟和我crush在一起了
-#185大帅哥 #抽象 #搞笑 #关于我的crush #crush #谁说女追男隔层纱的 #朋友`, image: "images/store-23.jpg", date: "2026-01-22", likes: 1906 },
+#185大帅哥 #抽象 #搞笑 #关于我的crush #crush #谁说女追男隔层纱的 #朋友`, image: CDN_BASE + "images/store-23.jpg", date: "2026-01-22", likes: 1906 },
             { id: 24, title: "我的围巾勾住了帅哥的耳钉", fullContent: `这个帅哥其实是我朋友了
 长挺帅一男的
 我们都叫他村草
@@ -805,11 +831,11 @@
 直接把线拽断了
 线缠他耳钉那个钻里面了
 我不知道说啥好了
-#185大帅哥 #抽象 #搞笑 #围脖 #总之很暖和 #我的日常 #一个人上网挺无助的`, image: "images/store-24.jpg", date: "2026-01-21", likes: 1915 },
+#185大帅哥 #抽象 #搞笑 #围脖 #总之很暖和 #我的日常 #一个人上网挺无助的`, image: CDN_BASE + "images/store-24.jpg", date: "2026-01-21", likes: 1915 },
             { id: 25, title: "去见别人介绍的对象，结果被她哥看上了", fullContent: `我同学的哥哥去见别人给他介绍的对象
 因为快过年了
 年龄到了家长不就一直会催吗
-然后我同学说他哥昨天去见了一个女生
+我同学说他哥昨天去见了一个女生
 (相亲去女生家里)
 女生是龙凤胎
 还有一个哥哥，女生是妹妹
@@ -824,7 +850,7 @@
 我不行了吧
 我看我同学说的跟别人家的事情一样
 听的我一愣又一愣的
-#185大帅哥 #抽象 #搞笑  #真让我大开眼界了`, image: "images/store-25.jpg", date: "2026-01-20", likes: 2948 },
+#185大帅哥 #抽象 #搞笑  #真让我大开眼界了`, image: CDN_BASE + "images/store-25.jpg", date: "2026-01-20", likes: 2948 },
             { id: 26, title: "女生颜控我整成了大帅哥回来她成我小妈了", fullContent: `女生颜控所以我整成了帅哥
 回来她成我小妈了
 #185大帅哥 #抽象 #搞笑 #离谱 #我不行了 #朋友 #漂亮姐姐
@@ -840,7 +866,7 @@
 ？
 ？
 ？
-我还是去看丧尸电视剧吧`, image: "images/store-26.jpg", date: "2026-01-18", likes: 1841 },
+我还是去看丧尸电视剧吧`, image: CDN_BASE + "images/store-26.jpg", date: "2026-01-18", likes: 1841 },
             { id: 27, title: "告白失败了 她说我长得太帅了根本不敢谈", fullContent: `表白失败了
 她说我长得太帅了不敢谈
 我太难过了
@@ -858,7 +884,7 @@
 
 这很难吗？
 
-#185大帅哥 #抽象 #搞笑 #谈不了一点 #我开玩笑的 #我只是胡言乱语 #魅力`, image: "images/store-27.jpg", date: "2026-01-18", likes: 7300 },
+#185大帅哥 #抽象 #搞笑 #谈不了一点 #我开玩笑的 #我只是胡言乱语 #魅力`, image: CDN_BASE + "images/store-27.jpg", date: "2026-01-18", likes: 7300 },
             { id: 28, title: "你可能不认识我 但或许刷到这些", fullContent: `你可能不认识我
 但或许刷到过这些
 #185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #抽象艺术 #吃瓜
@@ -868,7 +894,14 @@
 是从哪里开始认识我的呢
 
 抽象不停
-开心不止`, images: ["images-part1/store-28-01.jpg","images-part1/store-28-02.jpg","images-part1/store-28-03.jpg","images-part1/store-28-04.jpg","images-part1/store-28-05.jpg","images-part1/store-28-06.jpg"], date: "2026-01-18", likes: 1319 },
+开心不止`, images: [
+                CDN_BASE + "images-part1/store-28-01.jpg",
+                CDN_BASE + "images-part1/store-28-02.jpg",
+                CDN_BASE + "images-part1/store-28-03.jpg",
+                CDN_BASE + "images-part1/store-28-04.jpg",
+                CDN_BASE + "images-part1/store-28-05.jpg",
+                CDN_BASE + "images-part1/store-28-06.jpg"
+            ], date: "2026-01-18", likes: 1319 },
             { id: 29, title: "头回收到那么消息 谢谢大家夸我很帅", fullContent: `头回收到那么多消息
 谢谢大家夸我很帅
 大家的照片和资料我都看了
@@ -917,7 +950,7 @@
 我也允许她物质一点
 她可以拿着我的卡
 随便刷
-#185大帅哥 #搞笑 #抽象 #我的日常 #主打一个自信 #抽象博主 #文案`, image: "images/store-29.jpg", date: "2026-01-17", likes: 1898 },
+#185大帅哥 #搞笑 #抽象 #我的日常 #主打一个自信 #抽象博主 #文案`, image: CDN_BASE + "images/store-29.jpg", date: "2026-01-17", likes: 1898 },
             { id: 30, title: "刚当模子被我妹点给她男闺蜜了", fullContent: `刚当模子被我妹点给她男闺蜜了
 我去当模子纯属好奇
 就体验一下(因为老有人把我当模子，问我)
@@ -975,7 +1008,7 @@
 才发现我的猫趴我脸上了
 我把猫抱下来
 就去厕所了
-#做梦`, image: "images/store-30.jpg", date: "2026-01-17", likes: 1941 },
+#做梦`, image: CDN_BASE + "images/store-30.jpg", date: "2026-01-17", likes: 1941 },
             { id: 31, title: "发了一张帅照 不到九分钟消息就炸了", fullContent: `发了一张帅照 不到九分钟消息就炸了
 如果你进来看了
 那么你就骗了
@@ -983,7 +1016,7 @@
 吃完饭再去睡个午觉吧
 我再祝你做个美梦吧
 祝你开心到永无止境吧
-#185大帅哥 #抽象 #搞笑 #我的日常 #不是哥们儿 #网友 #开心`, image: "images/store-31.jpg", date: "2026-01-15", likes: 1667 },
+#185大帅哥 #抽象 #搞笑 #我的日常 #不是哥们儿 #网友 #开心`, image: CDN_BASE + "images/store-31.jpg", date: "2026-01-15", likes: 1667 },
             { id: 32, title: "安徽地铁坐两个帅哥中间他俩都倚着我睡着了", fullContent: `安徽地铁坐在两个帅哥中间
 他俩都倚着我睡着了
 真的挺帅的
@@ -1038,7 +1071,7 @@
 虽然他们长得挺帅的
 但是他们能倚着我这个宽肩窄腰的大帅哥睡
 真是便宜他们了
-#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #天蝎 #安徽 #帅哥`, image: "images/store-32.jpg", date: "2026-01-15", likes: 2711 },
+#185大帅哥 #抽象 #搞笑 #朋友 #我的日常 #天蝎 #安徽 #帅哥`, image: CDN_BASE + "images/store-32.jpg", date: "2026-01-15", likes: 2711 },
             { id: 33, title: "被伴郎看上了吹我脖子怎么办 我也是伴郎", fullContent: `大家好我回来了
 是的前天我去参加婚礼了
 被伴郎看上了怎么办 我也是伴郎
@@ -1056,7 +1089,7 @@
 都好吃
 把我好吃懵了
 还以为屋里起风刮我脖子里了
-一回头身后站着一个人`, image: "images/store-33.jpg", date: "2026-01-14", likes: 6005 },
+一回头身后站着一个人`, image: CDN_BASE + "images/store-33.jpg", date: "2026-01-14", likes: 6005 },
             { id: 34, title: "走错屋躺在了陌生帅哥旁边", fullContent: `还记得之前和朋友出去旅游
 卷毛问号，我和室友
 四个人定了两间大床房(没有标间了)
@@ -1114,7 +1147,7 @@
 我就这样走了
 人家情侣会不会打起来啥的
 我也不知道
-应该不会吧`, image: "images/store-34.jpg", date: "2026-01-08", likes: 4904 },
+应该不会吧`, image: CDN_BASE + "images/store-34.jpg", date: "2026-01-08", likes: 4904 },
             { id: 35, title: "我姐对象以为我小叔是我姐追求者", fullContent: `我姐对象以为我小叔是我姐追求者 快咬人了
 我不是跟你们说要带我小叔
 治那男的(我姐对象)吗
@@ -1201,7 +1234,7 @@
 小样
 治不毁你
 让你给我吃酸草莓
-让你给我吃边角料`, image: "images/store-35.jpg", date: "2026-01-05", likes: 3287 },
+让你给我吃边角料`, image: CDN_BASE + "images/store-35.jpg", date: "2026-01-05", likes: 3287 },
             { id: 36, title: "19岁小叔放假了说他在学校某天被搭讪了20次", fullContent: `19岁小叔放假了说他在学校某天被要了20次
 年轻就是好
 某天被搭讪要了20次
@@ -1210,7 +1243,7 @@
 #185大帅哥 #抽象 #搞笑 #单纯大学生 #朋友 #大学生 #反差系男子
 等等
 我都22了
-小叔他怎么还19`, image: "images/store-36.jpg", date: "2026-01-05", likes: 1494 },
+小叔他怎么还19`, image: CDN_BASE + "images/store-36.jpg", date: "2026-01-05", likes: 1494 },
             { id: 37, title: "近视跨年要了两个帅哥加上发现都是前男友", fullContent: `没戴眼镜要了两个帅哥
 加上发现都是前男友
 笑亖我了
@@ -1269,7 +1302,7 @@
 直接一整个暴跳如雷
 凑我脸上看
 然后
-“窝屮怎么是你”`, image: "images/store-37.jpg", date: "2026-01-01", likes: 2007 },
+“窝屮怎么是你”`, image: CDN_BASE + "images/store-37.jpg", date: "2026-01-01", likes: 2007 },
             { id: 38, title: "朋友出门被二十几个女生要了 许一生专贴", fullContent: `西西里里
 以及编外人员祝大家
 元旦快乐
@@ -1283,7 +1316,7 @@
 朋友出门被二十几个女生要了
 跨年果然出去人挤人
 一天被二十几个女生要了的牙医许一生
-倒也不夸张`, image: "images/store-38.jpg", date: "2025-12-31", likes: 2053 },
+倒也不夸张`, image: CDN_BASE + "images/store-38.jpg", date: "2025-12-31", likes: 2053 },
             { id: 39, title: "（）朋友专线+西西里里", fullContent: `(    )朋友专线
 那么喜欢他
 中
@@ -1333,7 +1366,14 @@
 #185大帅哥 #抽象 #搞笑 #大家的朋友 #我的日常 #朋友
 笑亖我了
 没见过30一个的橘子
-受宠若惊`, images: ["images-part1/store-39-01.jpg","images-part1/store-39-02.jpg","images-part1/store-39-03.jpg","images-part1/store-39-04.jpg","images-part1/store-39-05.jpg","images-part1/store-39-06.jpg"], date: "2025-12-29", likes: 1163 },
+受宠若惊`, images: [
+                CDN_BASE + "images-part1/store-39-01.jpg",
+                CDN_BASE + "images-part1/store-39-02.jpg",
+                CDN_BASE + "images-part1/store-39-03.jpg",
+                CDN_BASE + "images-part1/store-39-04.jpg",
+                CDN_BASE + "images-part1/store-39-05.jpg",
+                CDN_BASE + "images-part1/store-39-06.jpg"
+            ], date: "2025-12-29", likes: 1163 },
             { id: 40, title: "小，叔，你，好，香", fullContent: `昨天晚上忙完回来昏昏欲睡
 坐地铁还坐过站了
 又倒回来了
@@ -1399,9 +1439,9 @@
 里面套西装
 经常想象自己是霸道总裁或者大哥大
 小叔像我的保镖
-#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #好香的饭我吃吃吃 #小叔`, image: "images/store-40.jpg", date: "2025-12-26", likes: 1320 },
+#185大帅哥 #抽象 #搞笑 #我的日常 #朋友 #好香的饭我吃吃吃 #小叔`, image: CDN_BASE + "images/store-40.jpg", date: "2025-12-26", likes: 1320 },
             { id: 41, title: "卷毛男大温柔系", fullContent: `卷毛哥专栏
-##卷毛小狗统治世界 #183男大 #朋友 #大佬的自我修养 #抽象 #185大帅哥 #巨蟹座 #大帅哥`, image: "images/store-41.jpg", date: "2025-12-14", likes: 1613 },
+##卷毛小狗统治世界 #183男大 #朋友 #大佬的自我修养 #抽象 #185大帅哥 #巨蟹座 #大帅哥`, image: CDN_BASE + "images/store-41.jpg", date: "2025-12-14", likes: 1613 },
             { id: 42, title: "我妹介绍给男同学的女生看上我了", fullContent: `我妹给她同学小帅介绍的妹子看上我了
 真的
 昨天不周四吗
@@ -1435,7 +1475,7 @@
 弄得她不知道怎么办了
 我？
 雨我无瓜
-#185大帅哥 #抽象 #搞笑 #莫名其妙的 #我的日常 #那些尴尬事 #谈不了一点`, image: "images/store-42.jpg", date: "2025-12-12", likes: 1827 },
+#185大帅哥 #抽象 #搞笑 #莫名其妙的 #我的日常 #那些尴尬事 #谈不了一点`, image: CDN_BASE + "images/store-42.jpg", date: "2025-12-12", likes: 1827 },
             { id: 43, title: "西西里里男团（bushi）", fullContent: `(西西里里今日男嘉宾)如下
 第一位
 摩羯禁欲系许牙医
@@ -1472,7 +1512,7 @@
 
 宿主请选择
 #185大帅哥 #风象和土象 #我的日常 #投票 #抽象 #朋友
-很久不写了，有点手生`, image: "images/store-43.jpg", date: "2025-12-11", likes: 1979 },
+很久不写了，有点手生`, image: CDN_BASE + "images/store-43.jpg", date: "2025-12-11", likes: 1979 },
             { id: 44, title: "低血糖晕倒的几秒选择倒进了帅哥怀里", fullContent: `低血糖晕倒的几秒选择倒进了帅哥怀里
 这个帅哥说的就是我
 不是我说的
@@ -1496,7 +1536,7 @@
 长那么大
 头一回被帅哥抱
 都给我整不好意思了
-#185大帅哥 #抽象 #搞笑 #爱上帅哥就像呼吸一样简单 #哪有不疯的硬撑罢了 #脆弱小女孩 #我的日常`, image: "images/store-44.jpg", date: "2025-12-05", likes: 1909 },
+#185大帅哥 #抽象 #搞笑 #爱上帅哥就像呼吸一样简单 #哪有不疯的硬撑罢了 #脆弱小女孩 #我的日常`, image: CDN_BASE + "images/store-44.jpg", date: "2025-12-05", likes: 1909 },
             { id: 45, title: "不小心把蓝发帅哥撞进手推车里推走了", fullContent: `不小心把蓝发帅哥撞进了我的购物手推车里推走了
 很尴尬了
 真的太尴尬了
@@ -1510,12 +1550,41 @@
 蓝发帅哥说“你 哔哔 的瞎了”
 “还不 哔哔 的拽我起来”
 “我 哔哔 的卡车里了”
-#185大帅哥 #抽象 #搞笑  #不要再搞抽象了好吗 #勤俭持家好男人 #朋友 #室友 #一个人上网挺无助的`, image: "images/store-45.jpg", date: "2025-12-02", likes: 2357 },
+#185大帅哥 #抽象 #搞笑  #不要再搞抽象了好吗 #勤俭持家好男人 #朋友 #室友 #一个人上网挺无助的`, image: CDN_BASE + "images/store-45.jpg", date: "2025-12-02", likes: 2357 },
             { id: 46, title: "许医生检讨笑亖我了 西西里里", fullContent: `#185大帅哥 #抽象 #搞笑 #现在人的精神状态 #聊天表情包 #聊天日常 #聊天记录截图 #朋友 #我的日常
 西西里里特长聊天记录
 笑亖我了
-#搞笑聊天记录`, images: ["images-part1/store-46-01.jpg","images-part1/store-46-02.jpg","images-part1/store-46-03.jpg","images-part1/store-46-04.jpg","images-part1/store-46-05.jpg","images-part1/store-46-06.jpg","images-part1/store-46-07.jpg","images-part1/store-46-08.jpg","images-part1/store-46-09.jpg","images-part1/store-46-10.jpg","images-part1/store-46-11.jpg","images-part1/store-46-12.jpg","images-part1/store-46-13.jpg","images-part1/store-46-14.jpg","images-part1/store-46-15.jpg","images-part1/store-46-16.jpg","images-part1/store-46-17.jpg","images-part1/store-46-18.jpg","images-part1/store-46-19.jpg","images-part1/store-46-20.jpg","images-part1/store-46-21.jpg","images-part1/store-46-22.jpg"], date: "2025-11-17", likes: 2282 },
-            { id: 47, title: "也没什么，就是一段很日常的西西里里", fullContent: `#抽象 #搞笑 #我的日常 #无聊但有趣 #哪有不疯的硬撑罢了 #内心世界的日常叨叨 #出门在外人设是自己给的 #朋友`, images: ["images-part1/store-47-01.jpg","images-part1/store-47-02.jpg","images-part1/store-47-03.jpg","images-part1/store-47-04.jpg","images-part1/store-47-05.jpg"], date: "2025-11-11", likes: 1153 },
+#搞笑聊天记录`, images: [
+                CDN_BASE + "images-part1/store-46-01.jpg",
+                CDN_BASE + "images-part1/store-46-02.jpg",
+                CDN_BASE + "images-part1/store-46-03.jpg",
+                CDN_BASE + "images-part1/store-46-04.jpg",
+                CDN_BASE + "images-part1/store-46-05.jpg",
+                CDN_BASE + "images-part1/store-46-06.jpg",
+                CDN_BASE + "images-part1/store-46-07.jpg",
+                CDN_BASE + "images-part1/store-46-08.jpg",
+                CDN_BASE + "images-part1/store-46-09.jpg",
+                CDN_BASE + "images-part1/store-46-10.jpg",
+                CDN_BASE + "images-part1/store-46-11.jpg",
+                CDN_BASE + "images-part1/store-46-12.jpg",
+                CDN_BASE + "images-part1/store-46-13.jpg",
+                CDN_BASE + "images-part1/store-46-14.jpg",
+                CDN_BASE + "images-part1/store-46-15.jpg",
+                CDN_BASE + "images-part1/store-46-16.jpg",
+                CDN_BASE + "images-part1/store-46-17.jpg",
+                CDN_BASE + "images-part1/store-46-18.jpg",
+                CDN_BASE + "images-part1/store-46-19.jpg",
+                CDN_BASE + "images-part1/store-46-20.jpg",
+                CDN_BASE + "images-part1/store-46-21.jpg",
+                CDN_BASE + "images-part1/store-46-22.jpg"
+            ], date: "2025-11-17", likes: 2282 },
+            { id: 47, title: "也没什么，就是一段很日常的西西里里", fullContent: `#抽象 #搞笑 #我的日常 #无聊但有趣 #哪有不疯的硬撑罢了 #内心世界的日常叨叨 #出门在外人设是自己给的 #朋友`, images: [
+                CDN_BASE + "images-part1/store-47-01.jpg",
+                CDN_BASE + "images-part1/store-47-02.jpg",
+                CDN_BASE + "images-part1/store-47-03.jpg",
+                CDN_BASE + "images-part1/store-47-04.jpg",
+                CDN_BASE + "images-part1/store-47-05.jpg"
+            ], date: "2025-11-11", likes: 1153 },
             { id: 48, title: "我爸的背影让好几个女生过来搭讪", fullContent: `我爸的背影让好几个女生过来搭讪
 我爸187背头白衬衫西裤
 袖子半撸宽肩窄腰
@@ -1537,18 +1606,29 @@
 越来越有味道了
 我妈说别管他
 他又开始臭美了
-#185大帅哥 #抽象  #龙图 #有趣的表情包 #一个人上网挺无助的 #已老实`, image: "images/store-48.jpg", date: "2025-09-05", likes: 1792 },
+#185大帅哥 #抽象  #龙图 #有趣的表情包 #一个人上网挺无助的 #已老实`, image: CDN_BASE + "images/store-48.jpg", date: "2025-09-05", likes: 1792 },
             { id: 49, title: "我爸是185大帅哥", fullContent: `我爸是187老帅哥
 我爸比我还高一点
 但是平常看着跟我差不多
 可能缩水了吧
 也可能我又长个了
-#185大帅哥 #抽象 #好无聊给家人来点反差震撼 #雄鹰一样的男人`, image: "images/store-49.jpg", date: "2025-07-15", likes: 1744 },
+#185大帅哥 #抽象 #好无聊给家人来点反差震撼 #雄鹰一样的男人`, image: CDN_BASE + "images/store-49.jpg", date: "2025-07-15", likes: 1744 },
             { id: 50, title: "放一个训狗歌吧", fullContent: `#日常文案 #快乐瞬间 #185大帅哥 #抽象 #我又在乱来 #主要是歌好听
 6号更新，先随便糊一下，听歌吧各位
 ps把最近收到的图都发一下
 都特别喜欢哈哈哈哈
-里面还有检讨`, images: ["images-part1/store-50-01.jpg","images-part1/store-50-02.jpg","images-part1/store-50-03.jpg","images-part1/store-50-04.jpg","images-part1/store-50-05.jpg","images-part1/store-50-06.jpg","images-part1/store-50-07.jpg","images-part1/store-50-08.jpg","images-part1/store-50-09.jpg","images-part1/store-50-10.jpg"], date: "2025-07-04", likes: 1284 },
+里面还有检讨`, images: [
+                CDN_BASE + "images-part1/store-50-01.jpg",
+                CDN_BASE + "images-part1/store-50-02.jpg",
+                CDN_BASE + "images-part1/store-50-03.jpg",
+                CDN_BASE + "images-part1/store-50-04.jpg",
+                CDN_BASE + "images-part1/store-50-05.jpg",
+                CDN_BASE + "images-part1/store-50-06.jpg",
+                CDN_BASE + "images-part1/store-50-07.jpg",
+                CDN_BASE + "images-part1/store-50-08.jpg",
+                CDN_BASE + "images-part1/store-50-09.jpg",
+                CDN_BASE + "images-part1/store-50-10.jpg"
+            ], date: "2025-07-04", likes: 1284 },
             { id: 51, title: "我妈在马路牙子上捡了一个帅哥回家", fullContent: `就在之前
 我妈在马路牙子上捡了一个帅哥回家
 当我到家的时候他正在沙发上坐着
@@ -1595,21 +1675,45 @@ ps把最近收到的图都发一下
 不会又是我姐的弟弟前任吧或者追求者吧
 不是
 她咋认识那么多弟弟
-#185大帅哥 #男大学生 #抽象 #世界能不能对我好一点 #尖叫扭曲阴暗地爬行 #难绷的生活 #唱歌`, image: "images/store-51.jpg", date: "2025-06-24", likes: 3174 },
+#185大帅哥 #男大学生 #抽象 #世界能不能对我好一点 #尖叫扭曲阴暗地爬行 #难绷的生活 #唱歌`, image: CDN_BASE + "images/store-51.jpg", date: "2025-06-24", likes: 3174 },
             { id: 52, title: "好消息毕业被表白了坏消息他是男的我也是", fullContent: `好消息毕业被人表白了坏消息他是男的我也是
 真的不中了
 他说他是甜弟
 让我考虑考虑吧
-#185大帅哥 #男大学生 #抽象 #我只想毕业 #再也不玩抽象了 #毕业生 #表白 #我没惹任何人 #直男`, image: "images/store-52.jpg", date: "2025-06-04", likes: 1359 },
+#185大帅哥 #男大学生 #抽象 #我只想毕业 #再也不玩抽象了 #毕业生 #表白 #我没惹任何人 #直男`, image: CDN_BASE + "images/store-52.jpg", date: "2025-06-04", likes: 1359 },
             { id: 53, title: "聪明的属检讨直接卸载了", fullContent: `聪明的属检讨直接卸载了
-#185大帅哥 #搞笑 #你人还怪好勒 #我只是胡言乱语`, images: ["images-part1/store-53-01.jpg","images-part1/store-53-02.jpg","images-part1/store-53-03.jpg","images-part1/store-53-04.jpg"], date: "2025-05-21", likes: 1121 },
+#185大帅哥 #搞笑 #你人还怪好勒 #我只是胡言乱语`, images: [
+                CDN_BASE + "images-part1/store-53-01.jpg",
+                CDN_BASE + "images-part1/store-53-02.jpg",
+                CDN_BASE + "images-part1/store-53-03.jpg",
+                CDN_BASE + "images-part1/store-53-04.jpg"
+            ], date: "2025-05-21", likes: 1121 },
             { id: 54, title: "卷毛专栏提前了", fullContent: `卷毛专栏
 只有20分钟左右吧
 他有事我也有事我要回去
-#185大帅哥 #抽象 #男大学生 #卷毛小狗统治世界 #想说的如图所示 #卷卷卷起来`, image: "images/store-54.jpg", date: "2025-05-11", likes: 1187 },
+#185大帅哥 #抽象 #男大学生 #卷毛小狗统治世界 #想说的如图所示 #卷卷卷起来`, image: CDN_BASE + "images/store-54.jpg", date: "2025-05-11", likes: 1187 },
             { id: 55, title: "西西里里超长日常记录", fullContent: `西西里里超长日常记录
-#185大帅哥 #抽象 #男大学生 #无聊但有趣 #我有的我的圈儿 #饭搭子 #我的日常 #朋友 #不是一家人不进一家门 #出门在外人设是自己给的`, images: ["images/store-55-01.jpg","images/store-55-02.jpg","images/store-55-03.jpg","images/store-55-04.jpg","images/store-55-05.jpg","images/store-55-06.jpg","images/store-55-07.jpg","images/store-55-08.jpg","images/store-55-09.jpg","images/store-55-10.jpg","images/store-55-11.jpg","images/store-55-12.jpg","images/store-55-13.jpg","images/store-55-14.jpg"], date: "2025-04-20", likes: 1488 },
-            { id: 56, title: "我爸不要我了", fullContent: `#185大帅哥 #抽象 #男大学生 #对不起我错了 #所谓的亲情 #我想好好活着 #缺失的父爱 `, images: ["images/store-56-01.jpg","images/store-56-02.jpg","images/store-56-03.jpg"], date: "2025-04-14", likes: 1355 },
+#185大帅哥 #抽象 #男大学生 #无聊但有趣 #我有的我的圈儿 #饭搭子 #我的日常 #朋友 #不是一家人不进一家门 #出门在外人设是自己给的`, images: [
+                CDN_BASE + "images/store-55-01.jpg",
+                CDN_BASE + "images/store-55-02.jpg",
+                CDN_BASE + "images/store-55-03.jpg",
+                CDN_BASE + "images/store-55-04.jpg",
+                CDN_BASE + "images/store-55-05.jpg",
+                CDN_BASE + "images/store-55-06.jpg",
+                CDN_BASE + "images/store-55-07.jpg",
+                CDN_BASE + "images/store-55-08.jpg",
+                CDN_BASE + "images/store-55-09.jpg",
+                CDN_BASE + "images/store-55-10.jpg",
+                CDN_BASE + "images/store-55-11.jpg",
+                CDN_BASE + "images/store-55-12.jpg",
+                CDN_BASE + "images/store-55-13.jpg",
+                CDN_BASE + "images/store-55-14.jpg"
+            ], date: "2025-04-20", likes: 1488 },
+            { id: 56, title: "我爸不要我了", fullContent: `#185大帅哥 #抽象 #男大学生 #对不起我错了 #所谓的亲情 #我想好好活着 #缺失的父爱 `, images: [
+                CDN_BASE + "images/store-56-01.jpg",
+                CDN_BASE + "images/store-56-02.jpg",
+                CDN_BASE + "images/store-56-03.jpg"
+            ], date: "2025-04-14", likes: 1355 },
             { id: 57, title: "怎么追帅哥crush干货版", fullContent: `怎么追帅哥crush
 干货版
 很多人问我怎么怎么追喜欢的男生
@@ -1679,15 +1783,29 @@ ps把最近收到的图都发一下
 但是不要和前任做朋友
 没有朋友可做
 前任只有一条路老亖不相往来
-#和crush聊天 #185大帅哥 #抽象 #男大学生 #怎么追到喜欢的人 #把喜欢追到手 #追男生 #男生视角恋爱  #朋友 #追人 #告白 #恋爱 #恋爱教程 #让男生上头 #如何推进跟他的关系 #军师 #女追男隔层纱 #恋爱军师 #crush #直球式恋爱  #恋爱小技巧 #让男人喜欢你 #女生主动 #女孩子也可以主动出击 #聊天技巧 #看帅哥也是一种习惯 #爱上帅哥就像呼吸一样简单 #打直球`, image: "images/store-57.jpg", date: "2025-04-09", likes: 3034 },
+#和crush聊天 #185大帅哥 #抽象 #男大学生 #怎么追到喜欢的人 #把喜欢追到手 #追男生 #男生视角恋爱  #朋友 #追人 #告白 #恋爱 #恋爱教程 #让男生上头 #如何推进跟他的关系 #军师 #女追男隔层纱 #恋爱军师 #crush #直球式恋爱  #恋爱小技巧 #让男人喜欢你 #女生主动 #女孩子也可以主动出击 #聊天技巧 #看帅哥也是一种习惯 #爱上帅哥就像呼吸一样简单 #打直球`, image: CDN_BASE + "images/store-57.jpg", date: "2025-04-09", likes: 3034 },
             { id: 58, title: "西西里里的日常有许一生卷毛室友寝室长问号", fullContent: `#185大帅哥 #抽象 #男大学生 #室友  #当代寝室长  #我的日常 #不要再搞抽象了好吗
-发一下`, images: ["images-part2/store-58-01.jpg","images-part2/store-58-02.jpg","images-part2/store-58-03.jpg","images-part2/store-58-04.jpg"], date: "2025-04-08", likes: 973 },
+发一下`, images: [
+                CDN_BASE + "images-part2/store-58-01.jpg",
+                CDN_BASE + "images-part2/store-58-02.jpg",
+                CDN_BASE + "images-part2/store-58-03.jpg",
+                CDN_BASE + "images-part2/store-58-04.jpg"
+            ], date: "2025-04-08", likes: 973 },
             { id: 59, title: "全员聊天的一次，检讨笑死我了", fullContent: `全员聊天最全的一次，检讨笑死我了
 西西里里家族聊天日常
 笑死我了
 检讨现在还在那问
 哪个长啊
-#185大帅哥 #抽象 #男大学生 #忍不住想笑 #把人笑拥了 #会说话你就多说点`, images: ["images-part2/store-59-01.jpg","images-part2/store-59-02.jpg","images-part2/store-59-03.jpg","images-part2/store-59-04.jpg","images-part2/store-59-05.jpg","images-part2/store-59-06.jpg","images-part2/store-59-07.jpg","images-part2/store-59-08.jpg"], date: "2025-03-29", likes: 1750 },
+#185大帅哥 #抽象 #男大学生 #忍不住想笑 #把人笑拥了 #会说话你就多说点`, images: [
+                CDN_BASE + "images-part2/store-59-01.jpg",
+                CDN_BASE + "images-part2/store-59-02.jpg",
+                CDN_BASE + "images-part2/store-59-03.jpg",
+                CDN_BASE + "images-part2/store-59-04.jpg",
+                CDN_BASE + "images-part2/store-59-05.jpg",
+                CDN_BASE + "images-part2/store-59-06.jpg",
+                CDN_BASE + "images-part2/store-59-07.jpg",
+                CDN_BASE + "images-part2/store-59-08.jpg"
+            ], date: "2025-03-29", likes: 1750 },
             { id: 60, title: "问号哥，一生要强的男人", fullContent: `滑雪，溜冰，羽毛球，机车少年
 台球，全能运动系183金牛男魅力加成篇
 眉心有痣
@@ -1725,9 +1843,19 @@ ps把最近收到的图都发一下
 所以我尽量不会跟他发生冲突
 因为他除了那些运动
 还玩棒球
-#185大帅哥 #抽象 #男大学生 #男生的兴趣爱好 #男生 #朋友 #我的日常`, image: "images/store-60.jpg", date: "2025-03-15", likes: 1819 },
-            { id: 61, title: "回忆闪回", fullContent: `#185大帅哥 #抽象 #男大学生 #我的日常 #朋友 #曾经的回忆`, image: "images/store-61.jpg", date: "2025-03-10", likes: 1572 },
-            { id: 62, title: "有个人碎掉了大破防的终于不是我了", fullContent: `#185大帅哥 #抽象 #男大学生 #我没有破防 #沉默是今晚的康桥 #别太离谱了 #轻轻地碎了 #我没惹任何人 #朋友 #我的日常`, images: ["images/store-62-01.jpg","images/store-62-02.jpg","images/store-62-03.jpg","images/store-62-04.jpg","images/store-62-05.jpg","images/store-62-06.jpg","images/store-62-07.jpg","images/store-62-08.jpg","images/store-62-09.jpg"], date: "2025-03-07", likes: 1675 },
+#185大帅哥 #抽象 #男大学生 #男生的兴趣爱好 #男生 #朋友 #我的日常`, image: CDN_BASE + "images/store-60.jpg", date: "2025-03-15", likes: 1819 },
+            { id: 61, title: "回忆闪回", fullContent: `#185大帅哥 #抽象 #男大学生 #我的日常 #朋友 #曾经的回忆`, image: CDN_BASE + "images/store-61.jpg", date: "2025-03-10", likes: 1572 },
+            { id: 62, title: "有个人碎掉了大破防的终于不是我了", fullContent: `#185大帅哥 #抽象 #男大学生 #我没有破防 #沉默是今晚的康桥 #别太离谱了 #轻轻地碎了 #我没惹任何人 #朋友 #我的日常`, images: [
+                CDN_BASE + "images/store-62-01.jpg",
+                CDN_BASE + "images/store-62-02.jpg",
+                CDN_BASE + "images/store-62-03.jpg",
+                CDN_BASE + "images/store-62-04.jpg",
+                CDN_BASE + "images/store-62-05.jpg",
+                CDN_BASE + "images/store-62-06.jpg",
+                CDN_BASE + "images/store-62-07.jpg",
+                CDN_BASE + "images/store-62-08.jpg",
+                CDN_BASE + "images/store-62-09.jpg"
+            ], date: "2025-03-07", likes: 1675 },
             { id: 63, title: "有谁还记得西西里里家族", fullContent: `西西里里返场
 里面都是我的一群好朋友
 也谢谢大家的喜欢
@@ -1743,8 +1871,17 @@ ps把最近收到的图都发一下
 你们看的开心就行
 其他都不重要
 我一不卖货二不钓鱼
-#185大帅哥 #男大学生 #抽象 #不是一家人不进一家门 #家人们谁懂啊 #死去的记忆突然攻击我 #只是冰山一角 #不是一个人 #朋友 #保持更新`, images: ["images-part2/store-63-01.jpg","images-part2/store-63-02.jpg","images-part2/store-63-03.jpg","images-part2/store-63-04.jpg","images-part2/store-63-05.jpg"], date: "2025-03-02", likes: 2354 },
-            { id: 64, title: "让你火", fullContent: `#185大帅哥 #男大学生 #抽象 #火火火起来 #无不引导话题 #让大家见笑了 #没有不良导向的意思 #一个人上网挺无助的 #抽象派 #朋友`, images: ["images/store-64-01.jpg","images/store-64-02.jpg"], date: "2025-02-19", likes: 1173 },
+#185大帅哥 #男大学生 #抽象 #不是一家人不进一家门 #家人们谁懂啊 #死去的记忆突然攻击我 #只是冰山一角 #不是一个人 #朋友 #保持更新`, images: [
+                CDN_BASE + "images-part2/store-63-01.jpg",
+                CDN_BASE + "images-part2/store-63-02.jpg",
+                CDN_BASE + "images-part2/store-63-03.jpg",
+                CDN_BASE + "images-part2/store-63-04.jpg",
+                CDN_BASE + "images-part2/store-63-05.jpg"
+            ], date: "2025-03-02", likes: 2354 },
+            { id: 64, title: "让你火", fullContent: `#185大帅哥 #男大学生 #抽象 #火火火起来 #无不引导话题 #让大家见笑了 #没有不良导向的意思 #一个人上网挺无助的 #抽象派 #朋友`, images: [
+                CDN_BASE + "images/store-64-01.jpg",
+                CDN_BASE + "images/store-64-02.jpg"
+            ], date: "2025-02-19", likes: 1173 },
             { id: 65, title: "邻居家小孩叫我LY哥哥LY是我的名字", fullContent: `邻居家小孩叫我LY哥哥
 LY是我的名字
 真苏啊叫的我不知道天南地北了
@@ -1755,7 +1892,7 @@ LY是我的名字
 太甜了这小孩
 哥发誓
 以后再不准抓你两个小辫当摩托开了
-#185大帅哥 #抽象 #男大学生 #亲戚家小孩 #我的好邻居 #发疯 #我的日常 #朋友 #搞笑 #小孩`, image: "images/store-65.jpg", date: "2025-02-04", likes: 2045 },
+#185大帅哥 #抽象 #男大学生 #亲戚家小孩 #我的好邻居 #发疯 #我的日常 #朋友 #搞笑 #小孩`, image: CDN_BASE + "images/store-65.jpg", date: "2025-02-04", likes: 2045 },
             { id: 66, title: "答应我过年睡觉一定要锁门好吗求你们了", fullContent: `我真不行了
 睡得正迷迷糊糊的
 突然觉得身上怎么那么沉
@@ -1772,18 +1909,33 @@ LY是我的名字
 真没想到你是这种人
 找个对象吧弟弟
 我不干净了
-#搞笑表情包 #185大帅哥 #抽象 #男大学生 #尖叫扭曲阴暗地爬行 #我的脑子呢 #我感觉我被床给粘住了 #我的日常 #抽象派`, image: "images/store-66.jpg", date: "2025-01-31", likes: 1878 },
+#搞笑表情包 #185大帅哥 #抽象 #男大学生 #尖叫扭曲阴暗地爬行 #我的脑子呢 #我感觉我被床给粘住了 #我的日常 #抽象派`, image: CDN_BASE + "images/store-66.jpg", date: "2025-01-31", likes: 1878 },
             { id: 67, title: "一个女生追我朋友没追上又来追我", fullContent: `一个女生追我朋友没追上
 又来追我是怎么回事
 转移阵地了？换菜吃了？
-#185大帅哥 #抽象 #男大学生 #求助  #朋友`, image: "images/store-67.jpg", date: "2025-01-21", likes: 1676 },
+#185大帅哥 #抽象 #男大学生 #求助  #朋友`, image: CDN_BASE + "images/store-67.jpg", date: "2025-01-21", likes: 1676 },
             { id: 68, title: "西西里里人物专线", fullContent: `#185大帅哥  #男大学生日常 #帅哥 #日常文案 #抽象 #我的日常
-都全放这个里面`, images: ["images/store-68-01.jpg","images/store-68-02.jpg","images/store-68-03.jpg","images/store-68-04.jpg","images/store-68-05.jpg","images/store-68-06.jpg","images/store-68-07.jpg","images/store-68-08.jpg"], date: "2024-12-01", likes: 1179 },
+都全放这个里面`, images: [
+                CDN_BASE + "images/store-68-01.jpg",
+                CDN_BASE + "images/store-68-02.jpg",
+                CDN_BASE + "images/store-68-03.jpg",
+                CDN_BASE + "images/store-68-04.jpg",
+                CDN_BASE + "images/store-68-05.jpg",
+                CDN_BASE + "images/store-68-06.jpg",
+                CDN_BASE + "images/store-68-07.jpg",
+                CDN_BASE + "images/store-68-08.jpg"
+            ], date: "2024-12-01", likes: 1179 },
             { id: 69, title: "有没有好看的丧尸片 歪个楼", fullContent: `剧荒了求个推荐
 丧尸片
-#丧尸 #剧 #剧情 #电视剧 #电影 #求推荐 #好剧 #好剧推荐 #韩剧 #美剧`, image: "images/store-69.jpg", date: "2024-11-08", likes: 936 },
+#丧尸 #剧 #剧情 #电视剧 #电影 #求推荐 #好剧 #好剧推荐 #韩剧 #美剧`, image: CDN_BASE + "images/store-69.jpg", date: "2024-11-08", likes: 936 },
             { id: 70, title: "白衣小哥//许牙医/日常语录专线", fullContent: `#生活美学 #男大学生  #深夜文案  #185大帅哥 #大帅哥 #抽象 #发疯文学
-话少的可怜`, images: ["images/store-70-01.jpg","images/store-70-02.jpg","images/store-70-03.jpg","images/store-70-04.jpg","images/store-70-05.jpg"], date: "2024-11-01", likes: 1180 },
+话少的可怜`, images: [
+                CDN_BASE + "images/store-70-01.jpg",
+                CDN_BASE + "images/store-70-02.jpg",
+                CDN_BASE + "images/store-70-03.jpg",
+                CDN_BASE + "images/store-70-04.jpg",
+                CDN_BASE + "images/store-70-05.jpg"
+            ], date: "2024-11-01", likes: 1180 },
             { id: 71, title: "西西里里家族是什么意思", fullContent: `西西里里家族是一个好友裙
 里面有十个人
 都是很好的朋友和同学
@@ -1820,7 +1972,7 @@ LY是我的名字
 要是不喜欢看贴也可以点不感兴趣，就不会再刷到我了，或者直接毕业我也可以。
 对了关于陆霆骁在不在里面
 他不在
-#生活美学  #抽象 #185大帅哥 #小红书流量 #聊天记录 #朋友 #搞笑 #小众 #男大学生`, image: "images/store-71.jpg", date: "2024-10-29", likes: 1588 },
+#生活美学  #抽象 #185大帅哥 #小红书流量 #聊天记录 #朋友 #搞笑 #小众 #男大学生`, image: CDN_BASE + "images/store-71.jpg", date: "2024-10-29", likes: 1588 },
             { id: 72, title: "我有一个朋友身高184.5，现实一次恋爱都没", fullContent: `我有一个朋友身高184.5
 现实一次恋爱都没谈过身高184.5
 跟人学网恋身高184.5
@@ -1829,35 +1981,35 @@ LY是我的名字
 对面好像把他当内个召之即来挥之即去184.5
 要什么给什么身高184.5
 请问这样的人还有救吗？身高184.5
-#抽象 #男大学生 #185大帅哥 #理想型 #大帅哥 #抽象艺术 #发疯文学 #网恋 #我有一个朋友`, image: "images/store-72.jpg", date: "2024-09-25", likes: 1317 },
-            { id: 73, title: "牵个手", fullContent: `#185大帅哥 #理想型 #氛围感 #手控 #上班 #安徽 #天蝎`, image: "images/store-73.jpg", date: "2024-09-23", likes: 977 }
+#抽象 #男大学生 #185大帅哥 #理想型 #大帅哥 #抽象艺术 #发疯文学 #网恋 #我有一个朋友`, image: CDN_BASE + "images/store-72.jpg", date: "2024-09-25", likes: 1317 },
+            { id: 73, title: "牵个手", fullContent: `#185大帅哥 #理想型 #氛围感 #手控 #上班 #安徽 #天蝎`, image: CDN_BASE + "images/store-73.jpg", date: "2024-09-23", likes: 977 }
         ];
 
-        // 成员数据（保持不变）
+        // ---------- 成员数据（所有图片已改为 CDN 链接）----------
         const membersData = [
-            { id: 1, name: "NO.911", bio: "186.7 天蝎座 intj", image: "images-part1/member-01.jpg", detail: "03 186.7 天蝎 只玩小红薯\n\n爱搞点抽象 好好生活慢慢相遇\n\n来自身边朋友的日常笑料 禁搬运二改\n\n爱好女 混凝土钢筋铁直男\n\n代表作：西西里里" },
-            { id: 2, name: "许医生", bio: "185 摩羯禁欲系", image: "images-part1/member-02.jpg", detail: "02 185 外冷内热摩羯座 医学生牙医\n\n深情专一 情绪稳定\n\n有着强大内核，平常话少高冷偶尔也很腹黑\n\n理智的代名词 禁欲系的标杆\n\n爹系男友 绝对的掌控者" },
-            { id: 3, name: "室友", bio: "185 火热系天蝎男", image: "images-part1/member-03.jpg", detail: "185天蝎 深情专一是天蝎的代名词\n\n外表放荡不羁爱自由\n\n实则内心柔软又善良\n\n侵占型又争又抢" },
-            { id: 4, name: "问号", bio: "183 美男运动系", image: "images-part1/member-04.jpg", detail: "183金牛男 爱好美食 旅行 探险\n\n就喜欢发问号\n\n打棒球也打篮球桌球羽毛球\n\n脑回路有点清奇也挺记仇的\n\n比较护食也喜欢美食 喜欢吃茶叶蛋一天三顿吃\n\n有时候有点呆也有点拽也挺平静的" },
-            { id: 5, name: "卷毛", bio: "183 温柔体贴系", image: "images-part1/member-05.jpg", detail: "183温柔年上 体贴入微\n\n唇红齿白特别有亲和力\n\n沉稳风趣且很有自己的想法\n\n从不会让人觉得尴尬 不会让话掉到地上\n\n情商高智商也高\n\n很细心也很绅士\n\n容易观察到别人注意不到的点" },
-            { id: 6, name: "寝室长", bio: "183 摩羯清冷系", image: "images-part1/member-06.jpg", detail: "183狐狸眼摩羯男 半框眼镜 情绪价值加满\n\n总会有不经意的惊喜\n\n直戳心窝子\n\n话不多但是每句话都值得回味\n\n默默付出型" },
-            { id: 7, name: "二哥", bio: "187 结账侠", image: "images-part1/member-07.jpg", detail: "lly初中同学\n\n从不愿意把情绪带给其他人\n\n可靠细腻善良\n\n这辈子最难过的就是再也不能打篮球了\n\nlly说：能有那么一个朋友是我的福气\n\n自己明明一团糟还会给我做指路明灯" },
-            { id: 8, name: "许检讨", bio: "183 射手座 entp", image: "images-part1/member-08.jpg", detail: "04 183 射手阳光男大\n\n许医生弟弟 嘴甜爱笑还有一颗虎牙\n\n网恋写过三千字检讨 于是叫他小检讨" },
-            { id: 9, name: "那个谁", bio: "180+法师", image: "images-part1/member-09.jpg", detail: "有一张神嘴 好坏都灵\n\n人间许愿池\n\n平常话也不多\n\n有困难他是真上" },
-            { id: 10, name: "何有对象", bio: "有对象", image: "images-part1/member-10.jpg", detail: "西西里里唯一一个有对象\n\n喜欢秀恩爱\n\n经常被踢出群聊" },
-            { id: 11, name: "混血哥", bio: "190 中法混血", image: "images-part1/member-11.jpg", detail: "超绝大长腿大高个\n\n非常标准的男模身材\n\n除了声音有股大碴子味\n\n有一双专属国外人深邃立体的眼睛" },
-            { id: 12, name: "宋老师", bio: "骨科医生", image: "images-part1/member-12.jpg", detail: "谦卑有礼很正直\n\n偶尔也会开玩笑\n\n大多数比较正经" },
-            { id: 13, name: "小哥", bio: "绅士狐狸男", image: "images-part1/member-13.jpg", detail: "lly的小哥 小时候是个校霸\n\n绅士狐狸男\n\n运筹帷幄老谋深算\n\n很会照顾人 心思也多" },
-            { id: 14, name: "村草", bio: "极品帅哥", image: "images-part1/member-14.jpg", detail: "养了一猫一狗\n\n猫叫秘书 狗叫总裁\n\n性格有趣自恋" },
-            { id: 15, name: "小酒窝", bio: "浓颜系", image: "images-part1/member-15.jpg", detail: "lly的表哥\n\n笑起来有酒窝\n\n大高个会唱歌\n\n是个路痴也是母单\n\n浓颜系＋反差" },
-            { id: 16, name: "小叔", bio: "190 低音炮", image: "images-part1/member-16.jpg", detail: "lly的小叔\n\n年龄小辈分高\n\n新鲜男大\n\n是个低音炮" },
-            { id: 17, name: "陆霆骁", bio: "185 爱爆小金币", image: "images-part1/member-17.jpg", detail: "lly的堂哥\n\n名字和小说霸总一样\n\n爱爆小金币来堵嘴" },
-            { id: 18, name: "干甚", bio: "大e人", image: "images-part1/member-18.jpg", detail: "打篮球认识的\n\n长得像宋威龙\n\n曾经拿着自己姐姐的手机想给女神拍荷花\n\n结果掉进荷花池了" },
-            { id: 19, name: "lsy", bio: "姐姐女神", image: "images-part1/member-19.jpg", detail: "lly的姐姐\n\n女神！！！\n\n又美又温柔" },
-            { id: 20, name: "欣欣", bio: "古灵精怪表妹", image: "images-part1/member-20.jpg", detail: "lly的表妹\n\n活泼可爱 古灵精怪\n\n帮娅粉争取了许多福利！" }
+            { id: 1, name: "NO.911", bio: "186.7 天蝎座 intj", image: CDN_BASE + "images-part1/member-01.jpg", detail: "03 186.7 天蝎 只玩小红薯\n\n爱搞点抽象 好好生活慢慢相遇\n\n来自身边朋友的日常笑料 禁搬运二改\n\n爱好女 混凝土钢筋铁直男\n\n代表作：西西里里" },
+            { id: 2, name: "许医生", bio: "185 摩羯禁欲系", image: CDN_BASE + "images-part1/member-02.jpg", detail: "02 185 外冷内热摩羯座 医学生牙医\n\n深情专一 情绪稳定\n\n有着强大内核，平常话少高冷偶尔也很腹黑\n\n理智的代名词 禁欲系的标杆\n\n爹系男友 绝对的掌控者" },
+            { id: 3, name: "室友", bio: "185 火热系天蝎男", image: CDN_BASE + "images-part1/member-03.jpg", detail: "185天蝎 深情专一是天蝎的代名词\n\n外表放荡不羁爱自由\n\n实则内心柔软又善良\n\n侵占型又争又抢" },
+            { id: 4, name: "问号", bio: "183 美男运动系", image: CDN_BASE + "images-part1/member-04.jpg", detail: "183金牛男 爱好美食 旅行 探险\n\n就喜欢发问号\n\n打棒球也打篮球桌球羽毛球\n\n脑回路有点清奇也挺记仇的\n\n比较护食也喜欢美食 喜欢吃茶叶蛋一天三顿吃\n\n有时候有点呆也有点拽也挺平静的" },
+            { id: 5, name: "卷毛", bio: "183 温柔体贴系", image: CDN_BASE + "images-part1/member-05.jpg", detail: "183温柔年上 体贴入微\n\n唇红齿白特别有亲和力\n\n沉稳风趣且很有自己的想法\n\n从不会让人觉得尴尬 不会让话掉到地上\n\n情商高智商也高\n\n很细心也很绅士\n\n容易观察到别人注意不到的点" },
+            { id: 6, name: "寝室长", bio: "183 摩羯清冷系", image: CDN_BASE + "images-part1/member-06.jpg", detail: "183狐狸眼摩羯男 半框眼镜 情绪价值加满\n\n总会有不经意的惊喜\n\n直戳心窝子\n\n话不多但是每句话都值得回味\n\n默默付出型" },
+            { id: 7, name: "二哥", bio: "187 结账侠", image: CDN_BASE + "images-part1/member-07.jpg", detail: "lly初中同学\n\n从不愿意把情绪带给其他人\n\n可靠细腻善良\n\n这辈子最难过的就是再也不能打篮球了\n\nlly说：能有那么一个朋友是我的福气\n\n自己明明一团糟还会给我做指路明灯" },
+            { id: 8, name: "许检讨", bio: "183 射手座 entp", image: CDN_BASE + "images-part1/member-08.jpg", detail: "04 183 射手阳光男大\n\n许医生弟弟 嘴甜爱笑还有一颗虎牙\n\n网恋写过三千字检讨 于是叫他小检讨" },
+            { id: 9, name: "那个谁", bio: "180+法师", image: CDN_BASE + "images-part1/member-09.jpg", detail: "有一张神嘴 好坏都灵\n\n人间许愿池\n\n平常话也不多\n\n有困难他是真上" },
+            { id: 10, name: "何有对象", bio: "有对象", image: CDN_BASE + "images-part1/member-10.jpg", detail: "西西里里唯一一个有对象\n\n喜欢秀恩爱\n\n经常被踢出群聊" },
+            { id: 11, name: "混血哥", bio: "190 中法混血", image: CDN_BASE + "images-part1/member-11.jpg", detail: "超绝大长腿大高个\n\n非常标准的男模身材\n\n除了声音有股大碴子味\n\n有一双专属国外人深邃立体的眼睛" },
+            { id: 12, name: "宋老师", bio: "骨科医生", image: CDN_BASE + "images-part1/member-12.jpg", detail: "谦卑有礼很正直\n\n偶尔也会开玩笑\n\n大多数比较正经" },
+            { id: 13, name: "小哥", bio: "绅士狐狸男", image: CDN_BASE + "images-part1/member-13.jpg", detail: "lly的小哥 小时候是个校霸\n\n绅士狐狸男\n\n运筹帷幄老谋深算\n\n很会照顾人 心思也多" },
+            { id: 14, name: "村草", bio: "极品帅哥", image: CDN_BASE + "images-part1/member-14.jpg", detail: "养了一猫一狗\n\n猫叫秘书 狗叫总裁\n\n性格有趣自恋" },
+            { id: 15, name: "小酒窝", bio: "浓颜系", image: CDN_BASE + "images-part1/member-15.jpg", detail: "lly的表哥\n\n笑起来有酒窝\n\n大高个会唱歌\n\n是个路痴也是母单\n\n浓颜系＋反差" },
+            { id: 16, name: "小叔", bio: "190 低音炮", image: CDN_BASE + "images-part1/member-16.jpg", detail: "lly的小叔\n\n年龄小辈分高\n\n新鲜男大\n\n是个低音炮" },
+            { id: 17, name: "陆霆骁", bio: "185 爱爆小金币", image: CDN_BASE + "images-part1/member-17.jpg", detail: "lly的堂哥\n\n名字和小说霸总一样\n\n爱爆小金币来堵嘴" },
+            { id: 18, name: "干甚", bio: "大e人", image: CDN_BASE + "images-part1/member-18.jpg", detail: "打篮球认识的\n\n长得像宋威龙\n\n曾经拿着自己姐姐的手机想给女神拍荷花\n\n结果掉进荷花池了" },
+            { id: 19, name: "lsy", bio: "姐姐女神", image: CDN_BASE + "images-part1/member-19.jpg", detail: "lly的姐姐\n\n女神！！！\n\n又美又温柔" },
+            { id: 20, name: "欣欣", bio: "古灵精怪表妹", image: CDN_BASE + "images-part1/member-20.jpg", detail: "lly的表妹\n\n活泼可爱 古灵精怪\n\n帮娅粉争取了许多福利！" }
         ];
 
-        // ---------- 页面状态管理（已修复：返回帖子列表时保留滚动位置）----------
+        // ---------- 以下所有函数（renderPosts, renderMembers, setupMembersScroll, showPostDetail, showMemberDetail, 页面切换等）均与你原有代码完全相同，仅保留一份以保证功能完整 ----------
         let currentPage = 'posts';
         let scrollPositions = { posts: 0, members: 0 };
         let activeListPage = 'posts';
@@ -1889,7 +2041,7 @@ LY是我的名字
             });
         }
 
-        function renderPosts() { /* 完全不变 */ 
+        function renderPosts() {
             postsContainer.innerHTML = '';
             postsData.forEach(post => {
                 const postElement = document.createElement('div');
@@ -1915,7 +2067,7 @@ LY是我的名字
             });
         }
 
-        function renderMembers() { /* 完全不变 */ 
+        function renderMembers() {
             membersGrid.innerHTML = '';
             membersData.forEach(member => {
                 const memberElement = document.createElement('div');
@@ -1948,7 +2100,7 @@ LY是我的名字
             membersGrid.style.width = `${(memberCardWidth + gap) * membersData.length}px`;
         }
 
-        function setupMembersScroll() { /* 完全不变 */ 
+        function setupMembersScroll() {
             membersScrollWrapper.addEventListener('wheel', (e) => {
                 if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) e.preventDefault();
                 membersScrollWrapper.scrollLeft += e.deltaY;
@@ -1985,7 +2137,7 @@ LY是我的名字
             });
         }
 
-        function showPostDetail(postId) { /* 完全不变 */
+        function showPostDetail(postId) {
             currentPage = 'post-detail';
             const post = postsData.find(p => p.id === postId);
             if (!post) return;
@@ -2059,7 +2211,7 @@ LY是我的名字
             updateNavState('post-detail');
         }
 
-        function showMemberDetail(memberId) { /* 完全不变 */ 
+        function showMemberDetail(memberId) {
             currentPage = 'member-detail';
             const member = membersData.find(m => m.id === memberId);
             if (!member) return;
@@ -2083,9 +2235,7 @@ LY是我的名字
             setupMembersScroll();
         }
 
-        // ---------- 关键修复：帖子列表页滚动恢复（多重尝试）----------
         function switchPage(page, resetScroll = true) {
-            // 隐藏所有页面
             postsPage.classList.remove('active');
             postDetailPage.classList.remove('active');
             membersPage.classList.remove('active');
@@ -2096,7 +2246,6 @@ LY是我的名字
                 postsPage.classList.add('active');
                 if (!resetScroll) {
                     const targetY = scrollPositions.posts;
-                    // 多重尝试滚动，保证恢复
                     window.scrollTo(0, targetY);
                     setTimeout(() => window.scrollTo(0, targetY), 100);
                     setTimeout(() => window.scrollTo(0, targetY), 300);
